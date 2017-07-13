@@ -12,7 +12,7 @@ If you really want to get rid of it, you will have to delete its traces from sev
 3. Remove `sagaMiddleware` from `middlewares` array.
 4. Remove statement `store.runSaga = sagaMiddleware.run`
 
-**client/utils/asyncInjectors.js**
+**config/utils/client/app/asyncInjectors.js**
 
 1. Remove `runSaga: isFunction` from `shape`.
 2. Remove function `injectAsyncSagas`.

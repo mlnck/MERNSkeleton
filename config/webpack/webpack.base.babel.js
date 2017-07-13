@@ -77,7 +77,7 @@ module.exports = (options) => ({
     new webpack.NamedModulesPlugin(),
   ]),
   resolve: {
-    modules: ['client', 'node_modules'],
+    modules: ['client', 'config/utils/client', 'node_modules'],
     extensions: [
       '.js',
       '.jsx',

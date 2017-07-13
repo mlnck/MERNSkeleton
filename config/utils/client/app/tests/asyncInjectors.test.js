@@ -6,7 +6,7 @@ import { memoryHistory } from 'react-router';
 import { put } from 'redux-saga/effects';
 import { fromJS } from 'immutable';
 
-import configureStore from '../../store';
+import configureStore from '../../../../../client/store';
 
 import {
   injectAsyncReducer,
