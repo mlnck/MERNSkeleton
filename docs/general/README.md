@@ -28,7 +28,7 @@ to generate. They'll automatically be imported in the correct places and have
 everything set up correctly.
 
 > We use [plop] to generate new components, you can find all the logic and
-templates for the generation in `internals/generators`.
+templates for the generation in `config/utils/client/generators`.
 
 [plop]: https://github.com/amwmedia/plop
 

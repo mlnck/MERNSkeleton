@@ -25,7 +25,7 @@ they do.
   Baking the config in is a slightly unusual set-up, but it allows us to keep
   the project root as uncluttered and grokkable-at-a-glance as possible.
 
-## The `./internals` folder
+## The `./config/utils/client` folder
 
 This is where the bulk of the tooling configuration lives, broken out into
 recognisable units of work.

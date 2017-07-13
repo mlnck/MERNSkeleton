@@ -45,7 +45,7 @@ Let's start with understanding why we have chosen our particular structure. It h
 If not, here's the TL;DR:
 
 - You will write your app in the `app` folder. This is the folder you will spend most, if not all, of your time in.
-- Configuration, generators and templates are in the `internals` folder.
+- Configuration, generators and templates are in the `config/utils/client` folder.
 - The `server` folder contains development and production server configuration files.
 
 ### `client/`
@@ -54,17 +54,17 @@ We use the [container/component architecture](https://medium.com/@dan_abramov/sm
 
 We've found that for many applications treating single pages (e.g. the Loginpage, the Homepage etc.) as containers and their small parts (e.g. the Login form, the Navigation bar) components works well, but there are no rigid rules. **Bend the architecture to the needs of your app, nothing is set in stone!**
 
-### `internals/`
+### `config/utils/client/`
 
 You can call this area the "engine" of your app. Your source code cannot be executed as-is in the web browser. It needs to pass through webpack to get converted into a form that web browsers understand. While it's certainly helpful to understand what is happening here, for real world usage you won't have to mess around with this folder much.
 
-- `internals/webpack`: You'll most probably use EcmaScript 6 or EcmaScript 7 to write the source code of your app. webpack takes care of making it compatible with a majority of browsers.
+- `config/utils/client/webpack`: You'll most probably use EcmaScript 6 or EcmaScript 7 to write the source code of your app. webpack takes care of making it compatible with a majority of browsers.
 
 > ([ECMAScript](http://stackoverflow.com/a/33748400/5241520) is the standard for JavaScript. Most people are still using browsers which understand ECMAScript 5. So your code must be [transpiled](https://scotch.io/tutorials/javascript-transpilers-what-they-are-why-we-need-them) into browser-understandable code. To apply the transpiler to your source code, you will use webpack. Feeling the jitters already? [Don't worry](https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.d2uasw2n6). Take a tea-break and then read on)
 
-- `internals/generators`: This folder has the code to scaffold out new components, containers and routes. Read [more about scaffolding](https://github.com/react-boilerplate/react-boilerplate/tree/master/docs/general#quick-scaffolding) in the docs.
+- `config/utils/client/generators`: This folder has the code to scaffold out new components, containers and routes. Read [more about scaffolding](https://github.com/react-boilerplate/react-boilerplate/tree/master/docs/general#quick-scaffolding) in the docs.
 
-- `internals/mocks`: This folder contains mocks which Jest uses when testing your app, e.g. for images.
+- `config/utils/client/mocks`: This folder contains mocks which Jest uses when testing your app, e.g. for images.
 
 The other folders are mostly for the maintainers and/or the setup, and you should absolutely never need to touch them so we are going skip them for the sake of brevity.
 
