@@ -90,7 +90,7 @@ After repeat visits to your site, users will get a prompt to add your applicatio
 to their homescreen. Combined with offline caching, this means your web app can
 be used exactly like a native application (without the limitations of an app store).
 
-The name and icon to be displayed are set in the `app/manifest.json` file.
+The name and icon to be displayed are set in the `client/manifest.json` file.
 Change them to your project name and icon, and try it!
 
 ## Performant Web Font Loading
@@ -100,14 +100,14 @@ these fonts are downloaded. That means a lot of waiting time in which users
 could already read the content.
 
 [FontFaceObserver](https://github.com/bramstein/fontfaceobserver) adds a class
-to the `body` when the fonts have loaded. (see [`app.js`](../../app/app.js#L26-L36)
-and [`App/styles.css`](../../app/containers/App/styles.css))
+to the `body` when the fonts have loaded. (see [`app.js`](../../client/app.js#L26-L36)
+and [`App/styles.css`](../../client/containers/App/styles.css))
 
 ### Adding a new font
 
 1. Either add the `@font-face` declaration to `App/styles.css` or add a `<link>`
-tag to the [`index.html`](../../app/index.html). (Don't forget to remove the `<link>`
-for Open Sans from the [`index.html`](../../app/index.html)!)
+tag to the [`index.html`](../../client/index.html). (Don't forget to remove the `<link>`
+for Open Sans from the [`index.html`](../../client/index.html)!)
 
 2. In `App/styles.css`, specify your initial `font-family` in the `body` tag
 with only web-save fonts. In the `body.jsFontLoaded` tag, specify your

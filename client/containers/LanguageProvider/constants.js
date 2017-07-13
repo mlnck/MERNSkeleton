@@ -5,4 +5,3 @@
  */
 
 export const CHANGE_LOCALE = 'client/LanguageToggle/CHANGE_LOCALE';
-export const DEFAULT_LOCALE = 'en';

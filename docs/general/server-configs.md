@@ -2,7 +2,7 @@
 
 ## Apache
 
-This boilerplate includes an `app/.htaccess` file that does three things:
+This boilerplate includes an `client/.htaccess` file that does three things:
 
 1. Redirect all traffic to HTTPS because ServiceWorker only works for encrypted
    traffic.
@@ -21,7 +21,7 @@ This boilerplate includes an `app/.htaccess` file that does three things:
 
 ## Nginx
 
-An `app/.nginx.conf` file is included that does the same on an Nginx server.
+An `client/.nginx.conf` file is included that does the same on an Nginx server.
 
 ### security
 

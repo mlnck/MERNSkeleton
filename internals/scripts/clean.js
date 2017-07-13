@@ -14,35 +14,35 @@ if (!test('-e', 'internals/templates')) {
 process.stdout.write('Cleanup started...');
 
 // Reuse existing LanguageProvider and i18n tests
-mv('app/containers/LanguageProvider/tests', 'internals/templates/containers/LanguageProvider');
-cp('app/tests/i18n.test.js', 'internals/templates/tests/i18n.test.js');
+mv('client/containers/LanguageProvider/tests', 'internals/templates/containers/LanguageProvider');
+cp('client/tests/i18n.test.js', 'internals/templates/tests/i18n.test.js');
 
 // Cleanup components/
-rm('-rf', 'app/components/*');
+rm('-rf', 'client/components/*');
 
 // Handle containers/
-rm('-rf', 'app/containers');
+rm('-rf', 'client/containers');
 mv('internals/templates/containers', 'app');
 
 // Handle tests/
 mv('internals/templates/tests', 'app');
 
 // Handle translations/
-rm('-rf', 'app/translations')
+rm('-rf', 'client/translations')
 mv('internals/templates/translations', 'app');
 
 // Handle utils/
-rm('-rf', 'app/utils');
+rm('-rf', 'client/utils');
 mv('internals/templates/utils', 'app')
 
-// Replace the files in the root app/ folder
-cp('internals/templates/app.js', 'app/app.js');
-cp('internals/templates/global-styles.js', 'app/global-styles.js');
-cp('internals/templates/i18n.js', 'app/i18n.js');
-cp('internals/templates/index.html', 'app/index.html');
-cp('internals/templates/reducers.js', 'app/reducers.js');
-cp('internals/templates/routes.js', 'app/routes.js');
-cp('internals/templates/store.js', 'app/store.js');
+// Replace the files in the root client/ folder
+cp('internals/templates/app.js', 'client/app.js');
+cp('internals/templates/global-styles.js', 'client/global-styles.js');
+cp('internals/templates/i18n.js', 'client/i18n.js');
+cp('internals/templates/index.html', 'client/index.html');
+cp('internals/templates/reducers.js', 'client/reducers.js');
+cp('internals/templates/routes.js', 'client/routes.js');
+cp('internals/templates/store.js', 'client/store.js');
 
 // Remove the templates folder
 rm('-rf', 'internals/templates');

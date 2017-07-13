@@ -64,7 +64,7 @@
     "env": {
       "production": {
         "only": [
-          "app"
+          "client"
         ],
         "plugins": [
           "transform-react-remove-prop-types",
@@ -183,11 +183,11 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "app/**/*.{js,jsx}",
-      "!app/**/*.test.{js,jsx}",
-      "!app/*/RbGenerated*/*.{js,jsx}",
-      "!app/app.js",
-      "!app/routes.js"
+      "client/**/*.{js,jsx}",
+      "!client/**/*.test.{js,jsx}",
+      "!client/*/RbGenerated*/*.{js,jsx}",
+      "!client/app.js",
+      "!client/routes.js"
     ],
     "coverageThreshold": {
       "global": {
@@ -199,7 +199,7 @@
     },
     "moduleDirectories": [
       "node_modules",
-      "app"
+      "client"
     ],
     "moduleNameMapper": {
       ".*\\.(css|less|styl|scss|sass)$": "<rootDir>/internals/mocks/cssModule.js",

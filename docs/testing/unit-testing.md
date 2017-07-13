@@ -20,7 +20,7 @@ framework to run tests and make assertions. This library makes writing tests as 
 
 <!-- /TOC -->
 
-We use this glob pattern to find unit tests `app/**/*.test.js` - this tells
+We use this glob pattern to find unit tests `client/**/*.test.js` - this tells
 Jest to run all files that end with `.test.js` anywhere within the `app`
 folder. Use this to your advantage, and put unit tests next to the files you
 want to test so relevant files stay together!

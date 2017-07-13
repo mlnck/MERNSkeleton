@@ -5,20 +5,20 @@ way to go for most redux based applications.
 
 If you really want to get rid of it, you will have to delete its traces from several places.
 
-**app/store.js**
+**client/store.js**
 
 1. Remove statement `import createSagaMiddleware from 'redux-saga'`.
 2. Remove statement `const sagaMiddleware = createSagaMiddleware()`.
 3. Remove `sagaMiddleware` from `middlewares` array.
 4. Remove statement `store.runSaga = sagaMiddleware.run`
 
-**app/utils/asyncInjectors.js**
+**client/utils/asyncInjectors.js**
 
 1. Remove `runSaga: isFunction` from `shape`.
 2. Remove function `injectAsyncSagas`.
 3. Do not export `injectSagas: injectAsyncSagas(store, true)`.
 
-**app/routes.js**
+**client/routes.js**
 
 1. Do not pull out `injectSagas` from `getAsyncInjectors()`.
 2. Remove `sagas` from `importModules.then()`.
@@ -32,7 +32,7 @@ side-effect management library you want to use!**
 To remove `reselect`, remove it from your dependencies in `package.json` and then write
 your `mapStateToProps` functions like you normally would!
 
-You'll also need to hook up the history directly to the store. Make changes to `app/app.js`.
+You'll also need to hook up the history directly to the store. Make changes to `client/app.js`.
 
 1. Remove statement `import { makeSelectLocationState } from 'containers/App/selectors'`
 2. Make necessary changes to `history` as follows:
