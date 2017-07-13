@@ -61,7 +61,7 @@ for (const locale of locales) {
   oldLocaleMappings[locale] = {};
   localeMappings[locale] = {};
   // File to store translation messages into
-  const translationFileName = `client/translations/${locale}.json`;
+  const translationFileName = `config/intl/translations/${locale}.json`;
   try {
     // Parse the old translation message JSON files
     const messages = JSON.parse(fs.readFileSync(translationFileName));
@@ -126,9 +126,9 @@ const extractFromFile = async (fileName) => {
   extractTaskDone()
 
   // Make the directory if it doesn't exist, especially for first run
-  mkdir('-p', 'client/translations');
+  mkdir('-p', 'config/intl/translations');
   for (const locale of locales) {
-    const translationFileName = `client/translations/${locale}.json`;
+    const translationFileName = `config/intl/translations/${locale}.json`;
 
     try {
       const localeTaskDone = task(

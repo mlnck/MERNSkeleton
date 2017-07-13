@@ -6,7 +6,7 @@ const exec = require('child_process').exec;
 
 function languageIsSupported(language) {
   try {
-    fs.accessSync(`client/translations/${language}.json`, fs.F_OK);
+    fs.accessSync(`config/intl/translations/${language}.json`, fs.F_OK);
     return true;
   } catch (e) {
     return false;
@@ -63,7 +63,7 @@ module.exports = {
     });
     actions.push({
       type: 'add',
-      path: '../../client/translations/{{language}}.json',
+      path: '../../config/intl/translations/{{language}}.json',
       templateFile: './language/translations-json.hbs',
       abortOnFail: true,
     });

@@ -10,8 +10,8 @@ import deLocaleData from 'react-intl/locale-data/de';
 
 import { DEFAULT_LOCALE } from '../client/containers/App/constants';
 
-import enTranslationMessages from './translations/en.json';
-import deTranslationMessages from './translations/de.json';
+import enTranslationMessages from '../config/intl/translations/en.json';
+import deTranslationMessages from '../config/intl/translations/de.json';
 
 addLocaleData(enLocaleData);
 addLocaleData(deLocaleData);

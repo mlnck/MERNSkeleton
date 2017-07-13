@@ -22,14 +22,14 @@ rm('-rf', 'client/components/*');
 
 // Handle containers/
 rm('-rf', 'client/containers');
-mv('config/utils/client/templates/containers', 'app');
+mv('config/utils/client/templates/containers', 'client');
 
 // Handle tests/
-mv('config/utils/client/templates/tests', 'app');
+mv('config/utils/client/templates/tests', 'client');
 
 // Handle translations/
-rm('-rf', 'client/translations')
-mv('config/utils/client/templates/translations', 'app');
+rm('-rf', 'config/intl/translations')
+mv('config/utils/client/templates/translations', 'config/intl');
 
 // Handle utils/
 rm('-rf', 'client/utils');
