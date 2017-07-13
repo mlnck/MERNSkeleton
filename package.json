@@ -21,7 +21,7 @@
     "preinstall": "npm run npmcheckversion",
     "postinstall": "npm run build:dll",
     "prebuild": "npm run build:clean",
-    "build": "cross-env NODE_ENV=production webpack --config config/utils/client/webpack/webpack.prod.babel.js --color -p --progress",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack/webpack.prod.babel.js --color -p --progress",
     "build:clean": "npm run test:clean && rimraf ./build",
     "build:dll": "node ./config/utils/client/scripts/dependencies.js",
     "start": "cross-env NODE_ENV=development node server",
@@ -159,7 +159,7 @@
     "settings": {
       "import/resolver": {
         "webpack": {
-          "config": "./config/utils/client/webpack/webpack.prod.babel.js"
+          "config": "./config/webpack/webpack.prod.babel.js"
         }
       }
     }

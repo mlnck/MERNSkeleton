@@ -58,7 +58,7 @@ We've found that for many applications treating single pages (e.g. the Loginpage
 
 You can call this area the "engine" of your app. Your source code cannot be executed as-is in the web browser. It needs to pass through webpack to get converted into a form that web browsers understand. While it's certainly helpful to understand what is happening here, for real world usage you won't have to mess around with this folder much.
 
-- `config/utils/client/webpack`: You'll most probably use EcmaScript 6 or EcmaScript 7 to write the source code of your app. webpack takes care of making it compatible with a majority of browsers.
+- `config/webpack`: You'll most probably use EcmaScript 6 or EcmaScript 7 to write the source code of your app. webpack takes care of making it compatible with a majority of browsers.
 
 > ([ECMAScript](http://stackoverflow.com/a/33748400/5241520) is the standard for JavaScript. Most people are still using browsers which understand ECMAScript 5. So your code must be [transpiled](https://scotch.io/tutorials/javascript-transpilers-what-they-are-why-we-need-them) into browser-understandable code. To apply the transpiler to your source code, you will use webpack. Feeling the jitters already? [Don't worry](https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.d2uasw2n6). Take a tea-break and then read on)
 

@@ -43,4 +43,4 @@ if (!exists(dllManifestPath)) {
 }
 
 // the BUILDING_DLL env var is set to avoid confusing the development environment
-exec('cross-env BUILDING_DLL=true webpack --display-chunks --color --config config/utils/client/webpack/webpack.dll.babel.js');
+exec('cross-env BUILDING_DLL=true webpack --display-chunks --color --config config/webpack/webpack.dll.babel.js');
