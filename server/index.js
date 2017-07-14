@@ -1,5 +1,9 @@
 /* eslint consistent-return:0 */
 
+// Needed for developer defined process.env keys
+require('dotenv-safe').load();
+
+const mongoose = require('mongoose');
 const express = require('express');
 const logger = require('./logger');
 
@@ -10,6 +14,7 @@ const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngr
 const resolve = require('path').resolve;
 const app = express();
 
+// const seedDB = require('../config/utils/server/mongo/seed');
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 
@@ -25,6 +30,20 @@ const host = customHost || null; // Let http.Server use its default IPv6/4 host
 const prettyHost = customHost || 'localhost';
 
 const port = argv.port || process.env.PORT || 3000;
+
+// connect to mongo
+const mongoURL = (process.env.MONGO_USE_LOCAL === 'true')
+  ? process.env.MONGO_LOCAL_URL
+  : `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PW}@${process.env.MONGO_WEB_URL}${process.env.MONGO_DB}${process.env.MONGO_AUTH}`;
+mongoose.connect(mongoURL, (error) => {
+  if (error) {
+    console.error('Please make sure Mongodb is installed and running!', error); // eslint-disable-line no-console
+    throw error;
+  }
+  console.log('Mongo running at:\n\t', mongoURL); // eslint-disable-line no-console
+  // feed some dummy data in DB.
+  // seedDB()
+});
 
 // Start your app.
 app.listen(port, host, (err) => {
