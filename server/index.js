@@ -1,7 +1,7 @@
 /* eslint consistent-return:0 */
 
 // Needed for developer defined process.env keys
-require('dotenv-safe').load();
+require('dotenv').load();
 
 const mongoose = require('mongoose');
 const express = require('express');
