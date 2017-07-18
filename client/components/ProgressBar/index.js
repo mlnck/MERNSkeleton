@@ -71,6 +71,11 @@ function withProgressBar(WrappedComponent)
     }
   }
 
+  AppWithProgressBar.defaultProps = {
+    location: {},
+    router: {},
+  };
+
   AppWithProgressBar.propTypes = {
     location: React.PropTypes.object.isRequired,
     router: React.PropTypes.object.isRequired,

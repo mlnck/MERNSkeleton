@@ -32,7 +32,7 @@ describe('<Img />', () =>
   it('should not have a className attribute', () =>
 {
     const renderedComponent = renderComponent();
-    expect(renderedComponent.prop('className')).toBeUndefined();
+    expect(renderedComponent.prop('className')).toBe(null);
   });
 
   it('should adopt a className attribute', () =>

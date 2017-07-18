@@ -15,7 +15,7 @@ function Img(props)
 }
 
 Img.defaultProps = {
-  className: '',
+  className: null,
 };
 
 // We require the use of src and alt, only enforced by react in dev mode

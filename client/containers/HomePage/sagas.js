@@ -7,8 +7,8 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import { LOAD_REPOS } from 'containers/App/constants';
 import { reposLoaded, repoLoadingError } from 'containers/App/actions';
 
-import request from 'app/request';
-import { makeSelectUsername } from 'containers/HomePage/selectors';
+import request from '../../../config/utils/client/app/request';
+import { makeSelectUsername } from './selectors';
 
 /**
  * Github repos request/response handler

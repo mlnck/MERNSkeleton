@@ -15,12 +15,12 @@ describe('withProgressBar()', () =>
   });
 
   afterEach(() =>
-{
+  {
     clock = sinon.restore();
   });
 
   function Component()
-{
+  {
     return (
       <div></div>
     );
@@ -33,18 +33,18 @@ describe('withProgressBar()', () =>
   const HocComponent = withProgressBar(Component);
 
   it('Should exist', () =>
-{
+  {
     const renderedComponent = mount(
-      <HocComponent />
+      <HocComponent router={router} />
     );
 
     expect(renderedComponent.find(Component).length).toBe(1);
   });
 
   it('Should render <ProgressBar />', () =>
-{
+  {
     const renderedComponent = mount(
-      <HocComponent />
+      <HocComponent router={router} />
     );
 
     expect(renderedComponent.find(ProgressBar).length).toBe(1);
@@ -53,7 +53,7 @@ describe('withProgressBar()', () =>
   it('Should initially have state.progress = -1', () =>
 {
     const renderedComponent = mount(
-      <HocComponent />
+      <HocComponent router={router} />
     );
 
     expect(renderedComponent.state().progress).toBe(-1);
@@ -62,7 +62,7 @@ describe('withProgressBar()', () =>
   it('Should initially have state.loadedRoutes = current route', () =>
 {
     const renderedComponent = mount(
-      <HocComponent location={{ pathname: '/' }} />
+      <HocComponent location={{ pathname: '/' }} router={router} />
     );
 
     expect(renderedComponent.state().loadedRoutes[0]).toBe('/');
