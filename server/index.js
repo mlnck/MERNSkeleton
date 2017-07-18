@@ -14,7 +14,6 @@ const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngr
 const resolve = require('path').resolve;
 const app = express();
 
-// import seedDB = from '../config/utils/server/mongo/seed';
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 
@@ -42,7 +41,10 @@ mongoose.connect(mongoURL, (error) => {
   }
   console.log('Mongo running at:\n\t', mongoURL); // eslint-disable-line no-console
   // feed some dummy data in DB.
-  // seedDB()
+  if (process.env.MONGO_SEED === 'true') {
+    // import seedDB = from '../config/utils/server/mongo/seed';
+    // seedDB()
+  }
 });
 
 // Start your app.
