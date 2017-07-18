@@ -3,16 +3,20 @@ import React from 'react';
 import Ul from './Ul';
 import Wrapper from './Wrapper';
 
-function List(props) {
+function List(props)
+{
   const ComponentToRender = props.component;
   let content = (<div></div>);
 
   // If we have items, render them
-  if (props.items) {
+  if(props.items)
+{
     content = props.items.map((item, index) => (
-      <ComponentToRender key={`item-${index}`} item={item} />
+      <ComponentToRender key={`item-${item.id}`} data-index={index} item={item} />
     ));
-  } else {
+  }
+  else
+{
     // Otherwise render a single component
     content = (<ComponentToRender />);
   }
@@ -25,6 +29,10 @@ function List(props) {
     </Wrapper>
   );
 }
+
+List.defaultProps = {
+  items: [],
+};
 
 List.propTypes = {
   component: React.PropTypes.func.isRequired,

@@ -20,8 +20,10 @@ const initialState = fromJS({
   username: '',
 });
 
-function homeReducer(state = initialState, action) {
-  switch (action.type) {
+function homeReducer(state = initialState, action)
+{
+  switch (action.type)
+{
     case CHANGE_USERNAME:
 
       // Delete prefixed '@' from the github username

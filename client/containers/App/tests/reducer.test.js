@@ -7,9 +7,11 @@ import {
   repoLoadingError,
 } from '../actions';
 
-describe('appReducer', () => {
+describe('appReducer', () =>
+{
   let state;
-  beforeEach(() => {
+  beforeEach(() =>
+{
     state = fromJS({
       loading: false,
       error: false,
@@ -20,12 +22,14 @@ describe('appReducer', () => {
     });
   });
 
-  it('should return the initial state', () => {
+  it('should return the initial state', () =>
+{
     const expectedResult = state;
     expect(appReducer(undefined, {})).toEqual(expectedResult);
   });
 
-  it('should handle the loadRepos action correctly', () => {
+  it('should handle the loadRepos action correctly', () =>
+{
     const expectedResult = state
       .set('loading', true)
       .set('error', false)
@@ -34,7 +38,8 @@ describe('appReducer', () => {
     expect(appReducer(state, loadRepos())).toEqual(expectedResult);
   });
 
-  it('should handle the reposLoaded action correctly', () => {
+  it('should handle the reposLoaded action correctly', () =>
+{
     const fixture = [{
       name: 'My Repo',
     }];
@@ -47,7 +52,8 @@ describe('appReducer', () => {
     expect(appReducer(state, reposLoaded(fixture, username))).toEqual(expectedResult);
   });
 
-  it('should handle the repoLoadingError action correctly', () => {
+  it('should handle the repoLoadingError action correctly', () =>
+{
     const fixture = {
       msg: 'Not found',
     };

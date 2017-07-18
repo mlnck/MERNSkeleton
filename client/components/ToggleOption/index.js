@@ -13,6 +13,10 @@ const ToggleOption = ({ value, message, intl }) => (
   </option>
 );
 
+ToggleOption.defaultProps = {
+  message: '',
+};
+
 ToggleOption.propTypes = {
   value: React.PropTypes.string.isRequired,
   message: React.PropTypes.object,

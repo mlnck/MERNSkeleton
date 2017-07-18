@@ -8,30 +8,36 @@ import Percent from '../Percent';
 
 let clock = null;
 
-describe('<ProgressBar />', () => {
-  beforeEach(() => {
+describe('<ProgressBar />', () =>
+{
+  beforeEach(() =>
+{
     clock = sinon.useFakeTimers();
   });
 
-  afterEach(() => {
+  afterEach(() =>
+{
     clock = sinon.restore();
   });
 
-  it('should initially render hidden progress bar', () => {
+  it('should initially render hidden progress bar', () =>
+{
     const renderedComponent = shallow(
       <ProgressBar />
     );
     expect(renderedComponent.find(Wrapper).length).toEqual(1);
   });
 
-  it('should render render horizontal progress bar', () => {
+  it('should render render horizontal progress bar', () =>
+{
     const renderedComponent = shallow(
       <ProgressBar />
     );
     expect(renderedComponent.find(Percent).length).toEqual(1);
   });
 
-  it('should set state.percent as props.percent', () => {
+  it('should set state.percent as props.percent', () =>
+{
     const expected = 50;
     const renderedComponent = mount(
       <ProgressBar percent={expected} />
@@ -39,7 +45,8 @@ describe('<ProgressBar />', () => {
     expect(renderedComponent.state().percent).toEqual(expected);
   });
 
-  it('should call componentDidMount', () => {
+  it('should call componentDidMount', () =>
+{
     sinon.spy(ProgressBar.prototype, 'componentDidMount');
     const renderedComponent = mount( // eslint-disable-line
       <ProgressBar percent={0} updateProgress={(noop) => noop} />
@@ -48,7 +55,8 @@ describe('<ProgressBar />', () => {
     ProgressBar.prototype.componentDidMount.restore();
   });
 
-  it('should call componentWillReceiveProps', () => {
+  it('should call componentWillReceiveProps', () =>
+{
     sinon.spy(ProgressBar.prototype, 'componentWillReceiveProps');
     const renderedComponent = mount( // eslint-disable-line
       <ProgressBar percent={0} updateProgress={(noop) => noop} />
@@ -58,7 +66,8 @@ describe('<ProgressBar />', () => {
     ProgressBar.prototype.componentWillReceiveProps.restore();
   });
 
-  it('should unset ProgressBar.interval after getting new props', () => {
+  it('should unset ProgressBar.interval after getting new props', () =>
+{
     const renderedComponent = mount( // eslint-disable-line
       <ProgressBar percent={0} updateProgress={(noop) => noop} />
     );
@@ -70,7 +79,8 @@ describe('<ProgressBar />', () => {
     expect(inst.interval).toBeUndefined();
   });
 
-  it('should unset ProgressBar.timeout after getting new props', () => {
+  it('should unset ProgressBar.timeout after getting new props', () =>
+{
     const renderedComponent = mount( // eslint-disable-line
       <ProgressBar percent={100} updateProgress={(noop) => noop} />
     );
@@ -82,7 +92,8 @@ describe('<ProgressBar />', () => {
     expect(inst.timeout).toBeUndefined();
   });
 
-  it('should set state to -1 after new route mounts', () => {
+  it('should set state to -1 after new route mounts', () =>
+{
     const renderedComponent = mount(
       <ProgressBar percent={0} updateProgress={(noop) => noop} />
     );
@@ -91,7 +102,8 @@ describe('<ProgressBar />', () => {
     expect(renderedComponent.state().percent).toEqual(-1);
   });
 
-  it('should call componentWillUnmount', () => {
+  it('should call componentWillUnmount', () =>
+{
     sinon.spy(ProgressBar.prototype, 'componentWillUnmount');
     const renderedComponent = mount( // eslint-disable-line
       <ProgressBar percent={0} updateProgress={(noop) => noop} />
@@ -101,7 +113,8 @@ describe('<ProgressBar />', () => {
     ProgressBar.prototype.componentWillUnmount.restore();
   });
 
-  it('should unset ProgressBar.interval after unmounting', () => {
+  it('should unset ProgressBar.interval after unmounting', () =>
+{
     sinon.spy(ProgressBar.prototype, 'componentWillUnmount');
     const renderedComponent = mount( // eslint-disable-line
       <ProgressBar percent={0} updateProgress={(noop) => noop} />
@@ -115,7 +128,8 @@ describe('<ProgressBar />', () => {
     ProgressBar.prototype.componentWillUnmount.restore();
   });
 
-  it('should unset ProgressBar.timeout after unmounting', () => {
+  it('should unset ProgressBar.timeout after unmounting', () =>
+{
     sinon.spy(ProgressBar.prototype, 'componentWillUnmount');
     const renderedComponent = mount( // eslint-disable-line
       <ProgressBar percent={100} updateProgress={(noop) => noop} />
@@ -129,16 +143,20 @@ describe('<ProgressBar />', () => {
     ProgressBar.prototype.componentWillUnmount.restore();
   });
 
-  describe('increment progress', () => {
-    beforeEach(() => {
+  describe('increment progress', () =>
+{
+    beforeEach(() =>
+{
       clock = sinon.useFakeTimers();
     });
 
-    afterEach(() => {
+    afterEach(() =>
+{
       clock = sinon.restore();
     });
 
-    it('should start incrementing progress if 0 <= percent < 100', () => {
+    it('should start incrementing progress if 0 <= percent < 100', () =>
+{
       const initialPercent = 50;
       const renderedComponent = mount(
         <ProgressBar percent={initialPercent} updateProgress={(noop) => noop} />
@@ -147,7 +165,8 @@ describe('<ProgressBar />', () => {
       expect(renderedComponent.state().percent).toBeGreaterThan(initialPercent);
     });
 
-    it('should stop incrementing progress if percent >= 100', () => {
+    it('should stop incrementing progress if percent >= 100', () =>
+{
       const initialPercent = 100;
       const expected = -1;
       const renderedComponent = mount(

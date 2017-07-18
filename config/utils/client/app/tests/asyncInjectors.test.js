@@ -18,8 +18,10 @@ import {
 
 const initialState = fromJS({ reduced: 'soon' });
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
+const reducer = (state = initialState, action) =>
+{
+  switch (action.type)
+{
     case 'TEST':
       return state.set('reduced', action.payload);
     default:
@@ -27,7 +29,8 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-function* testSaga() {
+function* testSaga()
+{
   yield put({ type: 'TEST', payload: 'yup' });
 }
 
@@ -35,15 +38,19 @@ const sagas = [
   testSaga,
 ];
 
-describe('asyncInjectors', () => {
+describe('asyncInjectors', () =>
+{
   let store;
 
-  describe('getAsyncInjectors', () => {
-    beforeAll(() => {
+  describe('getAsyncInjectors', () =>
+{
+    beforeAll(() =>
+{
       store = configureStore({}, memoryHistory);
     });
 
-    it('given a store, should return all async injectors', () => {
+    it('given a store, should return all async injectors', () =>
+{
       const { injectReducer, injectSagas } = getAsyncInjectors(store);
 
       injectReducer('test', reducer);
@@ -55,14 +62,18 @@ describe('asyncInjectors', () => {
       expect(actual.toJS()).toEqual(expected.toJS());
     });
 
-    it('should throw if passed invalid store shape', () => {
+    it('should throw if passed invalid store shape', () =>
+{
       let result = false;
 
       Reflect.deleteProperty(store, 'dispatch');
 
-      try {
+      try
+{
         getAsyncInjectors(store);
-      } catch (err) {
+      }
+      catch (err)
+{
         result = err.name === 'Invariant Violation';
       }
 
@@ -70,13 +81,17 @@ describe('asyncInjectors', () => {
     });
   });
 
-  describe('helpers', () => {
-    beforeAll(() => {
+  describe('helpers', () =>
+{
+    beforeAll(() =>
+{
       store = configureStore({}, memoryHistory);
     });
 
-    describe('injectAsyncReducer', () => {
-      it('given a store, it should provide a function to inject a reducer', () => {
+    describe('injectAsyncReducer', () =>
+{
+      it('given a store, it should provide a function to inject a reducer', () =>
+{
         const injectReducer = injectAsyncReducer(store);
 
         injectReducer('test', reducer);
@@ -87,7 +102,8 @@ describe('asyncInjectors', () => {
         expect(actual.toJS()).toEqual(expected.toJS());
       });
 
-      it('should not assign reducer if already existing', () => {
+      it('should not assign reducer if already existing', () =>
+{
         const injectReducer = injectAsyncReducer(store);
 
         injectReducer('test', reducer);
@@ -96,40 +112,54 @@ describe('asyncInjectors', () => {
         expect(store.asyncReducers.test.toString()).toEqual(reducer.toString());
       });
 
-      it('should throw if passed invalid name', () => {
+      it('should throw if passed invalid name', () =>
+{
         let result = false;
 
         const injectReducer = injectAsyncReducer(store);
 
-        try {
+        try
+{
           injectReducer('', reducer);
-        } catch (err) {
+        }
+        catch (err)
+{
           result = err.name === 'Invariant Violation';
         }
 
-        try {
+        try
+{
           injectReducer(999, reducer);
-        } catch (err) {
+        }
+        catch (err)
+{
           result = err.name === 'Invariant Violation';
         }
 
         expect(result).toBe(true);
       });
 
-      it('should throw if passed invalid reducer', () => {
+      it('should throw if passed invalid reducer', () =>
+{
         let result = false;
 
         const injectReducer = injectAsyncReducer(store);
 
-        try {
+        try
+{
           injectReducer('bad', 'nope');
-        } catch (err) {
+        }
+        catch (err)
+{
           result = err.name === 'Invariant Violation';
         }
 
-        try {
+        try
+{
           injectReducer('coolio', 12345);
-        } catch (err) {
+        }
+        catch (err)
+{
           result = err.name === 'Invariant Violation';
         }
 
@@ -137,8 +167,10 @@ describe('asyncInjectors', () => {
       });
     });
 
-    describe('injectAsyncSagas', () => {
-      it('given a store, it should provide a function to inject a saga', () => {
+    describe('injectAsyncSagas', () =>
+{
+      it('given a store, it should provide a function to inject a saga', () =>
+{
         const injectSagas = injectAsyncSagas(store);
 
         injectSagas(sagas);
@@ -149,20 +181,27 @@ describe('asyncInjectors', () => {
         expect(actual.toJS()).toEqual(expected.toJS());
       });
 
-      it('should throw if passed invalid saga', () => {
+      it('should throw if passed invalid saga', () =>
+{
         let result = false;
 
         const injectSagas = injectAsyncSagas(store);
 
-        try {
+        try
+{
           injectSagas({ testSaga });
-        } catch (err) {
+        }
+        catch (err)
+{
           result = err.name === 'Invariant Violation';
         }
 
-        try {
+        try
+{
           injectSagas(testSaga);
-        } catch (err) {
+        }
+        catch (err)
+{
           result = err.name === 'Invariant Violation';
         }
 

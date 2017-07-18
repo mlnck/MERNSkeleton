@@ -21,8 +21,10 @@ module.exports = {
     name: 'name',
     message: 'What should it be called?',
     default: 'Button',
-    validate: (value) => {
-      if ((/.+/).test(value)) {
+    validate: (value) =>
+{
+      if((/.+/).test(value))
+{
         return componentExists(value) ? 'A component or container with this name already exists' : true;
       }
 
@@ -34,24 +36,26 @@ module.exports = {
     default: true,
     message: 'Do you want i18n messages (i.e. will this component use text)?',
   }],
-  actions: (data) => {
+  actions: (data) =>
+{
     // Generate index.js and index.test.js
     let componentTemplate;
 
-    switch (data.type) {
-      case 'ES6 Class': {
+    switch (data.type)
+{
+      case 'ES6 Class':{
         componentTemplate = './component/es6.js.hbs';
         break;
       }
-      case 'ES6 Class (Pure)': {
+      case 'ES6 Class (Pure)':{
         componentTemplate = './component/es6.pure.js.hbs';
         break;
       }
-      case 'Stateless Function': {
+      case 'Stateless Function':{
         componentTemplate = './component/stateless.js.hbs';
         break;
       }
-      default: {
+      default:{
         componentTemplate = './component/es6.js.hbs';
       }
     }
@@ -69,7 +73,8 @@ module.exports = {
     }];
 
     // If they want a i18n messages file
-    if (data.wantMessages) {
+    if(data.wantMessages)
+{
       actions.push({
         type: 'add',
         path: '../../client/components/{{properCase name}}/messages.js',

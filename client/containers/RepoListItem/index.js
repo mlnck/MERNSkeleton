@@ -16,14 +16,17 @@ import IssueLink from './IssueLink';
 import RepoLink from './RepoLink';
 import Wrapper from './Wrapper';
 
-export class RepoListItem extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  render() {
+export class RepoListItem extends React.PureComponent
+{ // eslint-disable-line react/prefer-stateless-function
+  render()
+{
     const item = this.props.item;
     let nameprefix = '';
 
     // If the repository is owned by a different person than we got the data for
     // it's a fork and we should show the name of the owner
-    if (item.owner.login !== this.props.currentUser) {
+    if(item.owner.login !== this.props.currentUser)
+{
       nameprefix = `${item.owner.login}/`;
     }
 
@@ -46,6 +49,11 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
     );
   }
 }
+
+RepoListItem.defaultProps = {
+  item: '',
+  currentUser: '',
+};
 
 RepoListItem.propTypes = {
   item: React.PropTypes.object,

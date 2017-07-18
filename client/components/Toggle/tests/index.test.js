@@ -4,8 +4,10 @@ import { IntlProvider, defineMessages } from 'react-intl';
 
 import Toggle from '../index';
 
-describe('<Toggle />', () => {
-  it('should contain default text', () => {
+describe('<Toggle />', () =>
+{
+  it('should contain default text', () =>
+{
     const defaultEnMessage = 'someContent';
     const defaultDeMessage = 'someOtherContent';
     const messages = defineMessages({

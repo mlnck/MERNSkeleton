@@ -10,7 +10,8 @@ import createReducer from './reducers';
 
 const sagaMiddleware = createSagaMiddleware();
 
-export default function configureStore(initialState = {}, history) {
+export default function configureStore(initialState = {}, history)
+{
   // Create the store with two middlewares
   // 1. sagaMiddleware: Makes redux-sagas work
   // 2. routerMiddleware: Syncs the location/URL path to the state
@@ -44,9 +45,12 @@ export default function configureStore(initialState = {}, history) {
 
   // Make reducers hot reloadable, see http://mxs.is/googmo
   /* istanbul ignore next */
-  if (module.hot) {
-    module.hot.accept('./reducers', () => {
-      import('./reducers').then((reducerModule) => {
+  if(module.hot)
+{
+    module.hot.accept('./reducers', () =>
+{
+      import('./reducers').then((reducerModule) =>
+{
         const createReducers = reducerModule.default;
         const nextReducers = createReducers(store.asyncReducers);
 

@@ -23,17 +23,21 @@ import { loadRepos } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 
-export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class HomePage extends React.PureComponent
+{ // eslint-disable-line react/prefer-stateless-function
   /**
    * when initial state username is not null, submit the form to load repos
    */
-  componentDidMount() {
-    if (this.props.username && this.props.username.trim().length > 0) {
+  componentDidMount()
+{
+    if(this.props.username && this.props.username.trim().length > 0)
+{
       this.props.onSubmitForm();
     }
   }
 
-  render() {
+  render()
+{
     const { loading, error, repos } = this.props;
     const reposListProps = {
       loading,
@@ -85,6 +89,13 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 }
 
+HomePage.defaultProps = {
+  loading: true,
+  error: false,
+  repos: [],
+  username: '',
+};
+
 HomePage.propTypes = {
   loading: React.PropTypes.bool,
   error: React.PropTypes.oneOfType([
@@ -95,16 +106,18 @@ HomePage.propTypes = {
     React.PropTypes.array,
     React.PropTypes.bool,
   ]),
-  onSubmitForm: React.PropTypes.func,
+  onSubmitForm: React.PropTypes.func.isRequired,
   username: React.PropTypes.string,
-  onChangeUsername: React.PropTypes.func,
+  onChangeUsername: React.PropTypes.func.isRequired,
 };
 
-export function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch)
+{
   return {
     onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
-    onSubmitForm: (evt) => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+    onSubmitForm: (evt) =>
+{
+      if(evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(loadRepos());
     },
   };

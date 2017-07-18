@@ -6,8 +6,10 @@ import A from 'components/A';
 import messages from '../messages';
 import Footer from '../index';
 
-describe('<Footer />', () => {
-  it('should render the copyright notice', () => {
+describe('<Footer />', () =>
+{
+  it('should render the copyright notice', () =>
+{
     const renderedComponent = shallow(
       <Footer />
     );
@@ -18,7 +20,8 @@ describe('<Footer />', () => {
     )).toBe(true);
   });
 
-  it('should render the credits', () => {
+  it('should render the credits', () =>
+{
     const renderedComponent = shallow(<Footer />);
     expect(renderedComponent.contains(
       <section>

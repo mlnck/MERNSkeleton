@@ -4,15 +4,19 @@
 
 import request from '../request';
 
-describe('request', () => {
+describe('request', () =>
+{
   // Before each test, stub the fetch function
-  beforeEach(() => {
+  beforeEach(() =>
+{
     window.fetch = jest.fn();
   });
 
-  describe('stubbing successful response', () => {
+  describe('stubbing successful response', () =>
+{
     // Before each test, pretend we got a successful response
-    beforeEach(() => {
+    beforeEach(() =>
+{
       const res = new Response('{"hello":"world"}', {
         status: 200,
         headers: {
@@ -23,19 +27,23 @@ describe('request', () => {
       window.fetch.mockReturnValue(Promise.resolve(res));
     });
 
-    it('should format the response correctly', (done) => {
+    it('should format the response correctly', (done) =>
+{
       request('/thisurliscorrect')
         .catch(done)
-        .then((json) => {
+        .then((json) =>
+{
           expect(json.hello).toBe('world');
           done();
         });
     });
   });
 
-  describe('stubbing error response', () => {
+  describe('stubbing error response', () =>
+{
     // Before each test, pretend we got an unsuccessful response
-    beforeEach(() => {
+    beforeEach(() =>
+{
       const res = new Response('', {
         status: 404,
         statusText: 'Not Found',
@@ -47,9 +55,11 @@ describe('request', () => {
       window.fetch.mockReturnValue(Promise.resolve(res));
     });
 
-    it('should catch errors', (done) => {
+    it('should catch errors', (done) =>
+{
       request('/thisdoesntexist')
-        .catch((err) => {
+        .catch((err) =>
+{
           expect(err.response.status).toBe(404);
           expect(err.response.statusText).toBe('Not Found');
           done();

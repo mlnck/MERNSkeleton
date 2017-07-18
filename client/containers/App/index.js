@@ -23,7 +23,8 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
-export function App(props) {
+export function App(props)
+{
   return (
     <AppWrapper>
       <Helmet
@@ -41,7 +42,7 @@ export function App(props) {
 }
 
 App.propTypes = {
-  children: React.PropTypes.node,
+  children: React.PropTypes.node.isRequired,
 };
 
 export default withProgressBar(App);

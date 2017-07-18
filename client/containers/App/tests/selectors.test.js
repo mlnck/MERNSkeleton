@@ -9,8 +9,10 @@ import {
   makeSelectLocationState,
 } from '../selectors';
 
-describe('selectGlobal', () => {
-  it('should select the global state', () => {
+describe('selectGlobal', () =>
+{
+  it('should select the global state', () =>
+{
     const globalState = fromJS({});
     const mockedState = fromJS({
       global: globalState,
@@ -19,9 +21,11 @@ describe('selectGlobal', () => {
   });
 });
 
-describe('makeSelectCurrentUser', () => {
+describe('makeSelectCurrentUser', () =>
+{
   const currentUserSelector = makeSelectCurrentUser();
-  it('should select the current user', () => {
+  it('should select the current user', () =>
+{
     const username = 'mxstbr';
     const mockedState = fromJS({
       global: {
@@ -32,9 +36,11 @@ describe('makeSelectCurrentUser', () => {
   });
 });
 
-describe('makeSelectLoading', () => {
+describe('makeSelectLoading', () =>
+{
   const loadingSelector = makeSelectLoading();
-  it('should select the loading', () => {
+  it('should select the loading', () =>
+{
     const loading = false;
     const mockedState = fromJS({
       global: {
@@ -45,9 +51,11 @@ describe('makeSelectLoading', () => {
   });
 });
 
-describe('makeSelectError', () => {
+describe('makeSelectError', () =>
+{
   const errorSelector = makeSelectError();
-  it('should select the error', () => {
+  it('should select the error', () =>
+{
     const error = 404;
     const mockedState = fromJS({
       global: {
@@ -58,9 +66,11 @@ describe('makeSelectError', () => {
   });
 });
 
-describe('makeSelectRepos', () => {
+describe('makeSelectRepos', () =>
+{
   const reposSelector = makeSelectRepos();
-  it('should select the repos', () => {
+  it('should select the repos', () =>
+{
     const repositories = fromJS([]);
     const mockedState = fromJS({
       global: {
@@ -73,9 +83,11 @@ describe('makeSelectRepos', () => {
   });
 });
 
-describe('makeSelectLocationState', () => {
+describe('makeSelectLocationState', () =>
+{
   const locationStateSelector = makeSelectLocationState();
-  it('should select the route as a plain JS object', () => {
+  it('should select the route as a plain JS object', () =>
+{
     const route = fromJS({
       locationBeforeTransitions: null,
     });

@@ -1,16 +1,16 @@
 {
-  "name": "react-boilerplate",
-  "version": "3.4.0",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "name": "MERNSkeleton",
+  "version": "1.0.0",
+  "description": "Full MERN Stack with nothing you won't need",
   "repository": {
     "type": "git",
-    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+    "url": "git://github.com/mlnck/MERNSkeleton.git"
   },
   "engines": {
     "npm": ">=3",
     "node": ">=5"
   },
-  "author": "Max Stoiber",
+  "author": "Mlnck",
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
@@ -38,6 +38,7 @@
     "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern config/utils/client/scripts",
     "lint:js": "npm run lint:eslint -- . ",
     "lint:staged": "lint-staged",
+    "lint:fix": "eslint --fix --ignore-path .gitignore --ignore-pattern config/utils/client/scripts -- .",
     "pretest": "npm run test:clean && npm run lint",
     "test:clean": "rimraf ./coverage",
     "test": "cross-env NODE_ENV=test jest --coverage",

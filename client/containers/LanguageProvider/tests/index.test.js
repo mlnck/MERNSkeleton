@@ -17,8 +17,10 @@ const messages = defineMessages({
   },
 });
 
-describe('<LanguageProvider />', () => {
-  it('should render its children', () => {
+describe('<LanguageProvider />', () =>
+{
+  it('should render its children', () =>
+{
     const children = (<h1>Test</h1>);
     const renderedComponent = shallow(
       <LanguageProvider messages={messages} locale="en">
@@ -29,14 +31,17 @@ describe('<LanguageProvider />', () => {
   });
 });
 
-describe('<ConnectedLanguageProvider />', () => {
+describe('<ConnectedLanguageProvider />', () =>
+{
   let store;
 
-  beforeAll(() => {
+  beforeAll(() =>
+{
     store = configureStore({}, browserHistory);
   });
 
-  it('should render the default language messages', () => {
+  it('should render the default language messages', () =>
+{
     const renderedComponent = mount(
       <Provider store={store}>
         <ConnectedLanguageProvider messages={translationMessages}>

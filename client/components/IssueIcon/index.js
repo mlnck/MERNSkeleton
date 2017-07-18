@@ -1,6 +1,7 @@
 import React from 'react';
 
-function IssueIcon(props) {
+function IssueIcon(props)
+{
   return (
     <svg
       height="1em"
@@ -11,6 +12,10 @@ function IssueIcon(props) {
     </svg>
   );
 }
+
+IssueIcon.defaultProps = {
+  className: '',
+};
 
 IssueIcon.propTypes = {
   className: React.PropTypes.string,
