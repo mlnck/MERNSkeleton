@@ -1,7 +1,7 @@
 /* eslint consistent-return:0 */
 
 // Needed for developer defined process.env keys
-require('dotenv').load();
+require('dotenv').load(); // eslint-disable-line no-console
 
 const mongoose = require('mongoose');
 const express = require('express');
@@ -41,34 +41,39 @@ const port = argv.port || process.env.PORT || 3000;
 const mongoURL = (process.env.MONGO_USE_LOCAL === 'true')
   ? process.env.MONGO_LOCAL_URL
   : `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PW}@${process.env.MONGO_WEB_URL}${process.env.MONGO_DB}${process.env.MONGO_AUTH}`;
-mongoose.connect(mongoURL, (error) => {
-  if (error) {
+mongoose.connect(mongoURL, (error) =>
+{
+  if(error)
+  {
     console.error('Please make sure Mongodb is installed and running!', error); // eslint-disable-line no-console
     throw error;
   }
   console.log('Mongo running at:\n\t', mongoURL); // eslint-disable-line no-console
   // feed some dummy data in DB.
-  if (process.env.MONGO_SEED === 'true') {
-    seedDB();
-  }
+  if(process.env.MONGO_SEED === 'true')
+  { seedDB(); }
 });
 
 // Start your app.
-app.listen(port, host, (err) => {
-  if (err) {
-    return logger.error(err.message);
-  }
+app.listen(port, host, (err) =>
+{
+  if(err){ return logger.error(err.message); }
 
   // Connect to ngrok in dev mode
-  if (ngrok) {
-    ngrok.connect(port, (innerErr, url) => {
-      if (innerErr) {
+  if(ngrok)
+  {
+    ngrok.connect(port, (innerErr, url) =>
+    {
+      if(innerErr)
+      {
         return logger.error(innerErr);
       }
 
       logger.appStarted(port, prettyHost, url);
     });
-  } else {
+  }
+  else
+  {
     logger.appStarted(port, prettyHost);
   }
 });
