@@ -2,7 +2,7 @@
   //will enable when ready
 // import Skeleton from '../../../../server/models/skeleton';
 
-export default function () {
+module.exports = function () {
   return 'seed data not ready yet - adding to remove eslint warnings';
   Skeleton.count().exec((err, count) => {
     if (count > 0) {
