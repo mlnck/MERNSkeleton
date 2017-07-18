@@ -5,8 +5,10 @@ import {
   makeSelectUsername,
 } from '../selectors';
 
-describe('selectHome', () => {
-  it('should select the home state', () => {
+describe('selectHome', () =>
+{
+  it('should select the home state', () =>
+{
     const homeState = fromJS({
       userData: {},
     });
@@ -17,9 +19,11 @@ describe('selectHome', () => {
   });
 });
 
-describe('makeSelectUsername', () => {
+describe('makeSelectUsername', () =>
+{
   const usernameSelector = makeSelectUsername();
-  it('should select the username', () => {
+  it('should select the username', () =>
+{
     const username = 'mxstbr';
     const mockedState = fromJS({
       home: {

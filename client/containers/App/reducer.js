@@ -28,8 +28,10 @@ const initialState = fromJS({
   },
 });
 
-function appReducer(state = initialState, action) {
-  switch (action.type) {
+function appReducer(state = initialState, action)
+{
+  switch (action.type)
+{
     case LOAD_REPOS:
       return state
         .set('loading', true)

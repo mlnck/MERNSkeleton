@@ -7,11 +7,16 @@
 
 import React, { PropTypes } from 'react';
 
-function Img(props) {
+function Img(props)
+{
   return (
     <img className={props.className} src={props.src} alt={props.alt} />
   );
 }
+
+Img.defaultProps = {
+  className: '',
+};
 
 // We require the use of src and alt, only enforced by react in dev mode
 Img.propTypes = {

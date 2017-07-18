@@ -13,15 +13,18 @@ const esTranslationMessages = {
   message2: '',
 };
 
-describe('formatTranslationMessages', () => {
-  it('should build only defaults when DEFAULT_LOCALE', () => {
+describe('formatTranslationMessages', () =>
+{
+  it('should build only defaults when DEFAULT_LOCALE', () =>
+{
     const result = formatTranslationMessages(DEFAULT_LOCALE, { a: 'a' });
 
     expect(result).toEqual({ a: 'a' });
   });
 
 
-  it('should combine default locale and current locale when not DEFAULT_LOCALE', () => {
+  it('should combine default locale and current locale when not DEFAULT_LOCALE', () =>
+{
     const result = formatTranslationMessages('', esTranslationMessages);
 
     expect(result).toEqual({

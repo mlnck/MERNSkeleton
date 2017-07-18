@@ -5,24 +5,34 @@ import ListItem from 'components/ListItem';
 import LoadingIndicator from 'components/LoadingIndicator';
 import RepoListItem from 'containers/RepoListItem';
 
-function ReposList({ loading, error, repos }) {
-  if (loading) {
+function ReposList({ loading, error, repos })
+{
+  if(loading)
+{
     return <List component={LoadingIndicator} />;
   }
 
-  if (error !== false) {
+  if(error !== false)
+{
     const ErrorComponent = () => (
       <ListItem item={'Something went wrong, please try again!'} />
     );
     return <List component={ErrorComponent} />;
   }
 
-  if (repos !== false) {
+  if(repos !== false)
+{
     return <List items={repos} component={RepoListItem} />;
   }
 
   return null;
 }
+
+ReposList.defaultProps = {
+  loading: false,
+  error: null,
+  repos: null,
+};
 
 ReposList.propTypes = {
   loading: PropTypes.bool,

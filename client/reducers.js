@@ -26,8 +26,10 @@ const routeInitialState = fromJS({
 /**
  * Merge route into the global application state
  */
-function routeReducer(state = routeInitialState, action) {
-  switch (action.type) {
+function routeReducer(state = routeInitialState, action)
+{
+  switch (action.type)
+{
     /* istanbul ignore next */
     case LOCATION_CHANGE:
       return state.merge({
@@ -41,7 +43,8 @@ function routeReducer(state = routeInitialState, action) {
 /**
  * Creates the main reducer with the asynchronously loaded ones
  */
-export default function createReducer(asyncReducers) {
+export default function createReducer(asyncReducers)
+{
   return combineReducers({
     route: routeReducer,
     global: globalReducer,

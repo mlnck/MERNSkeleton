@@ -12,7 +12,8 @@ import A from './A';
 import StyledButton from './StyledButton';
 import Wrapper from './Wrapper';
 
-function Button(props) {
+function Button(props)
+{
   // Render an anchor tag
   let button = (
     <A href={props.href} onClick={props.onClick}>
@@ -21,7 +22,8 @@ function Button(props) {
   );
 
   // If the Button has a handleRoute prop, we want to render a button
-  if (props.handleRoute) {
+  if(props.handleRoute)
+{
     button = (
       <StyledButton onClick={props.handleRoute}>
         {Children.toArray(props.children)}
@@ -35,6 +37,12 @@ function Button(props) {
     </Wrapper>
   );
 }
+
+Button.defaultProps = {
+  handleRoute: null,
+  href: '',
+  onClick: null,
+};
 
 Button.propTypes = {
   handleRoute: PropTypes.func,

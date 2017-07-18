@@ -4,15 +4,18 @@
 // about the code splitting business
 import { getAsyncInjectors } from '../config/utils/client/app/asyncInjectors';
 
-const errorLoading = (err) => {
+const errorLoading = (err) =>
+{
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
 };
 
-const loadModule = (cb) => (componentModule) => {
+const loadModule = (cb) => (componentModule) =>
+{
   cb(null, componentModule.default);
 };
 
-export default function createRoutes(store) {
+export default function createRoutes(store)
+{
   // create reusable async injectors using getAsyncInjectors factory
   const { injectReducer, injectSagas } = getAsyncInjectors(store);
 
@@ -20,7 +23,8 @@ export default function createRoutes(store) {
     {
       path: '/',
       name: 'home',
-      getComponent(nextState, cb) {
+      getComponent(nextState, cb)
+{
         const importModules = Promise.all([
           import('containers/HomePage/reducer'),
           import('containers/HomePage/sagas'),
@@ -29,7 +33,8 @@ export default function createRoutes(store) {
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([reducer, sagas, component]) => {
+        importModules.then(([reducer, sagas, component]) =>
+{
           injectReducer('home', reducer.default);
           injectSagas(sagas.default);
 
@@ -41,7 +46,8 @@ export default function createRoutes(store) {
     }, {
       path: '/features',
       name: 'features',
-      getComponent(nextState, cb) {
+      getComponent(nextState, cb)
+{
         import('containers/FeaturePage')
           .then(loadModule(cb))
           .catch(errorLoading);
@@ -49,7 +55,8 @@ export default function createRoutes(store) {
     }, {
       path: '*',
       name: 'notfound',
-      getComponent(nextState, cb) {
+      getComponent(nextState, cb)
+{
         import('containers/NotFoundPage')
           .then(loadModule(cb))
           .catch(errorLoading);

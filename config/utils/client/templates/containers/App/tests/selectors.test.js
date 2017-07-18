@@ -2,8 +2,10 @@ import { fromJS } from 'immutable';
 
 import { makeSelectLocationState } from 'containers/App/selectors';
 
-describe('makeSelectLocationState', () => {
-  it('should select the route as a plain JS object', () => {
+describe('makeSelectLocationState', () =>
+{
+  it('should select the route as a plain JS object', () =>
+{
     const route = fromJS({
       locationBeforeTransitions: null,
     });
@@ -13,7 +15,8 @@ describe('makeSelectLocationState', () => {
     expect(makeSelectLocationState()(mockedState)).toEqual(route.toJS());
   });
 
-  it('should return cached js routeState for same concurrent calls', () => {
+  it('should return cached js routeState for same concurrent calls', () =>
+{
     const route = fromJS({
       locationBeforeTransitions: null,
     });

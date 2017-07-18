@@ -5,7 +5,8 @@ const compression = require('compression');
 const pkg = require(path.resolve(process.cwd(), 'package.json'));
 
 // Dev middleware
-const addDevMiddlewares = (app, webpackConfig) => {
+const addDevMiddlewares = (app, webpackConfig) =>
+{
   const webpack = require('webpack');
   const webpackDevMiddleware = require('webpack-dev-middleware');
   const webpackHotMiddleware = require('webpack-hot-middleware');
@@ -24,18 +25,25 @@ const addDevMiddlewares = (app, webpackConfig) => {
   // artifacts, we use it instead
   const fs = middleware.fileSystem;
 
-  if (pkg.dllPlugin) {
-    app.get(/\.dll\.js$/, (req, res) => {
+  if(pkg.dllPlugin)
+{
+    app.get(/\.dll\.js$/, (req, res) =>
+{
       const filename = req.path.replace(/^\//, '');
       res.sendFile(path.join(process.cwd(), pkg.dllPlugin.path, filename));
     });
   }
 
-  app.get('*', (req, res) => {
-    fs.readFile(path.join(compiler.outputPath, 'index.html'), (err, file) => {
-      if (err) {
+  app.get('*', (req, res) =>
+{
+    fs.readFile(path.join(compiler.outputPath, 'index.html'), (err, file) =>
+{
+      if(err)
+{
         res.sendStatus(404);
-      } else {
+      }
+      else
+{
         res.send(file.toString());
       }
     });
@@ -43,7 +51,8 @@ const addDevMiddlewares = (app, webpackConfig) => {
 };
 
 // Production middlewares
-const addProdMiddlewares = (app, options) => {
+const addProdMiddlewares = (app, options) =>
+{
   const publicPath = options.publicPath || '/';
   const outputPath = options.outputPath || path.resolve(process.cwd(), 'build');
 
@@ -59,12 +68,16 @@ const addProdMiddlewares = (app, options) => {
 /**
  * Front-end middleware
  */
-module.exports = (app, options) => {
+module.exports = (app, options) =>
+{
   const isProd = process.env.NODE_ENV === 'production';
 
-  if (isProd) {
+  if(isProd)
+{
     addProdMiddlewares(app, options);
-  } else {
+  }
+  else
+{
     const webpackConfig = require('../../webpack/webpack.dev.babel');
     addDevMiddlewares(app, webpackConfig);
   }

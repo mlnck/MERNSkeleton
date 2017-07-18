@@ -1,3 +1,4 @@
+/* eslint func-names: ["error", "never"] */
 const Skeleton = require('../models/skeleton.model');
 
 /**
@@ -6,8 +7,10 @@ const Skeleton = require('../models/skeleton.model');
  * @param res
  * @returns void
  */
-exports.getSkeletons = function (req, res) {
-  Skeleton.find().exec().then((skeletons) => {
+exports.getSkeletons = function (req, res)
+{
+  Skeleton.find().exec().then((skeletons) =>
+{
     res.json({ skeletons });
   });
 };

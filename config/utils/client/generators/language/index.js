@@ -4,11 +4,15 @@
 const fs = require('fs');
 const exec = require('child_process').exec;
 
-function languageIsSupported(language) {
-  try {
+function languageIsSupported(language)
+{
+  try
+{
     fs.accessSync(`config/intl/translations/${language}.json`, fs.F_OK);
     return true;
-  } catch (e) {
+  }
+  catch (e)
+{
     return false;
   }
 }
@@ -20,8 +24,10 @@ module.exports = {
     name: 'language',
     message: 'What is the language you want to add i18n support for (e.g. "fr", "de")?',
     default: 'fr',
-    validate: (value) => {
-      if ((/.+/).test(value) && value.length === 2) {
+    validate: (value) =>
+{
+      if((/.+/).test(value) && value.length === 2)
+{
         return languageIsSupported(value) ? `The language "${value}" is already supported.` : true;
       }
 
@@ -29,7 +35,8 @@ module.exports = {
     },
   }],
 
-  actions: () => {
+  actions: () =>
+{
     const actions = [];
     actions.push({
       type: 'modify',
@@ -74,10 +81,13 @@ module.exports = {
       templateFile: './language/polyfill-intl-locale.hbs',
     });
     actions.push(
-      () => {
+      () =>
+{
         const cmd = 'npm run extract-intl';
-        exec(cmd, (err, result, stderr) => {
-          if (err || stderr) {
+        exec(cmd, (err, result, stderr) =>
+{
+          if(err || stderr)
+{
             throw err || stderr;
           }
           process.stdout.write(result);

@@ -3,8 +3,10 @@ import { shallow } from 'enzyme';
 
 import H3 from '../index';
 
-describe('<H3 />', () => {
-  it('should render a prop', () => {
+describe('<H3 />', () =>
+{
+  it('should render a prop', () =>
+{
     const id = 'testId';
     const renderedComponent = shallow(
       <H3 id={id} />
@@ -12,7 +14,8 @@ describe('<H3 />', () => {
     expect(renderedComponent.prop('id')).toEqual(id);
   });
 
-  it('should render its text', () => {
+  it('should render its text', () =>
+{
     const children = 'Text';
     const renderedComponent = shallow(
       <H3>{children}</H3>

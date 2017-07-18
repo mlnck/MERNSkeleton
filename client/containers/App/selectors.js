@@ -26,14 +26,17 @@ const makeSelectRepos = () => createSelector(
   (globalState) => globalState.getIn(['userData', 'repositories'])
 );
 
-const makeSelectLocationState = () => {
+const makeSelectLocationState = () =>
+{
   let prevRoutingState;
   let prevRoutingStateJS;
 
-  return (state) => {
+  return (state) =>
+{
     const routingState = state.get('route'); // or state.route
 
-    if (!routingState.equals(prevRoutingState)) {
+    if(!routingState.equals(prevRoutingState))
+{
       prevRoutingState = routingState;
       prevRoutingStateJS = routingState.toJS();
     }

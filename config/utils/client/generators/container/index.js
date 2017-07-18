@@ -11,8 +11,10 @@ module.exports = {
     name: 'name',
     message: 'What should it be called?',
     default: 'Form',
-    validate: (value) => {
-      if ((/.+/).test(value)) {
+    validate: (value) =>
+{
+      if((/.+/).test(value))
+{
         return componentExists(value) ? 'A component or container with this name already exists' : true;
       }
 
@@ -45,7 +47,8 @@ module.exports = {
     default: true,
     message: 'Do you want i18n messages (i.e. will this component use text)?',
   }],
-  actions: (data) => {
+  actions: (data) =>
+{
     // Generate index.js and index.test.js
     const actions = [{
       type: 'add',
@@ -60,7 +63,8 @@ module.exports = {
     }];
 
     // If component wants messages
-    if (data.wantMessages) {
+    if(data.wantMessages)
+{
       actions.push({
         type: 'add',
         path: '../../client/containers/{{properCase name}}/messages.js',
@@ -71,7 +75,8 @@ module.exports = {
 
     // If they want actions and a reducer, generate actions.js, constants.js,
     // reducer.js and the corresponding tests for actions and the reducer
-    if (data.wantActionsAndReducer) {
+    if(data.wantActionsAndReducer)
+{
       // Actions
       actions.push({
         type: 'add',
@@ -124,7 +129,8 @@ module.exports = {
     }
 
     // Sagas
-    if (data.wantSagas) {
+    if(data.wantSagas)
+{
       actions.push({
         type: 'add',
         path: '../../client/containers/{{properCase name}}/sagas.js',

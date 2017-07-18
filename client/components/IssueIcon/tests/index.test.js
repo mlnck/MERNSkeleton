@@ -3,8 +3,10 @@ import { shallow } from 'enzyme';
 
 import IssueIcon from '../index';
 
-describe('<IssueIcon />', () => {
-  it('should render a SVG', () => {
+describe('<IssueIcon />', () =>
+{
+  it('should render a SVG', () =>
+{
     const renderedComponent = shallow(
       <IssueIcon />
     );
