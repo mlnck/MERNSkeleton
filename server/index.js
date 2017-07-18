@@ -8,11 +8,15 @@ const express = require('express');
 const logger = require('./logger');
 
 const argv = require('minimist')(process.argv.slice(2));
-const setup = require('./middlewares/frontendMiddleware');
+const setup = require('../config/utils/middlewares/frontendMiddleware');
 const isDev = process.env.NODE_ENV !== 'production';
 const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngrok') : false;
 const resolve = require('path').resolve;
 const app = express();
+
+// TODO: Add Webpack so that we can access via:
+  // import seedDB = from '../config/utils/server/mongo/seed';
+const seedDB = require('../config/utils/server/mongo/seed');
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
@@ -42,8 +46,7 @@ mongoose.connect(mongoURL, (error) => {
   console.log('Mongo running at:\n\t', mongoURL); // eslint-disable-line no-console
   // feed some dummy data in DB.
   if (process.env.MONGO_SEED === 'true') {
-    // import seedDB = from '../config/utils/server/mongo/seed';
-    // seedDB()
+    seedDB();
   }
 });
 
