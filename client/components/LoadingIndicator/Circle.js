@@ -45,6 +45,11 @@ const Circle = (props) =>
   return <CirclePrimitive />;
 };
 
+Circle.defaultProps = {
+  delay: 0,
+  rotate: 0
+};
+
 Circle.propTypes = {
   delay: PropTypes.number.isRequired,
   rotate: PropTypes.number.isRequired,

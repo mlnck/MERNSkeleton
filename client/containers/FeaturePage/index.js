@@ -28,7 +28,7 @@ export default class FeaturePage extends React.Component
         <Helmet
           title="Feature Page"
           meta={[
-            { name: 'description', content: 'Feature page of React.js Boilerplate application' },
+            { name: 'description', content: 'Feature page of React.js Boilerplate application' }
           ]}
         />
         <H1>

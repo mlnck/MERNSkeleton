@@ -31,7 +31,7 @@ export function App(props)
         titleTemplate="%s - React.js Boilerplate"
         defaultTitle="React.js Boilerplate"
         meta={[
-          { name: 'description', content: 'A React.js Boilerplate application' },
+          { name: 'description', content: 'A React.js Boilerplate application' }
         ]}
       />
       <Header />
@@ -40,6 +40,10 @@ export function App(props)
     </AppWrapper>
   );
 }
+
+App.defaultProps = {
+  children: []
+};
 
 App.propTypes = {
   children: React.PropTypes.node.isRequired,

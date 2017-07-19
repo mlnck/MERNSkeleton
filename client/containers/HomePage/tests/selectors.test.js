@@ -2,7 +2,7 @@ import { fromJS } from 'immutable';
 
 import {
   selectHome,
-  makeSelectUsername,
+  makeSelectUsername
 } from '../selectors';
 
 describe('selectHome', () =>

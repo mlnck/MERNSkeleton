@@ -44,7 +44,7 @@ module.exports = (options) => ({
               speed: 4,
             },
           },
-        },
+        }
       ],
     }, {
       test: /\.html$/,
@@ -74,19 +74,19 @@ module.exports = (options) => ({
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
-    new webpack.NamedModulesPlugin(),
+    new webpack.NamedModulesPlugin()
   ]),
   resolve: {
     modules: ['client', 'config/utils/client', 'config/utils/server', 'node_modules', 'server'],
     extensions: [
       '.js',
       '.jsx',
-      '.react.js',
+      '.react.js'
     ],
     mainFields: [
       'browser',
       'jsnext:main',
-      'main',
+      'main'
     ],
   },
   devtool: options.devtool,

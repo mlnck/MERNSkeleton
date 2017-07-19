@@ -23,13 +23,21 @@ describe('<ToggleOption />', () =>
     expect(renderedComponent.contains(<ToggleOption value="en" message={message.enMessage} />)).toBe(true);
   });
 
-  it('should display `value`(two letter language code) when `message` is absent', () =>
+  it('should display `Deutch` when from `DEUTCH` is needed', () =>
 {
+    const defaultEnMessage = 'Deutch';
+    const message = defineMessages({
+      enMessage: {
+        id: 'boilerplate.containers.LocaleToggle.de',
+        defaultMessage: defaultEnMessage,
+      },
+    });
+
     const renderedComponent = mount(
       <IntlProvider locale="de">
-        <ToggleOption value="de" />
+        <ToggleOption value="de" message={message.enMessage} />
       </IntlProvider>
     );
-    expect(renderedComponent.text()).toBe('de');
+    expect(renderedComponent.text()).toBe('Deutch');
   });
 });

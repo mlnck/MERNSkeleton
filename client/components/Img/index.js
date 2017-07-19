@@ -22,7 +22,7 @@ Img.defaultProps = {
 Img.propTypes = {
   src: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]).isRequired,
   alt: PropTypes.string.isRequired,
   className: PropTypes.string,

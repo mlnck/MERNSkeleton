@@ -1,9 +1,9 @@
 import {
-  CHANGE_USERNAME,
+  CHANGE_USERNAME
 } from '../constants';
 
 import {
-  changeUsername,
+  changeUsername
 } from '../actions';
 
 describe('Home Actions', () =>

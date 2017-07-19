@@ -2,7 +2,7 @@ import { fromJS } from 'immutable';
 
 import homeReducer from '../reducer';
 import {
-  changeUsername,
+  changeUsername
 } from '../actions';
 
 describe('homeReducer', () =>

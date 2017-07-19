@@ -48,5 +48,5 @@ export function* githubData()
 
 // Bootstrap sagas
 export default [
-  githubData,
+  githubData
 ];

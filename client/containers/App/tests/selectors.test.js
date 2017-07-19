@@ -6,7 +6,7 @@ import {
   makeSelectLoading,
   makeSelectError,
   makeSelectRepos,
-  makeSelectLocationState,
+  makeSelectLocationState
 } from '../selectors';
 
 describe('selectGlobal', () =>

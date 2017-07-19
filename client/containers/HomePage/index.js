@@ -50,7 +50,7 @@ export class HomePage extends React.PureComponent
         <Helmet
           title="Home Page"
           meta={[
-            { name: 'description', content: 'A React.js Boilerplate application homepage' },
+            { name: 'description', content: 'A React.js Boilerplate application homepage' }
           ]}
         />
         <div>
@@ -94,17 +94,19 @@ HomePage.defaultProps = {
   error: false,
   repos: [],
   username: '',
+  onSubmitForm: () => {},
+  onChangeUsername: () => {}
 };
 
 HomePage.propTypes = {
   loading: React.PropTypes.bool,
   error: React.PropTypes.oneOfType([
     React.PropTypes.object,
-    React.PropTypes.bool,
+    React.PropTypes.bool
   ]),
   repos: React.PropTypes.oneOfType([
     React.PropTypes.array,
-    React.PropTypes.bool,
+    React.PropTypes.bool
   ]),
   onSubmitForm: React.PropTypes.func.isRequired,
   username: React.PropTypes.string,

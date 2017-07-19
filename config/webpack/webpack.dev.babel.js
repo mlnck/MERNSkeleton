@@ -22,7 +22,7 @@ const plugins = [
   new CircularDependencyPlugin({
     exclude: /a\.js|node_modules/, // exclude node_modules
     failOnError: false, // show a warning when there is a circular dependency
-  }),
+  })
 ];
 
 module.exports = require('./webpack.base.babel')({
@@ -31,7 +31,7 @@ module.exports = require('./webpack.base.babel')({
     'eventsource-polyfill', // Necessary for hot reloading with IE
     'webpack-hot-middleware/client?reload=true',
     // path.join(process.cwd(), 'server/index.js'), // Start with js/app.js
-    path.join(process.cwd(), 'client/app.js'), // Start with js/app.js
+    path.join(process.cwd(), 'client/app.js') // Start with js/app.js
   ],
 
   // Don't use hashes in dev mode for better performance
@@ -83,7 +83,7 @@ function dependencyHandlers()
         children: true,
         minChunks: 2,
         async: true,
-      }),
+      })
     ];
   }
 
@@ -107,7 +107,7 @@ function dependencyHandlers()
       new webpack.DllReferencePlugin({
         context: process.cwd(),
         manifest: require(manifestPath), // eslint-disable-line global-require
-      }),
+      })
     ];
   }
 

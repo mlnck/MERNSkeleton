@@ -1,9 +1,9 @@
 import {
-  changeLocale,
+  changeLocale
 } from '../actions';
 
 import {
-  CHANGE_LOCALE,
+  CHANGE_LOCALE
 } from '../constants';
 
 describe('LanguageProvider actions', () =>

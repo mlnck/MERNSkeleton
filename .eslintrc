@@ -32,10 +32,13 @@
       "as-needed"
     ],
     "brace-style": ["error", "allman", { "allowSingleLine": true }],
-    "comma-dangle": [
-      2,
-      "always-multiline"
-    ],
+    "comma-dangle": ["error", {
+        "arrays": "never",
+        "objects": "only-multiline",
+        "imports": "never",
+        "exports": "never",
+        "functions": "ignore",
+    }],
     "func-names": ["error", "as-needed"],
     "import/imports-first": 0,
     "import/newline-after-import": 0,

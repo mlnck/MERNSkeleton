@@ -12,7 +12,7 @@ function List(props)
   if(props.items)
 {
     content = props.items.map((item, index) => (
-      <ComponentToRender key={`item-${item.id}`} data-index={index} item={item} />
+      <ComponentToRender key={`item-${item}`} data-index={index} item={item} />
     ));
   }
   else

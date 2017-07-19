@@ -4,7 +4,7 @@ import appReducer from '../reducer';
 import {
   loadRepos,
   reposLoaded,
-  repoLoadingError,
+  repoLoadingError
 } from '../actions';
 
 describe('appReducer', () =>

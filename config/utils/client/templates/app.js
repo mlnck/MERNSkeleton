@@ -103,7 +103,7 @@ if(!window.Intl)
     resolve(import('intl'));
   }))
     .then(() => Promise.all([
-      import('intl/locale-data/jsonp/en.js'),
+      import('intl/locale-data/jsonp/en.js')
     ]))
     .then(() => render(translationMessages))
     .catch((err) =>

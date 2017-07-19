@@ -1,7 +1,7 @@
 import { fromJS } from 'immutable';
 
 import {
-  selectLanguage,
+  selectLanguage
 } from '../selectors';
 
 describe('selectLanguage', () =>

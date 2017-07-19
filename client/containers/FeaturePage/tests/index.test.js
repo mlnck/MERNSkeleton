@@ -32,7 +32,7 @@ describe('<FeaturePage />', () =>
       <Helmet
         title="Feature Page"
         meta={[
-          { name: 'description', content: 'Feature page of React.js Boilerplate application' },
+          { name: 'description', content: 'Feature page of React.js Boilerplate application' }
         ]}
       />
     )).toBe(true);

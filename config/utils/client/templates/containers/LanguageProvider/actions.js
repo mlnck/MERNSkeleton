@@ -5,7 +5,7 @@
  */
 
 import {
-  CHANGE_LOCALE,
+  CHANGE_LOCALE
 } from './constants';
 
 export function changeLocale(languageLocale)

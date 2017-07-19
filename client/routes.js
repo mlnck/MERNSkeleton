@@ -28,7 +28,7 @@ export default function createRoutes(store)
         const importModules = Promise.all([
           import('containers/HomePage/reducer'),
           import('containers/HomePage/sagas'),
-          import('containers/HomePage'),
+          import('containers/HomePage')
         ]);
 
         const renderRoute = loadModule(cb);
@@ -61,6 +61,6 @@ export default function createRoutes(store)
           .then(loadModule(cb))
           .catch(errorLoading);
       },
-    },
+    }
   ];
 }
