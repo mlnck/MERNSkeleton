@@ -14,6 +14,13 @@ const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngr
 const resolve = require('path').resolve;
 const app = express();
 
+// be -> fe helpers
+const compression = require('compression');
+const bodyParser = require('body-parser');
+const { renderToString } = ('react-dom/server');
+const { match } = ('react-router');
+const { RouterContext } = ('react-router');
+
 // backend routes
 const skeletonRoutes = require('./routes/skeleton.routes');
 
