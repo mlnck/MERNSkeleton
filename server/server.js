@@ -1,15 +1,15 @@
-// import Express from 'express';
-// import compression from 'compression';
-// import mongoose from 'mongoose';
-// import bodyParser from 'body-parser';
-// import path from 'path';
+import Express from 'express';
+import compression from 'compression';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import path from 'path';
 // import IntlWrapper from '../client/modules/Intl/IntlWrapper';
 //
 // // Webpack Requirements
-// import webpack from 'webpack';
-// import config from '../webpack.config.dev';
-// import webpackDevMiddleware from 'webpack-dev-middleware';
-// import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpack from 'webpack';
+import config from '../config/webpack/webpack.dev';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 //
 // // Initialize the Express App
 // const app = new Express();

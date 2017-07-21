@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/mlnck/MERNSkeleton#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "compression": "^1.7.0",
     "cross-env": "^5.0.1",
     "dotenv": "^0.0.1",
     "express": "^4.15.3",
@@ -43,6 +45,8 @@
     "postcss-loader": "^2.0.6",
     "postcss-reporter": "^4.0.0",
     "react-hot-loader": "^3.0.0-beta.2",
-    "webpack": "^3.3.0"
+    "webpack": "^3.3.0",
+    "webpack-dev-middleware": "^1.11.0",
+    "webpack-hot-middleware": "^2.18.2"
   }
 }

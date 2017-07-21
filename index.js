@@ -1,5 +1,5 @@
 /**
- * Entry Script
+ * App Entry Script
  */
 
 if (process.env.NODE_ENV === 'production') {
