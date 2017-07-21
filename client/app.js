@@ -63,7 +63,10 @@ openSansObserver.load().then(() =>
 // Optionally, this could be changed to leverage a created history
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
 const initialState = {};
-const store = configureStore(initialState, browserHistory);
+//from MERN:::: const store = configureStore(window.__INITIAL_STATE__);
+// ORIG::: const store = configureStore(initialState, browserHistory);
+
+const store = configureStore(window.__INITIAL_STATE__);
 
 // Sync history and store, as the react-router-redux reducer
 // is under the non-default key ("routing"), selectLocationState
