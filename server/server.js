@@ -3,9 +3,9 @@ import compression from 'compression';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import path from 'path';
-// import IntlWrapper from '../client/modules/Intl/IntlWrapper';
+import IntlWrapper from '../config/intl/client/IntlWrapper';
 //
-// // Webpack Requirements
+// Webpack Requirements
 import webpack from 'webpack';
 import config from '../config/webpack/webpack.dev';
 import webpackDevMiddleware from 'webpack-dev-middleware';
