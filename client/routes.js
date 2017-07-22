@@ -1,6 +1,7 @@
 console.log('ROUTES');
 
 // FOLLOWING CODE FROM REACT-BOILERPLATE
+      // May need to reference the routes from mern.io
 
 // // These are the pages you can go to.
 // // They are all wrapped in the App component, which should contain the navbar etc

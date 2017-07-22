@@ -29,27 +29,32 @@ import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import Helmet from 'react-helmet';
 
-// // Import required modules
-// import routes from '../client/routes';
-// import { fetchComponentData } from './util/fetchData';
-// import posts from './routes/post.routes';
-// import dummyData from './dummyData';
-// import serverConfig from './config';
-//
-// // Set native promises as mongoose promise
-// mongoose.Promise = global.Promise;
-//
-// // MongoDB Connection
-// mongoose.connect(serverConfig.mongoURL, (error) => {
-//   if (error) {
-//     console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
-//     throw error;
-//   }
-//
-//   // feed some dummy data in DB.
-//   dummyData();
-// });
-//
+// Import required modules
+import routes from '../client/routes';
+import { fetchComponentData } from '../config/utils/server/fetchData';
+import dummyData from '../config/utils/server/seed.db';
+import serverConfig from '../config/utils/server/conf';
+
+//Server Side Routes:
+  //import posts from './routes/post.routes';
+
+// Set native promises as mongoose promise
+mongoose.Promise = global.Promise;
+
+// MongoDB Connection
+mongoose.connect(serverConfig.mongoURL, (error) =>
+{
+  if(error)
+  {
+    console.error('Please make sure Mongodb is installed and running!', error); // eslint-disable-line no-console
+    throw error;
+  }
+  console.log('Mongo running at:\n\t', serverConfig.mongoURL); // eslint-disable-line no-console
+  // feed some dummy data in DB.
+  if(process.env.MONGO_SEED === 'true')
+  { seedDB(); }
+});
+
 // // Apply body Parser and server public assets and routes
 // app.use(compression());
 // app.use(bodyParser.json({ limit: '20mb' }));
