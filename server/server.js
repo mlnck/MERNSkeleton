@@ -55,13 +55,14 @@ mongoose.connect(serverConfig.mongoURL, (error) =>
   { seedDB(); }
 });
 
-// // Apply body Parser and server public assets and routes
-// app.use(compression());
-// app.use(bodyParser.json({ limit: '20mb' }));
-// app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
-// app.use(Express.static(path.resolve(__dirname, '../dist/client')));
-// app.use('/api', posts);
-//
+// Apply body Parser and server public assets and routes
+app.use(compression());
+app.use(bodyParser.json({ limit: '20mb' }));
+app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
+app.use(Express.static(path.resolve(__dirname, '../dist/client')));
+// Server side routes app.use
+  // app.use('/api', posts);
+
 // // Render Initial HTML
 // const renderFullPage = (html, initialState) => {
 //   const head = Helmet.rewind();
@@ -143,12 +144,12 @@ mongoose.connect(serverConfig.mongoURL, (error) =>
 //       .catch((error) => next(error));
 //   });
 // });
-//
-// // start app
-// app.listen(serverConfig.port, (error) => {
-//   if (!error) {
-//     console.log(`MERN is running on port: ${serverConfig.port}! Build something amazing!`); // eslint-disable-line
-//   }
-// });
-//
-// export default app;
+
+// start app
+app.listen(serverConfig.port, (error) => {
+  if (!error) {
+    console.log(`MERN is running on port: ${serverConfig.port}! Build something amazing!`); // eslint-disable-line
+  }
+});
+
+export default app;
