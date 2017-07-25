@@ -63,51 +63,58 @@ app.use(Express.static(path.resolve(__dirname, '../dist/client')));
 // Server side routes app.use
   // app.use('/api', posts);
 
-// // Render Initial HTML
-// const renderFullPage = (html, initialState) => {
-//   const head = Helmet.rewind();
-//
-//   // Import Manifests
-//   const assetsManifest = process.env.webpackAssets && JSON.parse(process.env.webpackAssets);
-//   const chunkManifest = process.env.webpackChunkAssets && JSON.parse(process.env.webpackChunkAssets);
-//
-//   return `
-//     <!doctype html>
-//     <html>
-//       <head>
-//         ${head.base.toString()}
-//         ${head.title.toString()}
-//         ${head.meta.toString()}
-//         ${head.link.toString()}
-//         ${head.script.toString()}
-//
-//         ${process.env.NODE_ENV === 'production' ? `<link rel='stylesheet' href='${assetsManifest['/app.css']}' />` : ''}
-//         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
-//         <link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png" type="image/png" />
-//       </head>
-//       <body>
-//         <div id="root">${html}</div>
-//         <script>
-//           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
-//           ${process.env.NODE_ENV === 'production' ?
-//           `//<![CDATA[
-//           window.webpackManifest = ${JSON.stringify(chunkManifest)};
-//           //]]>` : ''}
-//         </script>
-//         <script src='${process.env.NODE_ENV === 'production' ? assetsManifest['/vendor.js'] : '/vendor.js'}'></script>
-//         <script src='${process.env.NODE_ENV === 'production' ? assetsManifest['/app.js'] : '/app.js'}'></script>
-//       </body>
-//     </html>
-//   `;
-// };
-//
-// const renderError = err => {
-//   const softTab = '&#32;&#32;&#32;&#32;';
-//   const errTrace = process.env.NODE_ENV !== 'production' ?
-//     `:<br><br><pre style="color:red">${softTab}${err.stack.replace(/\n/g, `<br>${softTab}`)}</pre>` : '';
-//   return renderFullPage(`Server Error${errTrace}`, {});
-// };
-//
+// TODO: Move this to it's own file in the server folder
+// Render Initial HTML
+const renderFullPage = (html, initialState) => {
+  const head = Helmet.rewind();
+
+  // Import Manifests
+  const assetsManifest = process.env.webpackAssets && JSON.parse(process.env.webpackAssets);
+  const chunkManifest = process.env.webpackChunkAssets && JSON.parse(process.env.webpackChunkAssets);
+
+  return `
+    <!doctype html>
+    <html>
+      <head>
+        ${head.base.toString()}
+        ${head.title.toString()}
+        ${head.meta.toString()}
+        ${head.link.toString()}
+        ${head.script.toString()}
+
+        ${process.env.NODE_ENV === 'production' ? `<link rel='stylesheet' href='${assetsManifest['/app.css']}' />` : ''}
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
+        <link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png" type="image/png" />
+      </head>
+      <body>
+        <div id="root">${html}</div>
+        <script>
+          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
+          ${process.env.NODE_ENV === 'production' ?
+          `//<![CDATA[
+          window.webpackManifest = ${JSON.stringify(chunkManifest)};
+          //]]>` : ''}
+        </script>
+        <script src='${process.env.NODE_ENV === 'production' ? assetsManifest['/vendor.js'] : '/vendor.js'}'></script>
+        <script src='${process.env.NODE_ENV === 'production' ? assetsManifest['/app.js'] : '/app.js'}'></script>
+      </body>
+    </html>
+  `;
+};
+
+const renderError = err => {
+  const softTab = '&#32;&#32;&#32;&#32;';
+  const errTrace = process.env.NODE_ENV !== 'production' ?
+    `:<br><br><pre style="color:red">${softTab}${err.stack.replace(/\n/g, `<br>${softTab}`)}</pre>` : '';
+  return renderFullPage(`Server Error${errTrace}`, {});
+};
+
+// Render Initial HTML
+  //server and client rendering: https://stackoverflow.com/questions/42797543/whats-wrong-with-this-reactrouter-match-implementationf
+  //https://github.com/technology-ebay-de/universal-react-router4/blob/master/src/server/render.js
+  //https://ebaytech.berlin/universal-web-apps-with-react-router-4-15002bb30ccb
+  //https://reacttraining.com/react-router/web/guides/server-rendering
+
 // // Server Side Rendering based on routes matched by React-router.
 // app.use((req, res, next) => {
 //   match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
