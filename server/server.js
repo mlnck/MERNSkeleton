@@ -26,7 +26,9 @@ import { configureStore } from '../client/store'; //--> from react-boilerplate
 import { Provider } from 'react-redux';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { match, RouterContext } from 'react-router';
+// import { match, RouterContext } from 'react-router';
+// import { StaticRouter, matchPath } from 'react-router';
+import { matchRoutes, renderRoutes } from 'react-router-config'
 import Helmet from 'react-helmet';
 
 // Import required modules
@@ -114,6 +116,147 @@ const renderError = err => {
   //https://github.com/technology-ebay-de/universal-react-router4/blob/master/src/server/render.js
   //https://ebaytech.berlin/universal-web-apps-with-react-router-4-15002bb30ccb
   //https://reacttraining.com/react-router/web/guides/server-rendering
+
+////TMP
+const Root = ({ route }) => (
+  <div>
+    <h1>Root</h1>
+    {/* child routes won't render without this */}
+    {renderRoutes(route.routes)}
+  </div>
+)
+const Home = ({ route }) => (
+  <div>
+    <h2>Home</h2>
+  </div>
+)
+const Skeleton = ({ route }) => (
+  <div>
+    <h2>Skeleton</h2>
+    {/* child routes won't render without this */}
+    {renderRoutes(route.routes, { someProp: 'these extra props are optional' })}
+  </div>
+)
+const Closet = ({ someProp }) => (
+  <div>
+    <h3>Closet</h3>
+    <div>{someProp}</div>
+  </div>
+)
+///END TMP
+
+//using react-router-config (https://www.npmjs.com/package/react-router-config) for react v4 routing
+const allRoutes = [
+  {
+    component: Root,
+    routes: [
+      { path: '/',
+        exact: true,
+        loadData:function(){ return 'test home load' },
+        component: Home
+      },
+      { path: '/skeleton/:id',
+        component: Skeleton,
+        routes: [
+          { path: '/skeleton/:id/closet',
+            loadData:function(){ return 'test closet load' },
+            component: Closet
+          }
+        ]
+      }
+    ]
+  }
+]
+
+const homeFnc = ()=>{ console.log('home fnc called'); }
+const closetFnc = ()=>{ console.log('closet fnc called'); }
+
+const loadBranchData = (location) => {
+  // const branch = matchRoutes(allRoutes, location.pathname)
+  const branch = matchRoutes(allRoutes, location)
+  console.log('location:',location);
+  console.log('branch:',branch);
+  console.log('-----xxxx-------');
+  const promises = branch.map(({ route, match }) => {
+    console.log('>',route);
+    console.log('->',match);
+    console.log('-->',route.loadData,'<------');
+    return route.loadData
+      ? route.loadData(match)
+      : Promise.resolve(null)
+  })
+  console.log('promises:',promises);
+  return Promise.all(promises)
+}
+// console.log('loadBranchData("/skeleton/23"):',loadBranchData("/skeleton/23"));
+// console.log('------------');
+// console.log('loadBranchData("/bob"):',loadBranchData("/bob"));
+// console.log('------------');
+// console.log('loadBranchData("/skeleton"):',loadBranchData("/skeleton"));
+// console.log('------------');
+// console.log('loadBranchData("/"):',loadBranchData("/"));
+// console.log('------------');console.log('------------');
+
+// useful on the server for preloading data
+// loadBranchData(req.url).then(data => {
+//   putTheDataSomewhereTheClientCanFindIt(data)
+// })
+
+app.get('*', (req, res) => {
+  loadBranchData(req.url)
+  .then((data) =>
+  {
+    console.log('rendering will go here')
+    console.log(data);
+    console.log('---');
+  });
+
+    // const match = allRoutes.reduce((acc, route) => matchPath(req.url, route, { exact: true }) || acc, null);
+    // const branch = matchRoutes(allRoutes, '/skeleton/23')
+    // console.log('match!:',branch);
+    // if (!match) {
+    //     res.status(404).send(render(<NoMatch />));
+    //     return;
+    // }
+    // fetch('https://api.github.com/gists')
+    //   .then(r => r.json())
+    //   .then(gists => {
+    //       res.status(200).send(render(
+    //           (
+    //               <Router context={{}} location={req.url}>
+    //                   <App gists={gists} />
+    //               </Router>
+    //           ), gists
+    //       ));
+    //   }).catch(err => {
+    //       console.error(err);
+    //       res.status(500).send(render(<Error />));
+    //   });
+});
+
+/*
+app.get('*', (req, res) => {
+    const match = routes.reduce((acc, route) => matchPath(req.url, route, { exact: true }) || acc, null);
+    if (!match) {
+        res.status(404).send(render(<NoMatch />));
+        return;
+    }
+    fetch('https://api.github.com/gists')
+        .then(r => r.json())
+        .then(gists => {
+            res.status(200).send(render(
+                (
+                    <Router context={{}} location={req.url}>
+                        <App gists={gists} />
+                    </Router>
+                ), gists
+            ));
+        }).catch(err => {
+            console.error(err);
+            res.status(500).send(render(<Error />));
+        });
+});
+*/
 
 // // Server Side Rendering based on routes matched by React-router.
 // app.use((req, res, next) => {

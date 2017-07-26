@@ -1,7 +1,7 @@
 /**
  * Client entry point
  */
- console.log('client entry point');
+
 // import React from 'react';
 // import { render } from 'react-dom';
 // import { AppContainer } from 'react-hot-loader';
@@ -11,7 +11,7 @@
 // // Initialize store
 // const store = configureStore(window.__INITIAL_STATE__);
 // const mountApp = document.getElementById('root');
-//
+console.log('client entry point');
 // render(
 //   <AppContainer>
 //     <App store={store} />
