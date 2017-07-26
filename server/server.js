@@ -28,7 +28,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 // import { match, RouterContext } from 'react-router';
 // import { StaticRouter, matchPath } from 'react-router';
-import { matchRoutes, renderRoutes } from 'react-router-config'
+import { BrowserRouter, matchRoutes, renderRoutes } from 'react-router-config'
 import Helmet from 'react-helmet';
 
 // Import required modules
@@ -146,9 +146,13 @@ const Closet = ({ someProp }) => (
 ///END TMP
 
 //using react-router-config (https://www.npmjs.com/package/react-router-config) for react v4 routing
+
+//these should come from server/controllers
 const homeFnc = ()=>{ return 'home fnc called'; }
 const closetFnc = ()=>{ return 'closet fnc called'; }
 
+//move into config/utils/server as route.config.js
+  //change name to be serverRoutes or serverAPIRoutes or something
 const allRoutes = [
   {
     component: Root,
@@ -209,7 +213,20 @@ const store = configureStore();
   .then((data) =>
   {
     console.log('rendering will go here')
-    console.log(data);
+    // console.log(data,);
+    const initialView = renderToString(
+      <BrowserRouter>
+        {/* kick it all off with the root route */}
+        {renderRoutes(allRoutes)}
+      </BrowserRouter>
+    );
+    const finalState = store.getState();
+
+    res
+      .set('Content-Type', 'text/html')
+      .status(200)
+      .end(renderFullPage(initialView, finalState))
+      .catch(e=>console.log('error:',e));
     console.log('---');
   });
 
