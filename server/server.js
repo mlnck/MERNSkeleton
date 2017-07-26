@@ -203,6 +203,8 @@ const loadBranchData = (location) => {
 // })
 
 app.get('*', (req, res) => {
+  const store = configureStore();
+
   loadBranchData(req.url)
   .then((data) =>
   {
