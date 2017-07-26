@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // React And Redux Setup
-import { configureStore } from '../client/store'; //--> from react-boilerplate
+import configureStore from '../client/store'; //--> from react-boilerplate
 import { Provider } from 'react-redux';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
@@ -203,7 +203,7 @@ const loadBranchData = (location) => {
 // })
 
 app.use((req, res, next) => {
-  // const store = configureStore();
+const store = configureStore();
 
   loadBranchData(req.url)
   .then((data) =>
