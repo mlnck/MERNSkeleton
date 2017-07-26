@@ -146,20 +146,23 @@ const Closet = ({ someProp }) => (
 ///END TMP
 
 //using react-router-config (https://www.npmjs.com/package/react-router-config) for react v4 routing
+const homeFnc = ()=>{ return 'home fnc called'; }
+const closetFnc = ()=>{ return 'closet fnc called'; }
+
 const allRoutes = [
   {
     component: Root,
     routes: [
       { path: '/',
         exact: true,
-        loadData:function(){ return 'test home load' },
+        loadData:homeFnc,
         component: Home
       },
       { path: '/skeleton/:id',
         component: Skeleton,
         routes: [
           { path: '/skeleton/:id/closet',
-            loadData:function(){ return 'test closet load' },
+            loadData:closetFnc,
             component: Closet
           }
         ]
@@ -167,9 +170,6 @@ const allRoutes = [
     ]
   }
 ]
-
-const homeFnc = ()=>{ console.log('home fnc called'); }
-const closetFnc = ()=>{ console.log('closet fnc called'); }
 
 const loadBranchData = (location) => {
   // const branch = matchRoutes(allRoutes, location.pathname)
@@ -202,8 +202,8 @@ const loadBranchData = (location) => {
 //   putTheDataSomewhereTheClientCanFindIt(data)
 // })
 
-app.get('*', (req, res) => {
-  const store = configureStore();
+app.use((req, res, next) => {
+  // const store = configureStore();
 
   loadBranchData(req.url)
   .then((data) =>
