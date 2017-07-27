@@ -26,9 +26,9 @@ import configureStore from '../client/store'; //--> from react-boilerplate
 import { Provider } from 'react-redux';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-// import { match, RouterContext } from 'react-router';
-// import { StaticRouter, matchPath } from 'react-router';
-import { BrowserRouter, matchRoutes, renderRoutes } from 'react-router-config'
+import { Switch } from 'react-router';
+import { matchRoutes, renderRoutes } from 'react-router-config';
+import { StaticRouter } from 'react-router-dom';
 import Helmet from 'react-helmet';
 
 // Import required modules
@@ -176,11 +176,7 @@ const allRoutes = [
 ]
 
 const loadBranchData = (location) => {
-  // const branch = matchRoutes(allRoutes, location.pathname)
-  const branch = matchRoutes(allRoutes, location)
-  console.log('location:',location);
-  console.log('branch:',branch);
-  console.log('-----xxxx-------');
+  const branch = matchRoutes(allRoutes, location);
   const promises = branch.map(({ route, match }) => {
     console.log('>',route);
     console.log('->',match);
@@ -192,19 +188,6 @@ const loadBranchData = (location) => {
   console.log('promises:',promises);
   return Promise.all(promises)
 }
-// console.log('loadBranchData("/skeleton/23"):',loadBranchData("/skeleton/23"));
-// console.log('------------');
-// console.log('loadBranchData("/bob"):',loadBranchData("/bob"));
-// console.log('------------');
-// console.log('loadBranchData("/skeleton"):',loadBranchData("/skeleton"));
-// console.log('------------');
-// console.log('loadBranchData("/"):',loadBranchData("/"));
-// console.log('------------');console.log('------------');
-
-// useful on the server for preloading data
-// loadBranchData(req.url).then(data => {
-//   putTheDataSomewhereTheClientCanFindIt(data)
-// })
 
 app.use((req, res, next) => {
 const store = configureStore();
@@ -213,13 +196,23 @@ const store = configureStore();
   .then((data) =>
   {
     console.log('rendering will go here')
-    // console.log(data,);
+    console.log(data);
+    const context = {}
+
     const initialView = renderToString(
-      <BrowserRouter>
+      <StaticRouter
+        location={req.url}
+        context={context}
+      >
         {/* kick it all off with the root route */}
-        {renderRoutes(allRoutes)}
-      </BrowserRouter>
+        <Switch>
+          {renderRoutes(allRoutes)}
+        </Switch>
+      </StaticRouter>
     );
+    // const initialView = 'YIPPEEE';
+    console.log('initialView:',initialView);
+    console.log('....');
     const finalState = store.getState();
 
     res
