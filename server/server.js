@@ -137,17 +137,17 @@ const Skeleton = ({ route }) => (
     {renderRoutes(route.routes, { someProp: 'these extra props are optional' })}
   </div>
 )
-const Closet = ({ someProp }) => (
+const Closet = ({route},{ someProp }) => (
   <div>
     <h3>Closet</h3>
-    <div>{someProp}</div>
+    <div>.{someProp}.{route.loadData}</div>
   </div>
 )
 ///END TMP
 
 //using react-router-config (https://www.npmjs.com/package/react-router-config) for react v4 routing
 
-//these should come from server/controllers
+//these should come from server/controllers - accessing mongo and returning data
 const homeFnc = ()=>{ return 'home fnc called'; }
 const closetFnc = ()=>{ return 'closet fnc called'; }
 
@@ -197,7 +197,7 @@ const store = configureStore();
   {
     console.log('rendering will go here')
     console.log(data);
-    const context = {}
+    const context = {data}
 
     const initialView = renderToString(
       <StaticRouter
@@ -210,102 +210,15 @@ const store = configureStore();
         </Switch>
       </StaticRouter>
     );
-    // const initialView = 'YIPPEEE';
-    console.log('initialView:',initialView);
-    console.log('....');
+
     const finalState = store.getState();
 
     res
       .set('Content-Type', 'text/html')
       .status(200)
-      .end(renderFullPage(initialView, finalState))
-      .catch(e=>console.log('error:',e));
-    console.log('---');
+      .end(renderFullPage(initialView, finalState));
   });
-
-    // const match = allRoutes.reduce((acc, route) => matchPath(req.url, route, { exact: true }) || acc, null);
-    // const branch = matchRoutes(allRoutes, '/skeleton/23')
-    // console.log('match!:',branch);
-    // if (!match) {
-    //     res.status(404).send(render(<NoMatch />));
-    //     return;
-    // }
-    // fetch('https://api.github.com/gists')
-    //   .then(r => r.json())
-    //   .then(gists => {
-    //       res.status(200).send(render(
-    //           (
-    //               <Router context={{}} location={req.url}>
-    //                   <App gists={gists} />
-    //               </Router>
-    //           ), gists
-    //       ));
-    //   }).catch(err => {
-    //       console.error(err);
-    //       res.status(500).send(render(<Error />));
-    //   });
 });
-
-/*
-app.get('*', (req, res) => {
-    const match = routes.reduce((acc, route) => matchPath(req.url, route, { exact: true }) || acc, null);
-    if (!match) {
-        res.status(404).send(render(<NoMatch />));
-        return;
-    }
-    fetch('https://api.github.com/gists')
-        .then(r => r.json())
-        .then(gists => {
-            res.status(200).send(render(
-                (
-                    <Router context={{}} location={req.url}>
-                        <App gists={gists} />
-                    </Router>
-                ), gists
-            ));
-        }).catch(err => {
-            console.error(err);
-            res.status(500).send(render(<Error />));
-        });
-});
-*/
-
-// // Server Side Rendering based on routes matched by React-router.
-// app.use((req, res, next) => {
-//   match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
-//     if (err) {
-//       return res.status(500).end(renderError(err));
-//     }
-//
-//     if (redirectLocation) {
-//       return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
-//     }
-//
-//     if (!renderProps) {
-//       return next();
-//     }
-//
-//     const store = configureStore();
-//
-//     return fetchComponentData(store, renderProps.components, renderProps.params)
-//       .then(() => {
-//         const initialView = renderToString(
-//           <Provider store={store}>
-//             <IntlWrapper>
-//               <RouterContext {...renderProps} />
-//             </IntlWrapper>
-//           </Provider>
-//         );
-//         const finalState = store.getState();
-//
-//         res
-//           .set('Content-Type', 'text/html')
-//           .status(200)
-//           .end(renderFullPage(initialView, finalState));
-//       })
-//       .catch((error) => next(error));
-//   });
-// });
 
 // start app
 app.listen(serverConfig.port, (error) => {

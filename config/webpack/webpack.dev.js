@@ -2,10 +2,32 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: './client/index.js',
+  devtool: 'cheap-module-eval-source-map',
+  // entry: './client/index.js',
+  entry: {
+    app: [
+      'eventsource-polyfill',
+      'webpack-hot-middleware/client',
+      'webpack/hot/only-dev-server',
+      'react-hot-loader/patch',
+      './client/index.js',
+    ],
+    // vendor: [
+    //   'react',
+    //   'react-dom',
+    // ],
+  },
   output: {
-    path: path.join(__dirname, 'client'),
-    filename: 'bundle.js'
+    path: __dirname,
+    filename: 'app.js',
+    publicPath: 'http://0.0.0.0:8000/',
+  },
+  resolve: {
+    // extensions: ['', '.js', '.jsx'],
+    modules: [
+      'client',
+      'node_modules',
+    ],
   },
   module: {
     loaders: [{
@@ -16,5 +38,19 @@ module.exports = {
         presets: ['es2015', 'react']
       }
     }]
-  }
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'vendor',
+    //   minChunks: Infinity,
+    //   filename: 'vendor.js',
+    // }),
+    // new webpack.DefinePlugin({
+    //   'process.env': {
+    //     CLIENT: JSON.stringify(true),
+    //     'NODE_ENV': JSON.stringify('development'),
+    //   }
+    // }),
+  ],
 }
