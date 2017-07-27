@@ -12,10 +12,10 @@ module.exports = {
       'react-hot-loader/patch',
       './client/index.js',
     ],
-    // vendor: [
-    //   'react',
-    //   'react-dom',
-    // ],
+    vendor: [
+      'react',
+      'react-dom',
+    ],
   },
   output: {
     path: __dirname,
@@ -23,7 +23,7 @@ module.exports = {
     publicPath: 'http://0.0.0.0:8000/',
   },
   resolve: {
-    // extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
     modules: [
       'client',
       'node_modules',
@@ -41,16 +41,16 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'vendor',
-    //   minChunks: Infinity,
-    //   filename: 'vendor.js',
-    // }),
-    // new webpack.DefinePlugin({
-    //   'process.env': {
-    //     CLIENT: JSON.stringify(true),
-    //     'NODE_ENV': JSON.stringify('development'),
-    //   }
-    // }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: Infinity,
+      filename: 'vendor.js',
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        CLIENT: JSON.stringify(true),
+        'NODE_ENV': JSON.stringify('development'),
+      }
+    }),
   ],
 }
