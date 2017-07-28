@@ -139,6 +139,7 @@ const Home = ({ route }) => (
 const Skeleton = ({ route }) => (
   <div>
     <h2>Skeleton</h2>
+    {debugLog(['aa',route])}
     {/* child routes won't render without this */}
     {renderRoutes(addProps(route.routes,{extra:'propyo'}))}
   </div>
@@ -155,8 +156,8 @@ const Closet = ({route}) => (
 //using react-router-config (https://www.npmjs.com/package/react-router-config) for react v4 routing
 
 //these should come from server/controllers - accessing mongo and returning data
-const homeFnc = ()=>{ return 'home fnc called'; }
-const closetFnc = ()=>{ return 'closet fnc called'; }
+const homeFnc = ()=>{ return 'backend (mongo) home fnc called'; }
+const closetFnc = (obj)=>{ console.log('p0obj:',obj); return 'backend (mongo) closet fnc called with param' + obj + ', ' + obj.params.id; }
 
 //move into config/utils/server as route.config.js
   //change name to be serverRoutes or serverAPIRoutes or something
