@@ -118,6 +118,12 @@ const renderError = err => {
   //https://reacttraining.com/react-router/web/guides/server-rendering
 
 ////TMP
+const debugLog = (dbg) => { console.log('dbg:',dbg); }
+const addProps = (obj,prp) =>
+{
+  obj[0].customProps = prp;
+  return obj;
+}
 const Root = ({ route }) => (
   <div>
     <h1>Root</h1>
@@ -134,13 +140,14 @@ const Skeleton = ({ route }) => (
   <div>
     <h2>Skeleton</h2>
     {/* child routes won't render without this */}
-    {renderRoutes(route.routes, { someProp: 'these extra props are optional' })}
+    {renderRoutes(addProps(route.routes,{extra:'propyo'}))}
   </div>
 )
-const Closet = ({route},{ someProp }) => (
+const Closet = ({route}) => (
   <div>
     <h3>Closet</h3>
-    <div>.{someProp}.{route.loadData}</div>
+    <div>xyz::{route.customProps.extra}</div>
+    <div>{debugLog(['zz',route])}</div>
   </div>
 )
 ///END TMP
@@ -197,7 +204,7 @@ const store = configureStore();
   {
     console.log('rendering will go here')
     console.log(data);
-    const context = {data}
+    const context = {}
 
     const initialView = renderToString(
       <StaticRouter
