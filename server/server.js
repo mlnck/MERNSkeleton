@@ -35,7 +35,7 @@ import Helmet from 'react-helmet';
 import routes from '../client/routes';
 import { fetchComponentData } from '../config/utils/server/fetchData';
 import dummyData from '../config/utils/server/seed.db';
-import serverConfig from '../config/utils/server/conf';
+import serverConfig from '../config/server/conf';
 
 //Server Side Routes:
   //import posts from './routes/post.routes';
@@ -159,7 +159,7 @@ const Closet = ({route}) => (
 const homeFnc = ()=>{ return 'backend (mongo) home fnc called'; }
 const closetFnc = (obj)=>{ console.log('p0obj:',obj); return 'backend (mongo) closet fnc called with param' + obj + ', ' + obj.params.id; }
 
-//move into config/utils/server as route.config.js
+//move into config/server as route.config.js
   //change name to be serverRoutes or serverAPIRoutes or something
 const allRoutes = [
   {

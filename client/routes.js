@@ -1,4 +1,4 @@
-console.log('ROUTES - (following code from react-boilerplate)');
+// console.log('ROUTES - (following code from react-boilerplate)');
 
 // FOLLOWING CODE FROM REACT-BOILERPLATE
       // May need to reference the routes from mern.io
