@@ -16,7 +16,7 @@ export default class Xxx extends React.Component
   render()
 {
     const {  } = this.props;
-    const reposListProps = {
+    const xxxProps = {
 
     };
 
@@ -26,11 +26,11 @@ export default class Xxx extends React.Component
   }
 }
 
-HomePage.defaultProps = {
+Xxx.defaultProps = {
 
 };
 
-HomePage.propTypes = {
+Xxx.propTypes = {
 
 };
 
@@ -45,4 +45,4 @@ const mapStateToProps = createStructuredSelector({
 });
 
 // Wrap the component to inject dispatch and state into it
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(Xxx);

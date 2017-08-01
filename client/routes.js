@@ -1,6 +1,10 @@
 import React from 'react';
 import { matchRoutes, renderRoutes } from 'react-router-config';
 
+//components
+import Root from './containers/Root';
+console.log('Root:',Root);
+
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
 };
@@ -16,13 +20,13 @@ const addProps = (obj,prp) =>
   obj[0].customProps = prp;
   return obj;
 }
-const Root = ({ route }) => (
-  <div>
-    <h1>Root</h1>
-    {/* child routes won't render without this */}
-    {renderRoutes(route.routes)}
-  </div>
-)
+// const Root = ({ route }) => (
+//   <div>
+//     <h1>Root</h1>
+//     {/* child routes won't render without this */}
+//     {renderRoutes(route.routes)}
+//   </div>
+// )
 const Home = ({ route }) => (
   <div>
     <h2>Home</h2>
