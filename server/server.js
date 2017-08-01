@@ -32,7 +32,7 @@ import { StaticRouter } from 'react-router-dom';
 import Helmet from 'react-helmet';
 
 // Import required modules
-import routes from '../client/routes';
+import clientRoutes from '../client/routes';
 import { fetchComponentData } from '../config/utils/server/fetchData';
 import dummyData from '../config/utils/server/seed.db';
 import serverConfig from '../config/server/conf';
@@ -117,71 +117,53 @@ const renderError = err => {
   //https://ebaytech.berlin/universal-web-apps-with-react-router-4-15002bb30ccb
   //https://reacttraining.com/react-router/web/guides/server-rendering
 
-////TMP
-const debugLog = (dbg) => { console.log('dbg:',dbg); }
-const addProps = (obj,prp) =>
-{
-  obj[0].customProps = prp;
-  return obj;
-}
-const Root = ({ route }) => (
-  <div>
-    <h1>Root</h1>
-    {/* child routes won't render without this */}
-    {renderRoutes(route.routes)}
-  </div>
-)
-const Home = ({ route }) => (
-  <div>
-    <h2>Home</h2>
-  </div>
-)
-const Skeleton = ({ route }) => (
-  <div>
-    <h2>Skeleton</h2>
-    {debugLog(['aa',route])}
-    {/* child routes won't render without this */}
-    {renderRoutes(addProps(route.routes,{extra:'propyo'}))}
-  </div>
-)
-const Closet = ({route}) => (
-  <div>
-    <h3>Closet</h3>
-    <div>xyz::{route.customProps.extra}</div>
-    <div>{debugLog(['zz',route])}</div>
-  </div>
-)
-///END TMP
+
+// ////TMP
+// const debugLog = (dbg) => { console.log('dbg:',dbg); }
+// const addProps = (obj,prp) =>
+// {
+//   obj[0].customProps = prp;
+//   return obj;
+// }
+// const Root = ({ route }) => (
+//   <div>
+//     <h1>Root</h1>
+//     {/* child routes won't render without this */}
+//     {renderRoutes(route.routes)}
+//   </div>
+// )
+// const Home = ({ route }) => (
+//   <div>
+//     <h2>Home</h2>
+//   </div>
+// )
+// const Skeleton = ({ route }) => (
+//   <div>
+//     <h2>Skeleton</h2>
+//     {debugLog(['aa',route])}
+//     {/* child routes won't render without this */}
+//     {renderRoutes(addProps(route.routes,{extra:'propyo'}))}
+//   </div>
+// )
+// const Closet = ({route}) => (
+//   <div>
+//     <h3>Closet</h3>
+//     <div>xyz::{route.customProps.extra}</div>
+//     <div>{debugLog(['zz',route])}</div>
+//   </div>
+// )
+// ///END TMP
 
 //using react-router-config (https://www.npmjs.com/package/react-router-config) for react v4 routing
 
-//these should come from server/controllers - accessing mongo and returning data
-const homeFnc = ()=>{ return 'backend (mongo) home fnc called'; }
-const closetFnc = (obj)=>{ console.log('p0obj:',obj); return 'backend (mongo) closet fnc called with param' + obj + ', ' + obj.params.id; }
+// //these should come from server/controllers - accessing mongo and returning data
+// const homeFnc = ()=>{ return 'backend (mongo) home fnc called'; }
+// const closetFnc = (obj)=>{ console.log('p0obj:',obj); return 'backend (mongo) closet fnc called with param' + obj + ', ' + obj.params.id; }
 
 //move into config/server as route.config.js
   //change name to be serverRoutes or serverAPIRoutes or something
-const allRoutes = [
-  {
-    component: Root,
-    routes: [
-      { path: '/',
-        exact: true,
-        loadData:homeFnc,
-        component: Home
-      },
-      { path: '/skeleton/:id',
-        component: Skeleton,
-        routes: [
-          { path: '/skeleton/:id/closet',
-            loadData:closetFnc,
-            component: Closet
-          }
-        ]
-      }
-    ]
-  }
-]
+
+const allRoutes = clientRoutes();
 
 const loadBranchData = (location) => {
   const branch = matchRoutes(allRoutes, location);
