@@ -23,14 +23,12 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // React And Redux Setup
-import configureStore from '../client/store'; //--> from react-boilerplate
-import { Provider } from 'react-redux';
+import configureStore from '../client/store';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Switch } from 'react-router';
 import { matchRoutes, renderRoutes } from 'react-router-config';
 import { StaticRouter } from 'react-router-dom';
-import Helmet from 'react-helmet';
 
 // Import required modules
 import clientRoutes from '../client/routes';
