@@ -1,35 +1,46 @@
 /**
- * Client entry point
+ * app.js
+ *
+ * This is the entry file for the application, only setup and boilerplate
+ * code.
  */
 
-// import React from 'react';
-// import { render } from 'react-dom';
-// import { AppContainer } from 'react-hot-loader';
-// import App from './App';
-// import { configureStore } from './store';
-//
-// // Initialize store
-// const store = configureStore(window.__INITIAL_STATE__);
-// const mountApp = document.getElementById('root');
-console.log('client entry point');
-// render(
-//   <AppContainer>
-//     <App store={store} />
-//   </AppContainer>,
-//   mountApp
-// );
-//
-// // For hot reloading of react components
-// if (module.hot) {
-//   module.hot.accept('./App', () => {
-//     // If you use Webpack 2 in ES modules mode, you can
-//     // use <App /> here rather than require() a <NextApp />.
-//     const NextApp = require('./App').default; // eslint-disable-line global-require
-//     render(
-//       <AppContainer>
-//         <NextApp store={store} />
-//       </AppContainer>,
-//       mountApp
-//     );
-//   });
-// }
+// Needed for redux-saga es6 generator support
+import 'babel-polyfill';
+
+// Import all the third party stuff
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
+import { syncHistoryWithStore } from 'react-router-redux';
+
+import configureStore from './store';
+
+// Import CSS reset and Global Styles
+import './global-styles';
+
+// Import routes
+import clientRoutes from '../client/routes';
+
+// Create redux store with history
+const store = configureStore(window.__INITIAL_STATE__);
+
+  ReactDOM.render(
+    <Provider store={store}>
+      <BrowserRouter>
+        {/* kick it all off with the root route */}
+        {renderRoutes(clientRoutes())}
+      </BrowserRouter>
+    </Provider>,
+    document.getElementById('root')
+  );
+
+
+// Install ServiceWorker and AppCache in the end since
+// it's not most important operation and if main code fails,
+// we do not want it installed
+// if(process.env.NODE_ENV === 'production')
+//{ require('offline-plugin/runtime').install(); // eslint-disable-line global-require }

@@ -77,12 +77,6 @@ const renderError = err => {
   return renderFullPage(`Server Error${errTrace}`, {});
 };
 
-// Render Initial HTML
-  //server and client rendering: https://stackoverflow.com/questions/42797543/whats-wrong-with-this-reactrouter-match-implementationf
-  //https://github.com/technology-ebay-de/universal-react-router4/blob/master/src/server/render.js
-  //https://ebaytech.berlin/universal-web-apps-with-react-router-4-15002bb30ccb
-  //https://reacttraining.com/react-router/web/guides/server-rendering
-
 const loadBranchData = (location) => {
   const branch = matchRoutes(allRoutes, location);
   const promises = branch.map(({ route, match }) => {
