@@ -99,18 +99,20 @@ const store = configureStore();
     console.log(data);
     const context = {}
 
-    const initialView = renderToString(
-      <StaticRouter
-        location={req.url}
-        context={context}
-      >
-        {/* kick it all off with the root route */}
-        <Switch>
-          {renderRoutes(allRoutes)}
-        </Switch>
-      </StaticRouter>
-    );
-
+//Keep - we may end up using this to tell the client side what to do, and not overwrite in client/index.js
+//(All depends on if the way we're trying now will allow the promises to finish and mongo to be queried first)
+    // const initialView = renderToString(
+    //   <StaticRouter
+    //     location={req.url}
+    //     context={context}
+    //   >
+    //     {/* kick it all off with the root route */}
+    //     <Switch>
+    //       {renderRoutes(allRoutes)}
+    //     </Switch>
+    //   </StaticRouter>
+    // );
+    const initialView = 'This is being replaced by the client side';
     const finalState = store.getState();
 
     res
