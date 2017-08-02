@@ -20,9 +20,20 @@ export default function renderFullPage(html, initialState){
         ${process.env.NODE_ENV === 'production' ? `<link rel='stylesheet' href='${assetsManifest['/app.css']}' />` : ''}
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
         <link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png" type="image/png" />
+        <style>
+          div[className="optional-helper-text"],
+          .optional-helper-text{
+            background-color:rgba(150,0,0,.3);
+            font-family:monospace;
+            padding:5px;
+            white-space:pre;
+          }
+        </style>
       </head>
       <body>
-        BACKEND SETS INITIAL HTML
+        <div className="optional-helper-text">
+          1) After all backend [mongo,node] calls have been parsed "/server/server.js" renders this file ("MERNSkeleton/config/server/basehtml.js"), setting the initial HTML and incorporating webpack settings
+        </div>
         <div id="root">${html}</div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};

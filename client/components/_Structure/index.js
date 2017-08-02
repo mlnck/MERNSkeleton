@@ -1,7 +1,25 @@
-//import Functional
-import React from 'react';
-import { connect } from 'react-redux';
+/**
+ * Component Description from cli
+ */
 
-//import Visual
-  //components
-import xxxStyle from './XXXStyle';
+import React, { PropTypes } from 'react';
+import StyledXxx from './StyledXxx';
+
+function XXX(props)
+{
+  return (
+    <div>
+      // {props.prop}
+    </div>
+  );
+}
+
+Xxx.defaultProps = {
+  // prop: 'prop',
+};
+
+Xxx.propTypes = {
+  // prop: PropTypes.string,
+};
+
+export default Xxx;
