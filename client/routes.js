@@ -1,8 +1,9 @@
 import React from 'react';
 import { matchRoutes, renderRoutes } from 'react-router-config';
 
-//components
+//route containers
 import Root from './containers/Root';
+import Home from './containers/Home';
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -26,11 +27,11 @@ const addProps = (obj,prp) =>
 //     {renderRoutes(route.routes)}
 //   </div>
 // )
-const Home = ({ route }) => (
-  <div>
-    <h2>Home</h2>
-  </div>
-)
+// const Home = ({ route }) => (
+//   <div>
+//     <h2>Home</h2>
+//   </div>
+// )
 const Skeleton = ({ route }) => (
   <div>
     <h2>Skeleton</h2>

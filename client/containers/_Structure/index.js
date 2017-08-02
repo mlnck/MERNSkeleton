@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 //import Visual
-import xxxStyle from './XxxStyle';
+import XxxStyle from './XxxStyle';
   //components
 
 //will need to toggle export for mapping dispatch/state below if need be (from CLI)
@@ -15,7 +15,7 @@ export default class Xxx extends React.Component
   }
 
   render()
-{
+  {
     const {  } = this.props;
     const xxxProps = {
 
