@@ -8,9 +8,9 @@ import StyledHeader from './StyledHeader';
 function Header(props)
 {
   return (
-    <header>
+    <StyledHeader>
       {props.navTitle}
-    </header>
+    </StyledHeader>
   );
 }
 

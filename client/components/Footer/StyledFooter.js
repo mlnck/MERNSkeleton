@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
-const ComponentrName = styled.div`
-  border: 0;
+const StyledFooter = styled.footer`
+  background-color:black;
+  color:white;
+  padding:2px;
 `;
 
-export default ComponentrName;
+export default StyledFooter;

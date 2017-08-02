@@ -8,9 +8,9 @@ import StyledFooter from './StyledFooter';
 function Footer(props)
 {
   return (
-    <footer>
-      &copy; {props.author}
-    </footer>
+    <StyledFooter>
+      &copy; {props.author} - {props.year}
+    </StyledFooter>
   );
 }
 

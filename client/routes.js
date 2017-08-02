@@ -3,7 +3,6 @@ import { matchRoutes, renderRoutes } from 'react-router-config';
 
 //components
 import Root from './containers/Root';
-console.log('Root:',Root);
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console

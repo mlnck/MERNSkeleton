@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const StyledRoot = styled.div`
   background:white;
 `;
 
-export default Wrapper;
+export default StyledRoot;
