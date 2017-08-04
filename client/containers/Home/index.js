@@ -9,17 +9,22 @@ import StyledHome from './StyledHome';
 
 export default class Home extends React.Component
 { // eslint-disable-line react/prefer-stateless-function
-  componentDidMount()
+  constructor(props)
   {
-
+    super(props);
+    /**SHOW_FLOW_LOG**/
+    console.log('Home Props:',props);
+    /**END_SHOW_FLOW_LOG**/
   }
+
+  componentWillMount()
+  { /**SHOW_FLOW_LOG**/console.log('Home is mounting');/**END_SHOW_FLOW_LOG**/ }
+  componentDidMount()
+  { /**SHOW_FLOW_LOG**/console.log('Home mounted');/**END_SHOW_FLOW_LOG**/ }
 
   render()
   {
-    const {  } = this.props;
-    const homeProps = {
-
-    };
+    const homeProps = this.props;
 
     return (
       <StyledHome>
@@ -36,9 +41,9 @@ export default class Home extends React.Component
 }
 
 Home.defaultProps = {
-  route: {}
+  routes: []
 };
 
 Home.propTypes = {
-  route: PropTypes.object.isRequired,
+  routes: PropTypes.array.isRequired
 };

@@ -33,7 +33,7 @@ export default class RootPage extends React.Component
   {
     super(props);
     /**SHOW_FLOW_LOG**/
-    console.log('props:',props);
+    console.log('Root Props:',props);
     /**END_SHOW_FLOW_LOG**/
   }
 
@@ -49,7 +49,7 @@ export default class RootPage extends React.Component
                   sub routes are added to any route it'll work`);
     /**END_SHOW_FLOW_LOG**/
     const RouteWithSubRoutes = (route) => (
-      <Route path={route.path} render={props => (
+      <Route exact={route.exact} path={route.path} render={props => (
         /**SHOW_FLOW_LOG**/// (pass the sub-routes down to keep nesting)/**END_SHOW_FLOW_LOG**/
         <route.component {...props} routes={route.routes}/>
       )}/>
@@ -74,3 +74,11 @@ export default class RootPage extends React.Component
     );
   }
 }
+
+RootPage.defaultProps = {
+  routes: []
+};
+
+RootPage.propTypes = {
+  routes: PropTypes.array.isRequired
+};

@@ -4,6 +4,9 @@ import { matchRoutes, renderRoutes } from 'react-router-config';
 //route containers
 import Root from './containers/Root';
 import Home from './containers/Home';
+/**SHOW_FLOW_LOG**/
+import Skeleton from './containers/Skeleton';
+/**END_SHOW_FLOW_LOG**/
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -21,14 +24,14 @@ const addProps = (obj,prp) =>
   return obj;
 }
 
-const Skeleton = ({ route }) => (
-  <div>
-    <h2>Skeleton</h2>
-    {debugLog(['aa',route])}
-    {/* child routes won't render without this */}
-    {renderRoutes(addProps(route.routes,{extra:'propyo'}))}
-  </div>
-)
+// const Skeleton = ({ route }) => (
+//   <div>
+//     <h2>Skeleton</h2>
+//     {debugLog(['aa',route])}
+//     {/* child routes won't render without this */}
+//     {renderRoutes(addProps(route.routes,{extra:'propyo'}))}
+//   </div>
+// )
 const Closet = ({route}) => (
   <div>
     <h3>Closet</h3>
@@ -54,9 +57,11 @@ export default function getRoutes() {
           component: Home
         },
         { path: '/skeleton/:id',
+          exact: false,
           component: Skeleton,
           routes: [
             { path: '/skeleton/:id/closet',
+              exact: false,
               loadData:closetFnc,
               component: Closet
             }

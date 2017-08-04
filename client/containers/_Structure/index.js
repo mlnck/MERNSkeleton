@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 //import Visual
-import XxxStyle from './XxxStyle';
+import StyledXxx from './StyledXxx';
 
 //import Components
 
@@ -15,7 +15,7 @@ export default class Xxx extends React.Component
   {
     super(props);
     /**SHOW_FLOW_LOG**/
-    console.log('Xxx props:',props);
+    console.log('Xxx Props:',props);
     /**END_SHOW_FLOW_LOG**/
   }
 
@@ -26,10 +26,7 @@ export default class Xxx extends React.Component
 
   render()
   {
-    const {  } = this.props;
-    const xxxProps = {
-
-    };
+    const xxxProps = this.props;
 
     return (
       <StyledXxx>
@@ -40,11 +37,11 @@ export default class Xxx extends React.Component
 }
 
 Xxx.defaultProps = {
-
+  route: {}
 };
 
 Xxx.propTypes = {
-
+  route: PropTypes.object.isRequired
 };
 
 export function mapDispatchToProps(dispatch)
