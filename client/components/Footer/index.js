@@ -2,7 +2,9 @@
 * Renders the footer to be used on each page
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import StyledFooter from './StyledFooter';
 
 function Footer(props)

@@ -2,7 +2,9 @@
  * Renders the header to be used on each page
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import StyledHeader from './StyledHeader';
 
 function Header(props)

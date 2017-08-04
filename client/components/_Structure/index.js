@@ -2,10 +2,12 @@
  * Component Description from cli
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import StyledXxx from './StyledXxx';
 
-function XXX(props)
+function Xxx(props)
 {
   return (
     <div>

@@ -1,6 +1,7 @@
 //import Functional
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 //import Visual
 import StyledHome from './StyledHome';
@@ -35,9 +36,9 @@ export default class Home extends React.Component
 }
 
 Home.defaultProps = {
-  // routes: {}
+  route: {}
 };
 
 Home.propTypes = {
-  // routes: PropTypes.object.isRequired,
+  route: PropTypes.object.isRequired,
 };

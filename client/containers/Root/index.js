@@ -16,6 +16,7 @@ import {
 } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
+import PropTypes from 'prop-types';
 
 //import Visual
 import styled from 'styled-components';
@@ -43,11 +44,13 @@ export default class RootPage extends React.Component
 
   render()
   {
-    // wrap <Route> and use this everywhere instead, then when
-    // sub routes are added to any route it'll work
+    /**SHOW_FLOW_LOG**/
+    console.info(`/client/containers/Root/index.js: wrap <Route> and use this everywhere instead, then when
+                  sub routes are added to any route it'll work`);
+    /**END_SHOW_FLOW_LOG**/
     const RouteWithSubRoutes = (route) => (
       <Route path={route.path} render={props => (
-        // pass the sub-routes down to keep nesting
+        /**SHOW_FLOW_LOG**/// (pass the sub-routes down to keep nesting)/**END_SHOW_FLOW_LOG**/
         <route.component {...props} routes={route.routes}/>
       )}/>
     )
