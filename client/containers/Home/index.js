@@ -35,9 +35,9 @@ export default class Home extends React.Component
 }
 
 Home.defaultProps = {
-
+  // routes: {}
 };
 
 Home.propTypes = {
-
+  // routes: PropTypes.object.isRequired,
 };

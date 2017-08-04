@@ -9,10 +9,18 @@ import XxxStyle from './XxxStyle';
 //will need to toggle export for mapping dispatch/state below if need be (from CLI)
 export default class Xxx extends React.Component
 { // eslint-disable-line react/prefer-stateless-function
-  componentDidMount()
+  constructor(props)
   {
-
+    super(props);
+    /**SHOW_FLOW_LOG**/
+    console.log('Xxx props:',props);
+    /**END_SHOW_FLOW_LOG**/
   }
+
+  componentWillMount()
+  { /**SHOW_FLOW_LOG**/console.log('Xxx is mounting');/**END_SHOW_FLOW_LOG**/ }
+  componentDidMount()
+  { /**SHOW_FLOW_LOG**/console.log('Xxx mounted');/**END_SHOW_FLOW_LOG**/ }
 
   render()
   {
@@ -22,7 +30,9 @@ export default class Xxx extends React.Component
     };
 
     return (
-
+      <StyledXxx>
+        Xxx page
+      </StyledXxx>
     );
   }
 }

@@ -1,0 +1,18 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Jack Melnick -- Initial Developer -- @mlnck
+
+# THANKS
+
+    http://mern.io/
+    https://www.reactboilerplate.com/
+    https://github.com/facebookincubator/create-react-app
+    https://html5boilerplate.com/
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5
+    MongoDB, Express, React, Node, Babel, Webpack
