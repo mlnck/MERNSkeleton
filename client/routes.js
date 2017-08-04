@@ -47,7 +47,7 @@ const closetFnc = (obj)=>{ console.log('p0obj:',obj); return 'backend (mongo) cl
 
 export default function getRoutes() {
 
-  const allRoutes = [
+  const allRoutes = [//when adding these via CLI we will need to give a list of all parents that route could be associated with
     {
       component: Root,
       routes: [
