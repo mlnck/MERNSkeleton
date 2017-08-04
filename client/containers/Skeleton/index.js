@@ -30,7 +30,14 @@ export default class Skeleton extends React.Component
 
     return (
       <StyledSkeleton>
-        Skeleton page - with browser variable: {skeletonProps.match.params.id}
+
+        <h4>*Skeleton Container - with browser variable: {skeletonProps.match.params.id}*</h4>
+        4) FRONT-END (/client/containers/Skeleton/index.js) - Loaded into "/client/containers/Root/index.js" by "/client/routes.js"<br/>
+         -=> This component is now added to the "Root Component" due to the nesting defined in: "/client/routes.js"
+        <br/><br/>
+        <button>Test route variable</button>
+        <button>Test Database Query</button>
+        <br/><br/>
       </StyledSkeleton>
     );
   }

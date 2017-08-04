@@ -32,9 +32,10 @@ export default class Home extends React.Component
           <h4>*Home Container*</h4>
           4) FRONT-END (/client/containers/Home/index.js) - Loaded into "/client/containers/Root/index.js" by "/client/routes.js"<br/>
            -=> This component is now added to the "Root Component" due to the nesting defined in: "/client/routes.js"
+
+          <button>Test route variable</button>
+          <button>Test Database Query</button>
         </div>
-        <button>Test route variable</button>
-        <button>Test Database Query</button>
       </StyledHome>
     );
   }

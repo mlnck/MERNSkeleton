@@ -45,8 +45,9 @@ export default class RootPage extends React.Component
   render()
   {
     /**SHOW_FLOW_LOG**/
-    console.info(`/client/containers/Root/index.js: wrap <Route> and use this everywhere instead, then when
-                  sub routes are added to any route it'll work`);
+    console.info(`FRONT-END (/client/containers/Skeleton/index.js)
+      /client/containers/Root/index.js: wrap <Route> and use this everywhere instead, then when
+      sub routes are added to any route it'll work`);
     /**END_SHOW_FLOW_LOG**/
     const RouteWithSubRoutes = (route) => (
       <Route exact={route.exact} path={route.path} render={props => (
