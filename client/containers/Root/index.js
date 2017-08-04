@@ -8,10 +8,14 @@
  */
 
 //import Functional
-import React from 'react';
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 import { connect } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
-import routes from '../../routes';
 
 //import Visual
 import styled from 'styled-components';
@@ -23,14 +27,31 @@ import Footer from '../../components/Footer';
 
 export default class RootPage extends React.Component
 { // eslint-disable-line react/prefer-stateless-function
-  componentDidMount()
+
+  constructor(props)
   {
-    console.log('Root mounted');
+    super(props);
+    /**SHOW_FLOW_LOG**/
+    console.log('props:',props);
+    /**END_SHOW_FLOW_LOG**/
   }
 
+  componentWillMount()
+  { /**SHOW_FLOW_LOG**/console.log('Root is mounting');/**END_SHOW_FLOW_LOG**/ }
+  componentDidMount()
+  { /**SHOW_FLOW_LOG**/console.log('Root mounted');/**END_SHOW_FLOW_LOG**/ }
+
   render()
-{
-  const route = routes;
+  {
+    // wrap <Route> and use this everywhere instead, then when
+    // sub routes are added to any route it'll work
+    const RouteWithSubRoutes = (route) => (
+      <Route path={route.path} render={props => (
+        // pass the sub-routes down to keep nesting
+        <route.component {...props} routes={route.routes}/>
+      )}/>
+    )
+
     return (
       <StyledRoot>
         <Header />
@@ -40,8 +61,11 @@ export default class RootPage extends React.Component
           3) FRONT-END (/client/containers/Root/index.js) - Loaded into "/client/index.js" by "/client/routes.js"<br/>
            -=> This component is the skeleton around the actual pages, and should only contain code that should be seen on all pages. (e.g. navigation bar)
         </div>
-        {/* child routes won't render without this */}
-        {renderRoutes(route.routes)}
+
+        {this.props.route.routes.map((route, i) => (
+          <RouteWithSubRoutes key={i} {...route}/>
+        ))}
+
         <Footer author="mlnck" />
       </StyledRoot>
     );
