@@ -54,6 +54,9 @@ mongoose.connect(serverConfig.mongoURL, (error) =>
   // feed some dummy data in DB.
   if(process.env.MONGO_SEED === 'true')
   { seedDB(); }
+  /**SHOW_FLOW_LOG**/
+  // seedDB();
+  /**END_SHOW_FLOW_LOG**/
 });
 
 // Apply body Parser and server public assets and routes
@@ -64,7 +67,6 @@ app.use(Express.static(path.resolve(__dirname, '../dist/client')));
 // Server side routes app.use
   // app.use('/api', posts);
 
-  //TODO:Still a lot of cleanup in client/routes
 const allRoutes = clientRoutes();
 const renderFullPage = basehtml;
 

@@ -9,13 +9,7 @@ import Skeleton from './containers/Skeleton';
 import Closet from './components/Closet';
 /**END_SHOW_FLOW_LOG**/
 
-const errorLoading = (err) => {
-  console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
-};
 
-const loadModule = (cb) => (componentModule) => {
-  cb(null, componentModule.default);
-};
 
 //these should come from server/controllers - accessing mongo and returning data
 const homeFnc = ()=>{ return 'backend (mongo) home fnc called'; }

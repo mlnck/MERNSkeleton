@@ -1,0 +1,3 @@
+_This will only be created if 'Start with Sample' option is chosen from CLI setup_
+
+Don't need to worry about .optional-helper-text because this will not show up unless it is selected
