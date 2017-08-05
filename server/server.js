@@ -37,9 +37,9 @@ import seedDB from '../config/utils/server/seed.db';
 import serverConfig from '../config/server/conf';
 
 //Server Side Routes:
-  /**SHOW_FLOW_LOG**/
+  /**START_WITH_SAMPLE**/
   import skeletonRoutes from './routes/skeleton.routes';
-  /**END_SHOW_FLOW_LOG**/
+  /**END_START_WITH_SAMPLE**/
 
 // Set native promises as mongoose promise
 mongoose.Promise = global.Promise;
@@ -56,9 +56,9 @@ mongoose.connect(serverConfig.mongoURL, (error) =>
   // feed some dummy data in DB.
   if(process.env.MONGO_SEED === 'true')
   { seedDB(); }
-  /**SHOW_FLOW_LOG**/
+  /**START_WITH_SAMPLE**/
   seedDB();
-  /**END_SHOW_FLOW_LOG**/
+  /**END_START_WITH_SAMPLE**/
 });
 
 // Apply body Parser and server public assets and routes
@@ -67,9 +67,9 @@ app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist/client')));
 // Server side routes app.use
-/**SHOW_FLOW_LOG**/
+/**START_WITH_SAMPLE**/
   app.use('/api', skeletonRoutes);
-/**END_SHOW_FLOW_LOG**/
+/**END_START_WITH_SAMPLE**/
 
 const allRoutes = clientRoutes();
 const renderFullPage = basehtml;

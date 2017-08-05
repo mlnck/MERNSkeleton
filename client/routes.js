@@ -4,10 +4,10 @@ import { matchRoutes, renderRoutes } from 'react-router-config';
 //route containers
 import Root from './containers/Root';
 import Home from './containers/Home';
-/**SHOW_FLOW_LOG**/
+/**START_WITH_SAMPLE**/
 import Skeleton from './containers/Skeleton';
 import Closet from './components/Closet';
-/**END_SHOW_FLOW_LOG**/
+/**END_START_WITH_SAMPLE**/
 
 
 
