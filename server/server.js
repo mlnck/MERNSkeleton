@@ -33,7 +33,7 @@ import { StaticRouter } from 'react-router-dom';
 // Import required modules
 import clientRoutes from '../client/routes';
 import { fetchComponentData } from '../config/utils/server/fetchData';
-import dummyData from '../config/utils/server/seed.db';
+import seedDB from '../config/utils/server/seed.db';
 import serverConfig from '../config/server/conf';
 
 //Server Side Routes:
@@ -55,7 +55,7 @@ mongoose.connect(serverConfig.mongoURL, (error) =>
   if(process.env.MONGO_SEED === 'true')
   { seedDB(); }
   /**SHOW_FLOW_LOG**/
-  // seedDB();
+  seedDB();
   /**END_SHOW_FLOW_LOG**/
 });
 
