@@ -5,21 +5,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import StyledXxx from './StyledXxx';
+import StyledCloset from './StyledCloset';
 
-export default function Xxx(props)
+export default function Closet(props)
 {
   return (
     <div>
-      // {props.prop}
+      A Closet in my skeleton?
     </div>
   );
 }
 
-Xxx.defaultProps = {
+Closet.defaultProps = {
   // prop: 'prop',
 };
 
-Xxx.propTypes = {
+Closet.propTypes = {
   // prop: PropTypes.string,
 };

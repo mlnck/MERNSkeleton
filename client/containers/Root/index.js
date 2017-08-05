@@ -52,7 +52,7 @@ export default class RootPage extends React.Component
     const RouteWithSubRoutes = (route) => (
       <Route exact={route.exact} path={route.path} render={props => (
         /**SHOW_FLOW_LOG**/// (pass the sub-routes down to keep nesting)/**END_SHOW_FLOW_LOG**/
-        <route.component {...props} routes={route.routes}/>
+        <route.component {...props} route={route.routes}/>
       )}/>
     )
 

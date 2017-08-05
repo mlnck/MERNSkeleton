@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const ComponentName = styled.div`
+const StyledXxx = styled.div`
   border: 0;
 `;
 
-export default ComponentName;
+export default StyledXxx;

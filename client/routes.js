@@ -6,6 +6,7 @@ import Root from './containers/Root';
 import Home from './containers/Home';
 /**SHOW_FLOW_LOG**/
 import Skeleton from './containers/Skeleton';
+import Closet from './components/Closet';
 /**END_SHOW_FLOW_LOG**/
 
 const errorLoading = (err) => {
@@ -15,31 +16,6 @@ const errorLoading = (err) => {
 const loadModule = (cb) => (componentModule) => {
   cb(null, componentModule.default);
 };
-
-////TMP
-const debugLog = (dbg) => { console.log('dbg:',dbg); }
-const addProps = (obj,prp) =>
-{
-  obj[0].customProps = prp;
-  return obj;
-}
-
-// const Skeleton = ({ route }) => (
-//   <div>
-//     <h2>Skeleton</h2>
-//     {debugLog(['aa',route])}
-//     {/* child routes won't render without this */}
-//     {renderRoutes(addProps(route.routes,{extra:'propyo'}))}
-//   </div>
-// )
-const Closet = ({route}) => (
-  <div>
-    <h3>Closet</h3>
-    <div>xyz::{route.customProps.extra}</div>
-    <div>{debugLog(['zz',route])}</div>
-  </div>
-)
-///END TMP
 
 //these should come from server/controllers - accessing mongo and returning data
 const homeFnc = ()=>{ return 'backend (mongo) home fnc called'; }
