@@ -26,7 +26,7 @@ export default function getRoutes() {
           loadData:homeFnc,
           component: Home
         },
-        { path: '/skeleton/:id',
+        { path: '/skeleton/:id',//only add from here down when 'Start with Sample' option is chosen from CLI setup_
           exact: false,
           component: Skeleton,
           routes: [

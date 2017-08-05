@@ -38,7 +38,7 @@ import serverConfig from '../config/server/conf';
 
 //Server Side Routes:
   /**SHOW_FLOW_LOG**/
-  import skeletons from './routes/skeleton.routes';
+  import skeletonRoutes from './routes/skeleton.routes';
   /**END_SHOW_FLOW_LOG**/
 
 // Set native promises as mongoose promise
@@ -68,7 +68,7 @@ app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist/client')));
 // Server side routes app.use
 /**SHOW_FLOW_LOG**/
-  app.use('/api', skeletons);
+  app.use('/api', skeletonRoutes);
 /**END_SHOW_FLOW_LOG**/
 
 const allRoutes = clientRoutes();
@@ -87,6 +87,7 @@ const loadBranchData = (location) => {
     console.log('>',route);
     console.log('->',match);
     console.log('-->',route.loadData,'<------');
+    if(route.loadData){ console.log('route.loadData(match):',route.loadData(match)); }
     return route.loadData
       ? route.loadData(match)
       : Promise.resolve(null)
