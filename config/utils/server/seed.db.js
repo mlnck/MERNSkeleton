@@ -8,7 +8,6 @@ export default function () {
     }
 
     const content1 = `All the functionality`;
-
     const content2 = `None of the bloat`;
 
     const skeleton1 = new Skeleton({ title: 'A Skeleton', content: content1 });

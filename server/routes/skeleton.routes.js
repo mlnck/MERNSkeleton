@@ -9,7 +9,7 @@ router.route('/skeletons').get(SkeletonController.getSkeletons);
 router.route('/skeletons/:cuid').get(SkeletonController.getSkeleton);
 
 // Add a new Skeleton
-router.route('/skeletons').skeleton(SkeletonController.addSkeleton);
+router.route('/skeletons').post(SkeletonController.addSkeleton);
 
 // Delete a skeleton by cuid
 router.route('/skeletons/:cuid').delete(SkeletonController.deleteSkeleton);

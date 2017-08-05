@@ -37,7 +37,9 @@ import seedDB from '../config/utils/server/seed.db';
 import serverConfig from '../config/server/conf';
 
 //Server Side Routes:
-  //import posts from './routes/post.routes';
+  /**SHOW_FLOW_LOG**/
+  import skeletons from './routes/skeleton.routes';
+  /**END_SHOW_FLOW_LOG**/
 
 // Set native promises as mongoose promise
 mongoose.Promise = global.Promise;
@@ -65,7 +67,9 @@ app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist/client')));
 // Server side routes app.use
-  // app.use('/api', posts);
+/**SHOW_FLOW_LOG**/
+  app.use('/api', skeletons);
+/**END_SHOW_FLOW_LOG**/
 
 const allRoutes = clientRoutes();
 const renderFullPage = basehtml;
