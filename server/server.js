@@ -85,9 +85,12 @@ const renderError = err => {
 const loadBranchData = (location) => {
   const branch = matchRoutes(allRoutes, location);
   const promises = branch.map(({ route, match }) => {
+    /**START_WITH_SAMPLE**/
+    console.log('/server/server.js -- for backend routing we are matching on:');
     console.log('>',route);
     console.log('->',match);
-    console.log('-->',route.loadDataFnc,'<------');
+    console.log('-->',route.loadDataFnc);
+    /**END_START_WITH_SAMPLE**/
     if(route.loadDataFnc)
     {
       match.dataKey = route.loadDataKey;
@@ -95,7 +98,7 @@ const loadBranchData = (location) => {
     }
     else{ return Promise.resolve(null) }
   })
-  console.log('promises:',promises);
+  /**START_WITH_SAMPLE**/console.log('All Promises Are:',promises);/**END_START_WITH_SAMPLE**/
   return Promise.all(promises)
 }
 
