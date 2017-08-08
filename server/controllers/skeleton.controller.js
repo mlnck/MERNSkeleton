@@ -17,7 +17,7 @@ export function getSkeletons(req, res) {
   });
 }
 
-export function getSkeletonsFlat(o){ return { testReturn:"got 'em " + o.params.id } };
+export function getSkeletonsFlat(o){ let obj = {}; obj[o.dataKey] = "got 'em " + o.params.id; console.log('server obj:',obj); return obj };
 
 /**
  * Save a skeleton

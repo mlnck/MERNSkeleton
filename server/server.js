@@ -87,10 +87,13 @@ const loadBranchData = (location) => {
   const promises = branch.map(({ route, match }) => {
     console.log('>',route);
     console.log('->',match);
-    console.log('-->',route.loadData,'<------');
-    return route.loadData
-      ? eval(route.loadData)(match)
-      : Promise.resolve(null)
+    console.log('-->',route.loadDataFnc,'<------');
+    if(route.loadDataFnc)
+    {
+      match.dataKey = route.loadDataKey;
+      return eval(route.loadDataFnc)(match)
+    }
+    else{ return Promise.resolve(null) }
   })
   console.log('promises:',promises);
   return Promise.all(promises)
@@ -102,6 +105,7 @@ const store = configureStore();
   loadBranchData(req.url)
   .then((data) =>
   {
+    console.log('data1',data);
     data = data.filter((d)=>d!==null);
     console.log('rendering will go here')
     console.log(data);
@@ -112,7 +116,6 @@ const store = configureStore();
     console.log('finalState:',finalState);
     res
       .set('Content-Type', 'text/html')
-      .set('data',data)
       .status(200)
       .end(renderFullPage(initialView, finalState, data));
   });

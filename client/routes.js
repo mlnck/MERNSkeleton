@@ -23,18 +23,21 @@ export default function getRoutes() {
       routes: [
         { path: '/',
           exact: true,
-          loadData:homeFnc,
+          loadDataKey:'homeData',
+          loadDataFnc:'homeFnc',
           component: Home
         },
         { path: '/skeleton/:id',//only add from here down when 'Start with Sample' option is chosen from CLI setup_
           exact: false,
           component: Skeleton,
-          loadData:'SkeletonController.getSkeletonsFlat',
+          loadDataKey:'allSkeletons',
+          loadDataFnc:'SkeletonController.getSkeletonsFlat',
           routes: [
             { path: '/skeleton/:id/closet',
               exact: false,
               component: Closet,
-              loadData:closetFnc
+              loadDataKey:'closetKey',
+              loadDataFnc:'closetFnc'
             }
           ]
         }
