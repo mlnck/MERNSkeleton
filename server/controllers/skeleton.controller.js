@@ -17,6 +17,8 @@ export function getSkeletons(req, res) {
   });
 }
 
+export function getSkeletonsFlat(o){ return { testReturn:"got 'em " + o.params.id } };
+
 /**
  * Save a skeleton
  * @param req
@@ -52,7 +54,7 @@ export function addSkeleton(req, res) {
  * @returns void
  */
 export function getSkeleton(req, res) {
-  Skeleton.findOne({ cuid: req.params.cuid }).exec((err, skeleton) => {
+  Skeleton.findOne({ _id: req.params.cuid }).exec((err, skeleton) => {
     if (err) {
       res.status(500).send(err);
     }

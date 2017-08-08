@@ -29,11 +29,12 @@ export default function getRoutes() {
         { path: '/skeleton/:id',//only add from here down when 'Start with Sample' option is chosen from CLI setup_
           exact: false,
           component: Skeleton,
+          loadData:'SkeletonController.getSkeletonsFlat',
           routes: [
             { path: '/skeleton/:id/closet',
               exact: false,
-              loadData:closetFnc,
-              component: Closet
+              component: Closet,
+              loadData:closetFnc
             }
           ]
         }

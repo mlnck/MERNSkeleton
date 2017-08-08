@@ -1,6 +1,6 @@
 import Helmet from 'react-helmet';
 
-export default function renderFullPage(html, initialState){
+export default function renderFullPage(html, initialState, data){
   const head = Helmet.rewind();
 
   // Import Manifests
@@ -29,6 +29,7 @@ export default function renderFullPage(html, initialState){
             white-space:pre;
           }
         </style>
+        <script>let data=${data};</script>
       </head>
       <body>
         <div className="optional-helper-text">

@@ -39,6 +39,7 @@ import serverConfig from '../config/server/conf';
 //Server Side Routes:
   /**START_WITH_SAMPLE**/
   import skeletonRoutes from './routes/skeleton.routes';
+  import * as SkeletonController from './controllers/skeleton.controller';
   /**END_START_WITH_SAMPLE**/
 
 // Set native promises as mongoose promise
@@ -87,9 +88,8 @@ const loadBranchData = (location) => {
     console.log('>',route);
     console.log('->',match);
     console.log('-->',route.loadData,'<------');
-    if(route.loadData){ console.log('route.loadData(match):',route.loadData(match)); }
     return route.loadData
-      ? route.loadData(match)
+      ? eval(route.loadData)(match)
       : Promise.resolve(null)
   })
   console.log('promises:',promises);
@@ -102,17 +102,19 @@ const store = configureStore();
   loadBranchData(req.url)
   .then((data) =>
   {
+    data = data.filter((d)=>d!==null);
     console.log('rendering will go here')
     console.log(data);
     const context = {}
 
     const initialView = '<div className="optional-helper-text">This is being replaced by the client side</div>';
     const finalState = store.getState();
-
+    console.log('finalState:',finalState);
     res
       .set('Content-Type', 'text/html')
+      .set('data',data)
       .status(200)
-      .end(renderFullPage(initialView, finalState));
+      .end(renderFullPage(initialView, finalState, data));
   });
 });
 
