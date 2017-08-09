@@ -112,7 +112,6 @@ const store = configureStore();
   loadBranchData(req.url)
   .then((data) =>
   {
-    console.log('data1',data);
     data = data
             .filter((d)=>d!==null)
             .map((d)=>{
@@ -123,13 +122,10 @@ const store = configureStore();
                 return o;
               }
             })
-    console.log('rendering will go here')
-    console.log(data);
     const context = {}
-
     const initialView = '<div className="optional-helper-text">This is being replaced by the client side</div>';
     const finalState = store.getState();
-    console.log('finalState:',finalState);
+
     res
       .set('Content-Type', 'text/html')
       .status(200)
