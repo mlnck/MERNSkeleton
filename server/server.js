@@ -82,6 +82,10 @@ const renderError = err => {
   return renderFullPage(`Server Error${errTrace}`, {});
 };
 
+//these should come from server/controllers - accessing mongo and returning data
+const homeFnc = ()=>{ return 'backend (mongo) home fnc called'; }
+const closetFnc = (obj)=>{ console.log('p0obj:',obj); return 'backend (mongo) closet fnc called with param' + obj + ', ' + obj.params.id; }
+
 const loadBranchData = (location) => {
   const branch = matchRoutes(allRoutes, location);
   const promises = branch.map(({ route, match }) => {
@@ -109,7 +113,16 @@ const store = configureStore();
   .then((data) =>
   {
     console.log('data1',data);
-    data = data.filter((d)=>d!==null);
+    data = data
+            .filter((d)=>d!==null)
+            .map((d)=>{
+              if(d.hasOwnProperty('dataKey')){
+                let o = {};
+                o[d['dataKey']] = d;
+                console.log('o',o);
+                return o;
+              }
+            })
     console.log('rendering will go here')
     console.log(data);
     const context = {}

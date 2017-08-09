@@ -2,13 +2,15 @@
 
 import Skeleton from '../models/skeleton';
 
+/*API / ROUTE STUBS*/
+
 /**
  * Get all skeletons
  * @param req
  * @param res
  * @returns void
  */
-export function getSkeletons(req, res) {
+export function getSkeletonsByBrowser(req, res) {
   Skeleton.find().sort('-dateAdded').exec((err, skeletons) => {
     if (err) {
       res.status(500).send(err);
@@ -17,15 +19,13 @@ export function getSkeletons(req, res) {
   });
 }
 
-export function getSkeletonsFlat(o){ let obj = {}; obj[o.dataKey] = "got 'em " + o.params.id; console.log('server obj:',obj); return obj };
-
 /**
  * Save a skeleton
  * @param req
  * @param res
  * @returns void
  */
-export function addSkeleton(req, res) {
+export function addSkeletonByBrowser(req, res) {
   if (!req.body.skeleton.dateAdded || !req.body.skeleton.title || !req.body.skeleton.content) {
     res.status(403).end();
   }
@@ -53,7 +53,7 @@ export function addSkeleton(req, res) {
  * @param res
  * @returns void
  */
-export function getSkeleton(req, res) {
+export function getSkeletonByBrowser(req, res) {
   Skeleton.findOne({ _id: req.params.cuid }).exec((err, skeleton) => {
     if (err) {
       res.status(500).send(err);
@@ -68,7 +68,7 @@ export function getSkeleton(req, res) {
  * @param res
  * @returns void
  */
-export function deleteSkeleton(req, res) {
+export function deleteSkeletonByBrowser(req, res) {
   Skeleton.findOne({ cuid: req.params.cuid }).exec((err, skeleton) => {
     if (err) {
       res.status(500).send(err);
@@ -79,3 +79,17 @@ export function deleteSkeleton(req, res) {
     });
   });
 }
+
+
+
+/* BRANCH / PROMISE STUBS  */
+export function getSkeletonsByRoute(o)
+{
+  let obj = Skeleton.find().sort('-dateAdded').exec((err, skeletons) => {
+    if (err) { return { error:err } };
+    skeletons.dataKey = 'skeletonsByRoute';
+    return { skeletons };
+  });
+  console.log('ret obj',obj);
+  return obj;
+};

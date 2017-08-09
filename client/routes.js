@@ -11,10 +11,6 @@ import Closet from './components/Closet';
 
 
 
-//these should come from server/controllers - accessing mongo and returning data
-const homeFnc = ()=>{ return 'backend (mongo) home fnc called'; }
-const closetFnc = (obj)=>{ console.log('p0obj:',obj); return 'backend (mongo) closet fnc called with param' + obj + ', ' + obj.params.id; }
-
 export default function getRoutes() {
 
   const allRoutes = [//when adding these via CLI we will need to give a list of all parents that route could be associated with
@@ -23,23 +19,28 @@ export default function getRoutes() {
       routes: [
         { path: '/',
           exact: true,
-          loadDataKey:'homeData',
-          loadDataFnc:'homeFnc',
           component: Home
         },
-        { path: '/skeleton/:id',//only add from here down when 'Start with Sample' option is chosen from CLI setup_
+        { path: '/skeletons/',//only add from here down when 'Start with Sample' option is chosen from CLI setup_
+          exact: true,
+          component: Skeleton,
+          loadDataKey:'allSkeletons',
+          loadDataFnc:'SkeletonController.getSkeletonsByRoute',
+          // routes: [
+          //   { path: '/skeletons/:id/',
+          //     exact: false,
+          //     component: Closet,
+          //     loadDataKey:'closetKey',
+          //     loadDataFnc:'closetFnc'
+          //   }
+          // ]
+        },
+        {
+          path: '/skeletons/:id',//only add from here down when 'Start with Sample' option is chosen from CLI setup_
           exact: false,
           component: Skeleton,
           loadDataKey:'allSkeletons',
-          loadDataFnc:'SkeletonController.getSkeletonsFlat',
-          routes: [
-            { path: '/skeleton/:id/closet',
-              exact: false,
-              component: Closet,
-              loadDataKey:'closetKey',
-              loadDataFnc:'closetFnc'
-            }
-          ]
+          loadDataFnc:'SkeletonController.getSkeletonsByRoute',
         }
       ]
     }

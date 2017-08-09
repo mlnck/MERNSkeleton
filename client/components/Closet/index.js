@@ -5,14 +5,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import styled from 'styled-components';
 import StyledCloset from './StyledCloset';
 
 export default function Closet(props)
 {
   return (
-    <div>
-      A Closet in my skeleton?
-    </div>
+    <StyledCloset>
+      {props.title}!<br/>
+      &nbsp;&nbsp;&nbsp; - <i>{props.content}</i>
+    </StyledCloset>
   );
 }
 

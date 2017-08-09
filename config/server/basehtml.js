@@ -29,7 +29,7 @@ export default function renderFullPage(html, initialState, data){
             white-space:pre;
           }
         </style>
-        <script>let data=${JSON.stringify(data)};</script>
+        <script>let routingData=${JSON.stringify(data)};</script>
       </head>
       <body>
         <div className="optional-helper-text">

@@ -28,25 +28,25 @@ export default class Skeleton extends React.Component
   render()
   {
     const skeletonProps = this.props;
-    const loadComponent = skeletonProps.route[0].component;
-    // const loadComponentFn = skeletonProps.route[0].component;
-    console.log('loadComponent:',loadComponent());
-    console.log('skeletonProps.route[0].component:',skeletonProps.route[0].component());
+    const closets = routingData[0].skeletonsByRoute.map((closetProps,indx)=>{
+      return <Closet key={indx} {...closetProps} />
+    })
     return (
       <StyledSkeleton>
 
-        <h4>*Skeleton Container - with browser variable: {skeletonProps.match.params.id}*</h4>
+        <h4>*Skeleton Container - with browser variable: {skeletonProps.match.params.id || 'click "Test Route Variable" button'}*</h4>
         4) FRONT-END (/client/containers/Skeleton/index.js) - Loaded into "/client/containers/Root/index.js" by "/client/routes.js"<br/>
          -=> This component is now added to the "Root Component" due to the nesting defined in: "/client/routes.js"
         <br/><br/>
-        <button>Test route variable</button>
-        <button>Test Database Query</button>
+        The bordered boxes below show a database call populating components through the route function in this stack.<br/>
+        For an example using express routing click here:
+          <a href="http://localhost:8000/api/skeletons" target="_blank">http://localhost:8000/api/skeletons</a>
         <br/><br/>
-
-        {/* will need to make the pass down function dynamic/reusable on all pages */}
-        {/* and will need to use the following when we are at the last position */}
-          <Closet {...skeletonProps} />
-        {/* unless original function is supposed to auto/add components along the way -- which it may be */}
+          {closets}
+        <br/><br/>
+          <a href="./SKELETON%20BROWSER%20URL%20VARIABLE"><button>Test route variable</button></a>
+          <button>Show Redux Example</button>
+        <br/><br/>
       </StyledSkeleton>
     );
   }
