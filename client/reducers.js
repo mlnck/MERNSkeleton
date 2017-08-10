@@ -6,8 +6,10 @@
 import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
-
+/**SHOW_FLOW_LOG**/console.log('REDUX - Combine Reducers Here');/**END_SHOW_FLOW_LOG**///remember path in CLI
 import globalReducer from './containers/Root/reducer';
+import skeletonReducer from './containers/Skeleton/reducer';
+
 
 /*
  * routeReducer
@@ -44,6 +46,7 @@ export default function createReducer(asyncReducers) {
   return combineReducers({
     route: routeReducer,
     global: globalReducer,
+    skeleton: skeletonReducer,
     ...asyncReducers,
   });
 }
