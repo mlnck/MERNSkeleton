@@ -46,7 +46,7 @@ import serverConfig from '../config/server/conf';
 mongoose.Promise = global.Promise;
 
 // MongoDB Connection
-mongoose.connect(serverConfig.mongoURL, (error) =>
+mongoose.connect(serverConfig.mongoURL, {useMongoClient: true}, (error) =>
 {
   if(error)
   {
