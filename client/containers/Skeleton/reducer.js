@@ -35,6 +35,8 @@ function skeletonUpsertComposition(state=[], action)
                   })
                 }
               ]
+    default:
+      return state
   }
 }
 
@@ -57,9 +59,14 @@ function skeletonReducer(state = initialState, action) {
 /**SHOW_FLOW_LOG**/
 console.info('NOTE: this combineReducer used here could be mapped to differnt keys using one of the below for the same effect'+
 `const skeletonReducer = combineReducers({
-  alterBone: skeletonAlterBoneComposition(state.alterBone, action),
-  skeleton:skeletonUpsertComposition(state.skeletons, action)
+  alterBone: skeletonAlterBoneComposition,
+  skeleton:skeletonUpsertComposition
 })
+
+const skeletonReducer = combineReducers({
+  alterBone,
+  skeletons
+});
 
 function skeletonReducer(state = initialState, action) {
   return {
