@@ -15,15 +15,13 @@ export default class Skeleton extends React.Component
   constructor(props)
   {
     super(props);
-    /**SHOW_FLOW_LOG**/
     console.log('Skeleton Props:',props);
-    /**END_SHOW_FLOW_LOG**/
   }
 
   componentWillMount()
-  { /**SHOW_FLOW_LOG**/console.log('Skeleton is mounting');/**END_SHOW_FLOW_LOG**/ }
+  { console.log('Skeleton is mounting'); }
   componentDidMount()
-  { /**SHOW_FLOW_LOG**/console.log('Skeleton mounted');/**END_SHOW_FLOW_LOG**/ }
+  { console.log('Skeleton mounted'); }
 
   render()
   {
@@ -44,7 +42,7 @@ export default class Skeleton extends React.Component
         <br/><br/>
           {closets}
         <br/><br/>
-          <a href="./skeletons/SKELETON%20BROWSER%20URL%20VARIABLE"><button>Test route variable</button></a>
+          <a href="./SKELETON%20BROWSER%20URL%20VARIABLE"><button>Test route variable</button></a>
           <button>Show Redux Example</button>
         <br/><br/>
       </StyledSkeleton>

@@ -3,44 +3,38 @@
 import { combineReducers } from 'redux'
 import { fromJS } from 'immutable';
 
-import { ALTER_BONE, CREATE_SKELETON, TOGGLE_BOJANGLES, AlterBone } from './constants';
+import { ALTER_BONE, AlterBone, CREATE_SKELETON, TOGGLE_BOJANGLES } from './constants';
 import { alterBone } from './actions';
 
 const { NO_ALTERATIONS } = AlterBone;
 
 const initialState = fromJS({
-  alterBone: alterBone.NO_ALTERATIONS,
-  skeletonsById: [],
+  alterBones: alterBone.NO_ALTERATIONS,
   skeletons:[]
 });
 
-function skeletonUpsertComposition(state=[], action)
+function skeletons(state=[], action)
 {
   switch(action.type)
   {
     case CREATE_SKELETON:
       return [
                 ...state,
-                {
-                  skeletonsById: [ action.id ],
-                  skeletons: [ ...state.skeletons, { id:action.id, name:action.text, bojangles:false } ]
-                }
-            ]
+                { name:action.text, bojangles:false }
+             ]
     case TOGGLE_BOJANGLES:
-      return [
-                ...state,
-                {
-                  skeletons: state.skeletons.map((skel,indx) => {
-                    if(indx === action.index){ return {...skel, bojangles:!skel.bojangles} }
-                  })
-                }
-              ]
+      return state.map((skeleton,index) => {
+        if(index === action.index){
+          return { ...skeleton, bojangles:!skeleton.bojangles }
+        }
+        return skeleton
+      })
     default:
       return state
   }
 }
 
-function skeletonAlterBoneComposition(state = NO_ALTERATIONS, action) {
+function alterBones(state = NO_ALTERATIONS, action) {
   switch (action.type) {
     case ALTER_BONE:
       return action.altered
@@ -49,12 +43,14 @@ function skeletonAlterBoneComposition(state = NO_ALTERATIONS, action) {
   }
 }
 
-function skeletonReducer(state = initialState, action) {
+function skeletonReducer(state = initialState, action){
   return {
-          alterBone: skeletonAlterBoneComposition(state.alterBone, action),
-          skeleton:skeletonUpsertComposition(state.skeletons, action)
-        }
-}
+    alterBones:alterBones(state.alterBones, action),
+    skeletons:skeletons(state.skeletons, action)
+  }
+};
+
+console.log('?!?!?!?!?!??!!?',skeletonReducer,'?!?!?!?!?!?!?!?');
 
 /**SHOW_FLOW_LOG**/
 console.info('NOTE: this combineReducer used here could be mapped to differnt keys using one of the below for the same effect'+

@@ -26,6 +26,7 @@ import './global-styles';
 import clientRoutes from '../client/routes';
 
 // Create redux store with history
+console.log('FROM INDEXJS window.__INITIAL_STATE__:',window.__INITIAL_STATE__);
 const store = configureStore(window.__INITIAL_STATE__);
 
   ReactDOM.render(

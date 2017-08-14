@@ -85,7 +85,7 @@ export function deleteSkeletonByBrowser(req, res) {
 /* BRANCH / PROMISE STUBS  */
 export function getSkeletonsByRoute(o)
 {
-  let obj = Skeleton.find().sort('-dateAdded').exec((err, skeletons) => {
+  let obj = Skeleton.find().sort('dateAdded').exec((err, skeletons) => {
     if (err) { return { error:err } };
     skeletons.dataKey = 'skeletonsByRoute';
     return { skeletons };

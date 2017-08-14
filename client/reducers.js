@@ -42,6 +42,7 @@ function routeReducer(state = routeInitialState, action) {
 /**
  * Creates the main reducer with the asynchronously loaded ones
  */
+ /**SHOW_FLOW_LOG**/console.log('REDUX - \n\tMERNSkeleton/client/reducers.js\n\tCombining all reducers for use with store object');/**END_SHOW_FLOW_LOG**/
 export default function createReducer(asyncReducers) {
   return combineReducers({
     route: routeReducer,
