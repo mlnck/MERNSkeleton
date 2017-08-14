@@ -44,7 +44,7 @@ export default class Skeleton extends React.Component
         <br/><br/>
           {closets}
         <br/><br/>
-          <a href="./SKELETON%20BROWSER%20URL%20VARIABLE"><button>Test route variable</button></a>
+          <a href="./skeletons/SKELETON%20BROWSER%20URL%20VARIABLE"><button>Test route variable</button></a>
           <button>Show Redux Example</button>
         <br/><br/>
       </StyledSkeleton>
