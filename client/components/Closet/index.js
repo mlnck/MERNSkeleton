@@ -19,9 +19,10 @@ export default function Closet(props)
 }
 
 Closet.defaultProps = {
-  // prop: 'prop',
+  prop: 'Default closet props here',
 };
 
 Closet.propTypes = {
-  // prop: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string
 };

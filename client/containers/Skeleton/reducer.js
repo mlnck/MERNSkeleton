@@ -50,8 +50,6 @@ function skeletonReducer(state = initialState, action){
   }
 };
 
-console.log('?!?!?!?!?!??!!?',skeletonReducer,'?!?!?!?!?!?!?!?');
-
 /**SHOW_FLOW_LOG**/
 console.info('NOTE: this combineReducer used here could be mapped to differnt keys using one of the below for the same effect'+
 `const skeletonReducer = combineReducers({
