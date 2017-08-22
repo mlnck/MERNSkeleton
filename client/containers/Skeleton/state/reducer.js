@@ -1,4 +1,4 @@
-console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/reducer.js\n\t\tCreate conntainer/component reducer - NO logic in this file');
+console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/state/reducer.js\n\t\tCreate conntainer/component reducer - NO logic in this file');
 
 import { combineReducers } from 'redux'
 import { fromJS,toJS,toObject } from 'immutable';

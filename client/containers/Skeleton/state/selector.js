@@ -1,4 +1,4 @@
-console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/reducer.js\n\t\tCreate selectors to be used from the ./index.js file');
+console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/state/selector.js\n\t\tCreate selectors to be used from the ./index.js file');
 import { createSelector } from 'reselect'
 
 export const getAlteredState = (state) =>

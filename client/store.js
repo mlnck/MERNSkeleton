@@ -8,8 +8,8 @@ import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 /**SHOW_FLOW_LOG**/
-import { createSkeleton, toggleBojangles, alterBone } from './containers/Skeleton/actions';
-import { AlterBone } from './containers/Skeleton/constants';
+import { createSkeleton, toggleBojangles, alterBone } from './containers/Skeleton/state/actions';
+import { AlterBone } from './containers/Skeleton/state/constants';
 /**END_SHOW_FLOW_LOG**/
 
 const sagaMiddleware = createSagaMiddleware();
@@ -69,11 +69,11 @@ export default function configureStore(initialState, history = {}) {
     // Dispatch some actions
     store.dispatch(createSkeleton('Boney'));
     store.dispatch(createSkeleton('Frank'));
-    store.dispatch(createSkeleton('Barney'));
+    store.dispatch(createSkeleton('Freddy'));
     store.dispatch(createSkeleton('Bonez'));
     store.dispatch(toggleBojangles(0));
     store.dispatch(toggleBojangles(2))
-    store.dispatch(alterBone(AlterBone.BREAK_BONE));
+    store.dispatch(alterBone('NO_ALTERATIONS'));
     // Stop listening to state updates
     unsubscribe()
   /**END_SHOW_FLOW_LOG**/

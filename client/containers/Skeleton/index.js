@@ -10,9 +10,9 @@ import StyledSkeleton from './StyledSkeleton';
 import Closet from '../../components/Closet';
 
 //import actions
-import { alterBone, searchSkeleton } from './actions';
+import { alterBone, searchSkeleton } from './state/actions';
 //import selector
-import { getAlteredState, getSkeletons, getFilteredBojangles, getSearchedSkeleton } from './selector';
+import { getAlteredState, getSkeletons, getFilteredBojangles, getSearchedSkeleton, getSearchTerm } from './state/selector';
 
 //will need to toggle export for mapping dispatch/state below if need be (from CLI)
 class Skeleton extends React.Component
@@ -82,7 +82,8 @@ class Skeleton extends React.Component
         </select>
         <br/><br/>
         And Memoizations can be used as a selector for another memoized selector.<br/>
-        Try it out to: <span onClick={skeletonProps.searchSkeleton} style={{color:'blue',textDecoration:'underline',fontVariant:'italic'}}>Find Bones&rsquo;</span>
+        Try it out to: <span onClick={skeletonProps.searchSkeleton} data-searchon="Bone" style={{color:'blue',cursor:'pointer',textDecoration:'underline',fontVariant:'italic'}}>Find Bones&rsquo;</span>
+         <span onClick={skeletonProps.searchSkeleton} data-searchon="Fr" style={{color:'blue',cursor:'pointer',textDecoration:'underline',fontVariant:'italic'}}>Find Non-Bones&rsquo;</span>
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       </StyledSkeleton>
     );
@@ -103,7 +104,8 @@ const mapStateToProps = (state, ownProps) => {
     alteredBoneState: getAlteredState(state),
     skeletons: getSkeletons(state),
     filteredSkeletons: getFilteredBojangles(state),
-    searchedSkeleton: getSearchedSkeleton(state)
+    searchedSkeleton: getSearchedSkeleton(state),
+    skeletonSearch: getSearchTerm(state)
   };
 };
 
@@ -111,7 +113,7 @@ const mapDispatchToProps = (dispatch) => {
   console.log('mapDispatchToProps:->',dispatch);
   return {
     blanketChange: (s) => { dispatch(alterBone(s.target.value)); },
-    searchSkeleton: (s) => { dispatch(searchSkeleton('Bone')); }
+    searchSkeleton: (s) => { ;dispatch(searchSkeleton(s.currentTarget.getAttribute('data-searchon'))); }
   };
 };
 

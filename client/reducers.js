@@ -8,7 +8,7 @@ import { combineReducers } from 'redux-immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 /**SHOW_FLOW_LOG**/console.log('REDUX - \n\tMERNSkeleton/client/reducers.js\n\t\tCombine Reducer Files Here');/**END_SHOW_FLOW_LOG**///remember path in CLI
 import globalReducer from './containers/Root/reducer';
-import skeletonReducer from './containers/Skeleton/reducer';
+import skeletonReducer from './containers/Skeleton/state/reducer';
 
 
 /*
