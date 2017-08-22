@@ -9,8 +9,13 @@ import StyledSkeleton from './StyledSkeleton';
 //import Components
 import Closet from '../../components/Closet';
 
+//import actions
+import { alterBone } from './actions';
+//import reducer
+import { getAlteredState } from './reducer';
+
 //will need to toggle export for mapping dispatch/state below if need be (from CLI)
-export default class Skeleton extends React.Component
+class Skeleton extends React.Component
 { // eslint-disable-line react/prefer-stateless-function
   constructor(props)
   {
@@ -42,10 +47,10 @@ export default class Skeleton extends React.Component
         <br/><br/>
           {closets}
         <br/><br/>
-          <a href="./SKELETON%20BROWSER%20URL%20VARIABLE"><button>Test route variable</button></a>
+          <a href="/skeletons/SKELETON%20BROWSER%20URL%20VARIABLE"><button>Test route variable</button></a>
         <br/><br/>
-        <br/>Blanket redux example:<br/>
-        <select id="redux-example">
+        <br/>Blanket redux example::: {skeletonProps.alteredBoneState}<br/>
+        <select id="redux-example" onChange={skeletonProps.blanketChange}>
           <option value="NO_ALTERATIONS">no_alterations</option>
           <option value="ADD_BONE">add bone</option>
           <option value="REMOVE_BONE">remove bone</option>
@@ -64,3 +69,22 @@ Skeleton.defaultProps = {
 Skeleton.propTypes = {
   routes: PropTypes.array.isRequired
 };
+
+const mapStateToProps = (state, ownProps) => {
+  console.log('mapStateToProps:->',state, ownProps);
+  return {
+    alteredBoneState: getAlteredState(state)
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  console.log('mapDispatchToProps:->',dispatch);
+  return {
+    blanketChange: (s) => { console.log('alterbone',s.target.value); dispatch(alterBone(s.target.value)); }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Skeleton);
