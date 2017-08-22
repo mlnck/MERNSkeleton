@@ -68,7 +68,11 @@ export default function configureStore(initialState, history = {}) {
     )
     // Dispatch some actions
     store.dispatch(createSkeleton('Boney'));
+    store.dispatch(createSkeleton('Frank'));
+    store.dispatch(createSkeleton('Barney'));
+    store.dispatch(createSkeleton('Bonez'));
     store.dispatch(toggleBojangles(0));
+    store.dispatch(toggleBojangles(2))
     store.dispatch(alterBone(AlterBone.BREAK_BONE));
     // Stop listening to state updates
     unsubscribe()
