@@ -83,7 +83,7 @@ class Skeleton extends React.Component
         <br/><br/>
         And Memoizations can be used as a selector for another memoized selector.<br/>
         Try it out to: <span onClick={skeletonProps.searchSkeleton} data-searchon="Bone" style={{color:'blue',cursor:'pointer',textDecoration:'underline',fontVariant:'italic'}}>Find Bones&rsquo;</span>
-         <span onClick={skeletonProps.searchSkeleton} data-searchon="Fr" style={{color:'blue',cursor:'pointer',textDecoration:'underline',fontVariant:'italic'}}>Find Non-Bones&rsquo;</span>
+        &nbsp;&mdash;&nbsp;<span onClick={skeletonProps.searchSkeleton} data-searchon="Fr" style={{color:'blue',cursor:'pointer',textDecoration:'underline',fontVariant:'italic'}}>Find Non-Bones&rsquo;</span>
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       </StyledSkeleton>
     );
