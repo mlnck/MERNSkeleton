@@ -8,8 +8,10 @@ import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 /**SHOW_FLOW_LOG**/
+import { AlterBone, CREATE_SAGA_SKELETON } from './containers/Skeleton/state/constants';
 import { createSkeleton, toggleBojangles, alterBone } from './containers/Skeleton/state/actions';
-import { AlterBone } from './containers/Skeleton/state/constants';
+
+import rootSkeletonSaga from './containers/Skeleton/state/sagas';
 /**END_SHOW_FLOW_LOG**/
 
 const sagaMiddleware = createSagaMiddleware();
@@ -43,8 +45,10 @@ export default function configureStore(initialState, history = {}) {
     compose(...enhancers)
   );
 
+  //Sagas
+  sagaMiddleware.run(rootSkeletonSaga);
+
   // Extensions
-  store.runSaga = sagaMiddleware.run;
   store.asyncReducers = {}; // Async reducer registry
 
   // Make reducers hot reloadable, see http://mxs.is/googmo
@@ -76,6 +80,8 @@ export default function configureStore(initialState, history = {}) {
     store.dispatch(alterBone('NO_ALTERATIONS'));
     // Stop listening to state updates
     unsubscribe()
+    //saga example
+    // sagaMiddleware.run(helloSagaSkeleton);
   /**END_SHOW_FLOW_LOG**/
   return store;
 }

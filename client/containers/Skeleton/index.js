@@ -10,7 +10,7 @@ import StyledSkeleton from './StyledSkeleton';
 import Closet from '../../components/Closet';
 
 //import actions
-import { alterBone, searchSkeleton } from './state/actions';
+import { alterBone, createSagaSkeleton, searchSkeleton } from './state/actions';
 //import selector
 import { getAlteredState, getSkeletons, getFilteredBojangles, getSearchedSkeleton, getSearchTerm } from './state/selector';
 
@@ -35,13 +35,13 @@ class Skeleton extends React.Component
       return <Closet key={indx} {...closetProps} />
     });
     const allSkels = skeletonProps.skeletons.map((closetProps,indx)=>{
-      return <Closet key={indx} title={closetProps.name} content={(closetProps.bojangles)?'Bojangles':'Nojangles'} />
+      return <Closet key={indx} title={closetProps.name} content={(closetProps.bojangles)?'Bojangles':'Nojangles'} {...closetProps} />
     });
     const filteredSkels = (!skeletonProps.filteredSkeletons) ? [] : skeletonProps.filteredSkeletons.map((closetProps,indx)=>{
-      return <Closet key={indx} title={closetProps.name} content={(closetProps.bojangles)?'Bojangles':'Nojangles'} />
+      return <Closet key={indx} title={closetProps.name} content={(closetProps.bojangles)?'Bojangles':'Nojangles'} {...closetProps} />
     });
     const searchedSkels = (!skeletonProps.searchedSkeleton) ? [] : skeletonProps.searchedSkeleton.map((closetProps,indx)=>{
-      return <Closet key={indx} title={closetProps.name} content={(closetProps.bojangles)?'Bojangles':'Nojangles'} />
+      return <Closet key={indx} title={closetProps.name} content={(closetProps.bojangles)?'Bojangles':'Nojangles'} {...closetProps} />
     });
 
     console.log('skeletonPropsskeletonPropsskeletonPropsskeletonPropsskeletonProps',skeletonProps);
@@ -73,7 +73,7 @@ class Skeleton extends React.Component
 
         <br/><br/>Currently, the altered bone data is:<b>{skeletonProps.alteredBoneState}</b><br/><br/>
         <br/>Go ahead and change it with the dropdown below
-        <br/>(it may look random, but check the selector to see the logic)<br/>
+        <br/>(results may look random, but check the selector to see the logic)<br/>
         <select id="redux-example" onChange={skeletonProps.blanketChange}>
           <option value="NO_ALTERATIONS">no_alterations</option>
           <option value="ADD_BONE">add bone</option>
@@ -84,6 +84,17 @@ class Skeleton extends React.Component
         And Memoizations can be used as a selector for another memoized selector.<br/>
         Try it out to: <span onClick={skeletonProps.searchSkeleton} data-searchon="Bone" style={{color:'blue',cursor:'pointer',textDecoration:'underline',fontVariant:'italic'}}>Find Bones&rsquo;</span>
         &nbsp;&mdash;&nbsp;<span onClick={skeletonProps.searchSkeleton} data-searchon="Fr" style={{color:'blue',cursor:'pointer',textDecoration:'underline',fontVariant:'italic'}}>Find Non-Bones&rsquo;</span>
+        <br/><br/>
+        Time for Sagas!<br/>
+        Remember our previously pre-rendered components above?<br/>
+        Well now, we will create a new one, async add it to mongo, and async add all 3 to the state so they can show up alongside the rest!
+        <br/>(hint: you can tell if a skeleton is in the state ($) or not (xx) at a glance)
+        <br/><br/>
+        <input name="skelname" placeholder="Name" />
+        <input name="skelcaption" placeholder="Caption" /><br/>
+        <input type="radio" name="jangles" value="nojangles" defaultChecked="checked" />Nojangles
+        <input type="radio" name="jangles" value="bojangles" />Bojangles<br/>
+        <button onClick={skeletonProps.createSagaSkeleton}>Save Me!</button>
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       </StyledSkeleton>
     );
@@ -113,7 +124,8 @@ const mapDispatchToProps = (dispatch) => {
   console.log('mapDispatchToProps:->',dispatch);
   return {
     blanketChange: (s) => { dispatch(alterBone(s.target.value)); },
-    searchSkeleton: (s) => { ;dispatch(searchSkeleton(s.currentTarget.getAttribute('data-searchon'))); }
+    searchSkeleton: (s) => { dispatch(searchSkeleton(s.currentTarget.getAttribute('data-searchon'))); },
+    createSagaSkeleton: (o) => { dispatch(createSagaSkeleton('saga test')); }
   };
 };
 

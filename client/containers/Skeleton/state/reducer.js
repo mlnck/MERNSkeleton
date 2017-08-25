@@ -3,7 +3,7 @@ console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/state/reducer.j
 import { combineReducers } from 'redux'
 import { fromJS,toJS,toObject } from 'immutable';
 
-import { ALTER_BONE, AlterBone, CREATE_SKELETON, SEARCH_SKELETON, TOGGLE_BOJANGLES } from './constants';
+import { ALTER_BONE, AlterBone, CREATE_SAGA_SKELETON, CREATE_SKELETON, SEARCH_SKELETON, TOGGLE_BOJANGLES } from './constants';
 import { alterBone } from './actions';
 
 const { NO_ALTERATIONS } = AlterBone;
@@ -21,7 +21,7 @@ function skeletons(state=[], action)
     case CREATE_SKELETON:
       return [
                 ...state,
-                { name:action.text, bojangles:false }
+                { name:action.text, bojangles:false, inState:true }
              ];
     case TOGGLE_BOJANGLES:
       return state.map((skeleton,index) => {

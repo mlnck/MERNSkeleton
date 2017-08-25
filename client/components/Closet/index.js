@@ -10,10 +10,12 @@ import StyledCloset from './StyledCloset';
 
 export default function Closet(props)
 {
+  let inState = (props.inState) ? '$' : 'XX';
   return (
     <StyledCloset>
       {props.title}!<br/>
-      &nbsp;&nbsp;&nbsp; - <i>{props.content}</i>
+      &nbsp;&nbsp;&nbsp; - <i>{props.content}</i><br/>
+      <sub>{inState}</sub>
     </StyledCloset>
   );
 }
