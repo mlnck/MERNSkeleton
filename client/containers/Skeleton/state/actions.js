@@ -1,7 +1,7 @@
 /**SHOW_FLOW_LOG**/console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/state/actions.js\n\t\tCreate actions - logic in this file');/**END_SHOW_FLOW_LOG**///remember path in CLI
 import {
     CREATE_SKELETON,
-    CREATE_SAGA_SKELETON,
+    CREATE_SAGA_SKELETON_LOAD,
     TOGGLE_BOJANGLES,
     ALTER_BONE,
     SEARCH_SKELETON } from './constants';
@@ -9,8 +9,8 @@ import {
 /*
  * action creators
  */
- export function createSagaSkeleton(text)
- { return { type: CREATE_SAGA_SKELETON, text } }
+ export function createSagaSkeleton(obj)
+ { return { type: CREATE_SAGA_SKELETON_LOAD, obj } }
 
 export function createSkeleton(text)
 { return { type: CREATE_SKELETON, text } }

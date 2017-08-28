@@ -3,7 +3,7 @@ console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/state/reducer.j
 import { combineReducers } from 'redux'
 import { fromJS,toJS,toObject } from 'immutable';
 
-import { ALTER_BONE, AlterBone, CREATE_SAGA_SKELETON, CREATE_SKELETON, SEARCH_SKELETON, TOGGLE_BOJANGLES } from './constants';
+import { ALTER_BONE, AlterBone, CREATE_SAGA_SKELETON_SUCCESS, CREATE_SAGA_SKELETON_FAILED, CREATE_SKELETON, SEARCH_SKELETON, TOGGLE_BOJANGLES } from './constants';
 import { alterBone } from './actions';
 
 const { NO_ALTERATIONS } = AlterBone;
@@ -30,6 +30,17 @@ function skeletons(state=[], action)
         }
         return skeleton
       });
+    case CREATE_SAGA_SKELETON_FAILED:
+      console.error('CREATE_SAGA_SKELETON_FAILED',action);
+      console.error('CREATE_SAGA_SKELETON_FAILED',action.skelSaga);
+      return state;
+    case CREATE_SAGA_SKELETON_SUCCESS:
+      console.log('CREATE_SAGA_SKELETON_SUCCESS',action);
+      console.log('CREATE_SAGA_SKELETON_SUCCESS',action.skelSaga);
+      // return [
+      //           ...state,
+      //           { name:action.skelSaga.title, bojangles:false, inState:true }
+      //        ];
     default:
       return state
   }

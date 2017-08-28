@@ -1,6 +1,8 @@
 /**SHOW_FLOW_LOG**/console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/state/constants.js\n\t\tSet context of our constants');/**END_SHOW_FLOW_LOG**///remember path in CLI
 /* action types */
-export const CREATE_SAGA_SKELETON =    'mernskeleton.Skeleton.CREATE_SAGA_SKELETON';
+export const CREATE_SAGA_SKELETON_LOAD =    'mernskeleton.Skeleton.CREATE_SAGA_SKELETON_LOAD';
+export const CREATE_SAGA_SKELETON_SUCCESS =    'mernskeleton.Skeleton.CREATE_SAGA_SKELETON_SUCCESS';
+export const CREATE_SAGA_SKELETON_FAILED =    'mernskeleton.Skeleton.CREATE_SAGA_SKELETON_FAILED';
 export const CREATE_SKELETON =    'mernskeleton.Skeleton.CREATE_SKELETON';
 export const SEARCH_SKELETON =  'mernskeleton.Skeleton.SEARCH_SKELETON';
 export const TOGGLE_BOJANGLES = 'mernskeleton.Skeleton.TOGGLE_BOJANGLES';

@@ -1,11 +1,11 @@
 //https://redux-saga.js.org/docs/api/
 import { delay } from 'redux-saga'
-import { put, takeEvery, all } from 'redux-saga/effects';
+import { put, call, apply, takeEvery, takeLatest, all } from 'redux-saga/effects';
 
-import {CREATE_SAGA_SKELETON} from './constants';
+import {CREATE_SAGA_SKELETON_LOAD, CREATE_SAGA_SKELETON_SUCCESS, CREATE_SAGA_SKELETON_FAILED} from './constants';
 
 //workers
-export function* helloSagaSkeleton()//no watcher - called directly from store
+function* helloSagaSkeleton()//no watcher - called directly from store
 {
   yield delay(1000)
   console.log('creating saga skeleton from store -');
@@ -14,17 +14,40 @@ export function* helloSagaSkeleton()//no watcher - called directly from store
   console.log('After ASYNC I would then call:\n\tyield put({ type: CONSTANT_VARIABLE })//which would then complete the asynch call');
 }
 
-export function* createSagaSkeleton()
+
+function* createSagaSkeleton(payload)
 {
-  console.log('creating saga skeleton');
-  //do ajax
-  //yield put({ type: 'INCREMENT' })
+  console.log('We have called the route to create the skeleon using this object:',payload);
+  console.log('Now we fetch it');
+
+  const fetched = yield fetch('http://localhost:8000/api/skeletons')
+    .then(response => {
+      console.log('we yield the fetched `const`, and return the `json()` response');
+      return response.json();
+    })
+  return fetched;
+}
+
+function* callCreateSagaSkeleton({obj})
+{
+  console.log('We handle the success or failure from the `fetch` here.');
+  console.log('We call `createSagaSkeleton` first:');
+  try {
+      const skelSaga = yield call(createSagaSkeleton,obj);
+      console.log('After receiving the json() response we now `put` (saga\'s version of dispatch) the action to the store -> reducer');
+      yield put({type: CREATE_SAGA_SKELETON_SUCCESS, skelSaga});
+   } catch (e) {
+      yield put({type: CREATE_SAGA_SKELETON_FAILED, message: e.message});
+   }
 }
 
 //watchers
-export function* watchCreateSagaSkeleton() {
-  console.log('watching for', CREATE_SAGA_SKELETON);
-  yield takeEvery(CREATE_SAGA_SKELETON, createSagaSkeleton)
+function* watchCreateSagaSkeleton() {
+  //I think this runs "callCreateSagaSkeleton" -> then that waits for the ajax and dispatches
+  console.log('watching for', CREATE_SAGA_SKELETON_LOAD);
+  console.log('Using `takeLatest`, Alternatively you may use `takeEvery` which allows for concurrent fetches.');
+  console.log('if same action gets dispatched with `takeLatest`, and a fetch is already pending, that pending fetch is cancelled and only the latest one will be run');
+  yield takeLatest(CREATE_SAGA_SKELETON_LOAD, callCreateSagaSkeleton)
 }
 
 

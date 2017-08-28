@@ -90,10 +90,11 @@ class Skeleton extends React.Component
         Well now, we will create a new one, async add it to mongo, and async add all 3 to the state so they can show up alongside the rest!
         <br/>(hint: you can tell if a skeleton is in the state ($) or not (xx) at a glance)
         <br/><br/>
-        <input name="skelname" placeholder="Name" />
-        <input name="skelcaption" placeholder="Caption" /><br/>
-        <input type="radio" name="jangles" value="nojangles" defaultChecked="checked" />Nojangles
-        <input type="radio" name="jangles" value="bojangles" />Bojangles<br/>
+        Here is what we are going to add:<br/>
+        {`{`}<br/>
+          {`skeletonName:'Tony',`}<br/>
+          {`skeletonCaption:'bone apetit'`}<br/>
+        }<br/>
         <button onClick={skeletonProps.createSagaSkeleton}>Save Me!</button>
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       </StyledSkeleton>
@@ -125,7 +126,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     blanketChange: (s) => { dispatch(alterBone(s.target.value)); },
     searchSkeleton: (s) => { dispatch(searchSkeleton(s.currentTarget.getAttribute('data-searchon'))); },
-    createSagaSkeleton: (o) => { dispatch(createSagaSkeleton('saga test')); }
+    createSagaSkeleton: (o) => { console.log('o',o); dispatch(createSagaSkeleton({skeletonName:'Tony',skeletonCaption:'bone apetit'})); }
   };
 };
 
