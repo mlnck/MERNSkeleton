@@ -2,7 +2,7 @@
 import { delay } from 'redux-saga'
 import { put, call, apply, takeEvery, takeLatest, all } from 'redux-saga/effects';
 
-import {CREATE_SAGA_SKELETON_LOAD, CREATE_SAGA_SKELETON_SUCCESS, CREATE_SAGA_SKELETON_FAILED} from './constants';
+import {CREATE_SAGA_SKELETON_LOAD, CREATE_SAGA_SKELETON_SUCCESS, DELETE_SAGA_SKELETON_INIT, DELETE_SAGA_SKELETON_SUCCESS, FETCH_SAGA_SKELETON_FAILED} from './constants';
 
 //workers
 function* helloSagaSkeleton()//no watcher - called directly from store
@@ -37,6 +37,22 @@ function* createSagaSkeleton(payload)
   return fetched;
 }
 
+function* deleteSagaSkeleton()
+{
+  let fetchConf = {
+        method: 'DELETE',
+         body: JSON.stringify({title:'Tony'}),
+         headers: {"Content-Type": "application/json"}
+      }
+  const fetched = yield fetch('http://localhost:8000/api/skeleton',fetchConf)
+    .then(response => {
+      console.log('delete fetched::',response);
+      return 'tonydeleted';
+    })
+  return fetched;
+}
+
+
 function* callCreateSagaSkeleton({obj})
 {
   console.log('We handle the success or failure from the `fetch` here.');
@@ -46,7 +62,17 @@ function* callCreateSagaSkeleton({obj})
       console.log('After receiving the json() response we now `put` (saga\'s version of dispatch) the action to the store -> reducer');
       yield put({type: CREATE_SAGA_SKELETON_SUCCESS, skelSaga});
    } catch (e) {
-      yield put({type: CREATE_SAGA_SKELETON_FAILED, message: e.message});
+      yield put({type: FETCH_SAGA_SKELETON_FAILED, message: e.message});
+   }
+}
+
+function* callDeleteSagaSkeleton()
+{
+  try {
+      const skelSaga = yield call(deleteSagaSkeleton);
+      yield put({type: DELETE_SAGA_SKELETON_SUCCESS });
+   } catch (e) {
+      yield put({type: FETCH_SAGA_SKELETON_FAILED, message: e.message});
    }
 }
 
@@ -59,11 +85,17 @@ function* watchCreateSagaSkeleton() {
   yield takeLatest(CREATE_SAGA_SKELETON_LOAD, callCreateSagaSkeleton)
 }
 
+function* watchDeleteSagaSkeleton() {
+  console.log('watching for', DELETE_SAGA_SKELETON_INIT);
+  yield takeLatest(DELETE_SAGA_SKELETON_INIT, callDeleteSagaSkeleton)
+}
+
 
 // single entry point to start all Sagas at once
 export default function* rootSkeletonSaga() {
   yield all([
     helloSagaSkeleton(),
-    watchCreateSagaSkeleton()
+    watchCreateSagaSkeleton(),
+    watchDeleteSagaSkeleton()
   ])
 }

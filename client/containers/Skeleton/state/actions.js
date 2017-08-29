@@ -2,6 +2,7 @@
 import {
     CREATE_SKELETON,
     CREATE_SAGA_SKELETON_LOAD,
+    DELETE_SAGA_SKELETON_INIT,
     TOGGLE_BOJANGLES,
     ALTER_BONE,
     SEARCH_SKELETON } from './constants';
@@ -14,6 +15,9 @@ import {
 
 export function createSkeleton(text)
 { return { type: CREATE_SKELETON, text } }
+
+export function deleteSagaSkeleton()
+{ return { type: DELETE_SAGA_SKELETON_INIT } }
 
 export function searchSkeleton(text)
 { return { type: SEARCH_SKELETON, text} }

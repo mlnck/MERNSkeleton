@@ -11,6 +11,8 @@ router.get('/skeleton/:cuid',SkeletonController.getSkeletonByBrowser);
 // Add a new Skeleton
 router.post('/skeleton',SkeletonController.addSkeletonByBrowser);
 
+// Delete "Tony" skeleton(s)
+router.delete('/skeleton',SkeletonController.deleteDemoSkeletonByBrowser);
 // Delete a skeleton by cuid
 router.delete('/skeleton/:cuid',SkeletonController.deleteSkeletonByBrowser);
 

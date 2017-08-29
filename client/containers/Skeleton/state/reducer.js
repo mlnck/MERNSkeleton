@@ -3,7 +3,7 @@ console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/state/reducer.j
 import { combineReducers } from 'redux'
 import { fromJS,toJS,toObject } from 'immutable';
 
-import { ALTER_BONE, AlterBone, CREATE_SAGA_SKELETON_SUCCESS, CREATE_SAGA_SKELETON_FAILED, CREATE_SKELETON, SEARCH_SKELETON, TOGGLE_BOJANGLES } from './constants';
+import { ALTER_BONE, AlterBone, CREATE_SAGA_SKELETON_SUCCESS, DELETE_SAGA_SKELETON_SUCCESS, FETCH_SAGA_SKELETON_FAILED, CREATE_SKELETON, SEARCH_SKELETON, TOGGLE_BOJANGLES } from './constants';
 import { alterBone } from './actions';
 
 const { NO_ALTERATIONS } = AlterBone;
@@ -30,9 +30,9 @@ function skeletons(state=[], action)
         }
         return skeleton
       });
-    case CREATE_SAGA_SKELETON_FAILED:
-      console.error('CREATE_SAGA_SKELETON_FAILED',action);
-      console.error('CREATE_SAGA_SKELETON_FAILED',action.skelSaga);
+    case FETCH_SAGA_SKELETON_FAILED:
+      console.error('FETCH_SAGA_SKELETON_FAILED',action);
+      console.error('FETCH_SAGA_SKELETON_FAILED',action.skelSaga);
       return state;
     case CREATE_SAGA_SKELETON_SUCCESS:
       console.log('CREATE_SAGA_SKELETON_SUCCESS',action);
@@ -41,6 +41,14 @@ function skeletons(state=[], action)
                 ...state,
                 { name:action.skelSaga.title, bojangles:false, inState:true }
              ];
+    case DELETE_SAGA_SKELETON_SUCCESS:
+    console.log('DELETING DELETE_SAGA_SKELETON_SUCCESS');
+      let deletedSagaSkels = state.filter((itm,indx) =>{
+        console.log('del-itm',itm);
+        return itm.name !== 'Tony';
+      });
+      console.log('deletedSagaSkels:',deletedSagaSkels);
+      return deletedSagaSkels;
     default:
       return state
   }

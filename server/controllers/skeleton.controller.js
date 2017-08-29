@@ -49,6 +49,15 @@ export function getSkeletonByBrowser(req, res) {
   });
 }
 
+export function deleteDemoSkeletonByBrowser(req,res)
+{
+  Skeleton
+    .find({title:'Tony'})
+    .remove()
+    .then(()=> { console.log('deleteDemoSkel:'); return res.status(204).json({delted:true}) })
+    .catch((e) => console.log('err:',e));;
+}
+
 /**
  * Delete a skeleton
  * @param req

@@ -10,7 +10,7 @@ import StyledSkeleton from './StyledSkeleton';
 import Closet from '../../components/Closet';
 
 //import actions
-import { alterBone, createSagaSkeleton, searchSkeleton } from './state/actions';
+import { alterBone, createSagaSkeleton, deleteSagaSkeleton, searchSkeleton } from './state/actions';
 //import selector
 import { getAlteredState, getSkeletons, getFilteredBojangles, getSearchedSkeleton, getSearchTerm } from './state/selector';
 
@@ -88,6 +88,7 @@ class Skeleton extends React.Component
         Time for Sagas!<br/>
         Remember our previously pre-rendered components above?<br/>
         Well now, we will create a new one, async add it to mongo, and async add it to the state so it can show up alongside the rest!
+        <br/> also, notice if you refresh the page, Tony will be added to the DOM without being in the state, because he really is in the database.
         <br/>(hint: you can tell if a skeleton is in the state ($) or not (xx) at a glance)
         <br/><br/>
         Here is what we are going to add:<br/>
@@ -96,6 +97,10 @@ class Skeleton extends React.Component
           {`skeletonCaption:'bone apetit'`}<br/>
         }<br/>
         <button onClick={skeletonProps.createSagaSkeleton}>Save Me!</button>
+        <br/><br/>
+        Too many Tonys?<br/>
+        <button onClick={skeletonProps.deleteSagaSkeleton}>Delete {`'`}em!</button>
+
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       </StyledSkeleton>
     );
@@ -126,7 +131,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     blanketChange: (s) => { dispatch(alterBone(s.target.value)); },
     searchSkeleton: (s) => { dispatch(searchSkeleton(s.currentTarget.getAttribute('data-searchon'))); },
-    createSagaSkeleton: (o) => { console.log('o',o); dispatch(createSagaSkeleton({skeletonName:'Tony',skeletonCaption:'bone apetit'})); }
+    createSagaSkeleton: (o) => { console.log('o',o); dispatch(createSagaSkeleton({skeletonName:'Tony',skeletonCaption:'bone apetit'})); },
+    deleteSagaSkeleton: () => { dispatch(deleteSagaSkeleton()); }
   };
 };
 
