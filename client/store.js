@@ -32,7 +32,7 @@ export default function configureStore(initialState, history = {}) {
     process.env.NODE_ENV !== 'production' &&
     typeof window === 'object' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() : compose;
+      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
   /* eslint-enable */
 
   const enhancers = [
@@ -42,7 +42,7 @@ export default function configureStore(initialState, history = {}) {
   const store = createStore(
     createReducer(),
     fromJS(initialState),
-    compose(...enhancers)
+    composeEnhancers(...enhancers)
   );
 
   //Sagas
