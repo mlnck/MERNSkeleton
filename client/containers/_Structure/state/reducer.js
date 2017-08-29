@@ -1,18 +1,17 @@
 import { fromJS } from 'immutable';
 
-import {
-
-} from './constants';
+import { } from './constants';
+import { } from './actions';
 
 const initialState = fromJS({
 
 });
 
-function skeletonReducer(state = initialState, action) {
+function xxxReducer(state = initialState, action) {
   switch (action.type) {
     default:
       return state;
   }
 }
 
-export default skeletonReducer;
+export default xxxReducer;

@@ -7,10 +7,16 @@ import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
+/**SHOW_FLOW_LOG**/
+import { AlterBone, CREATE_SAGA_SKELETON } from './containers/Skeleton/state/constants';
+import { createSkeleton, toggleBojangles, alterBone } from './containers/Skeleton/state/actions';
+
+import rootSkeletonSaga from './containers/Skeleton/state/sagas';
+/**END_SHOW_FLOW_LOG**/
 
 const sagaMiddleware = createSagaMiddleware();
 
-export default function configureStore(initialState = {}, history) {
+export default function configureStore(initialState, history = {}) {
 
   // Create the store with two middlewares
   // 1. sagaMiddleware: Makes redux-sagas work
@@ -20,27 +26,29 @@ export default function configureStore(initialState = {}, history) {
     routerMiddleware(history),
   ];
 
-  const enhancers = [
-    applyMiddleware(...middlewares),
-  ];
-
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */
   const composeEnhancers =
     process.env.NODE_ENV !== 'production' &&
     typeof window === 'object' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
+      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() : compose;
   /* eslint-enable */
+
+  const enhancers = [
+    applyMiddleware(...middlewares),
+  ];
 
   const store = createStore(
     createReducer(),
     fromJS(initialState),
-    composeEnhancers(...enhancers)
+    compose(...enhancers)
   );
 
+  //Sagas
+  sagaMiddleware.run(rootSkeletonSaga);
+
   // Extensions
-  store.runSaga = sagaMiddleware.run;
   store.asyncReducers = {}; // Async reducer registry
 
   // Make reducers hot reloadable, see http://mxs.is/googmo
@@ -56,5 +64,24 @@ export default function configureStore(initialState = {}, history) {
     });
   }
 
+  /**SHOW_FLOW_LOG**/
+  console.log('REDUX - \n\tMERNSkeleton/client/store.js\n\tExporting store object with all reducers included');
+  console.log('REDUX - \n\tMERNSkeleton/client/store.js\n\tThis shows an example of dispatching an action straight from the store');
+    let unsubscribe = store.subscribe(() =>
+      console.log('dispatched action from store changes state to:',store.getState())
+    )
+    // Dispatch some actions
+    store.dispatch(createSkeleton('Boney'));
+    store.dispatch(createSkeleton('Frank'));
+    store.dispatch(createSkeleton('Freddy'));
+    store.dispatch(createSkeleton('Bonez'));
+    store.dispatch(toggleBojangles(0));
+    store.dispatch(toggleBojangles(2))
+    store.dispatch(alterBone('NO_ALTERATIONS'));
+    // Stop listening to state updates
+    unsubscribe()
+    //saga example
+    // sagaMiddleware.run(helloSagaSkeleton);
+  /**END_SHOW_FLOW_LOG**/
   return store;
 }

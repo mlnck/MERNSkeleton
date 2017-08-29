@@ -5,6 +5,7 @@ const StyledCloset = styled.div`
   border-radius:3px;
   display:inline-block;
   margin:10px;
+  padding:5px;
 `;
 
 export default StyledCloset;
