@@ -37,10 +37,10 @@ function skeletons(state=[], action)
     case CREATE_SAGA_SKELETON_SUCCESS:
       console.log('CREATE_SAGA_SKELETON_SUCCESS',action);
       console.log('CREATE_SAGA_SKELETON_SUCCESS',action.skelSaga);
-      // return [
-      //           ...state,
-      //           { name:action.skelSaga.title, bojangles:false, inState:true }
-      //        ];
+      return [
+                ...state,
+                { name:action.skelSaga.title, bojangles:false, inState:true }
+             ];
     default:
       return state
   }

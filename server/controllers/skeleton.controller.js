@@ -26,25 +26,12 @@ export function getSkeletonsByBrowser(req, res) {
  * @returns void
  */
 export function addSkeletonByBrowser(req, res) {
-  if (!req.body.skeleton.dateAdded || !req.body.skeleton.title || !req.body.skeleton.content) {
-    res.status(403).end();
-  }
+  console.log('The information being POSTed from `containers/Skeleton/state/sagas` is:',req.body);
 
-  const newSkeleton = new Skeleton(req.body.skeleton);
-
-  // Let's sanitize inputs
-  newSkeleton.title = sanitizeHtml(newSkeleton.title);
-  newSkeleton.name = sanitizeHtml(newSkeleton.name);
-  newSkeleton.content = sanitizeHtml(newSkeleton.content);
-
-  newSkeleton.slug = slug(newSkeleton.title.toLowerCase(), { lowercase: true });
-  newSkeleton.cuid = cuid();
-  newSkeleton.save((err, saved) => {
-    if (err) {
-      res.status(500).send(err);
-    }
-    res.json({ skeleton: saved });
-  });
+  Skeleton
+    .create(req.body)
+    .then((d) => { console.log('retD',d); return res.status(203).json(d)})
+    .catch((e) => console.log('err:',e));
 }
 
 /**
@@ -82,7 +69,7 @@ export function deleteSkeletonByBrowser(req, res) {
 
 
 
-/* BRANCH / PROMISE STUBS  */
+/* BRANCH / PRE-PROCESSED  */
 export function getSkeletonsByRoute(o)
 {
   let obj = Skeleton.find().sort('dateAdded').exec((err, skeletons) => {

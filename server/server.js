@@ -64,8 +64,8 @@ mongoose.connect(serverConfig.mongoURL, {useMongoClient: true}, (error) =>
 
 // Apply body Parser and server public assets and routes
 app.use(compression());
-app.use(bodyParser.json({ limit: '20mb' }));
-app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist/client')));
 // Server side routes app.use
 /**START_WITH_SAMPLE**/

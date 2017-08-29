@@ -87,7 +87,7 @@ class Skeleton extends React.Component
         <br/><br/>
         Time for Sagas!<br/>
         Remember our previously pre-rendered components above?<br/>
-        Well now, we will create a new one, async add it to mongo, and async add all 3 to the state so they can show up alongside the rest!
+        Well now, we will create a new one, async add it to mongo, and async add it to the state so it can show up alongside the rest!
         <br/>(hint: you can tell if a skeleton is in the state ($) or not (xx) at a glance)
         <br/><br/>
         Here is what we are going to add:<br/>

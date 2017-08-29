@@ -20,9 +20,18 @@ function* createSagaSkeleton(payload)
   console.log('We have called the route to create the skeleon using this object:',payload);
   console.log('Now we fetch it');
 
-  const fetched = yield fetch('http://localhost:8000/api/skeletons')
+  let skelData = {
+        title:payload.skeletonName,
+        content:payload.skeletonCaption,
+      },
+      fetchConf = {
+        method: 'POST',
+         body: JSON.stringify(skelData),
+         headers: {"Content-Type": "application/json"}
+      }
+  const fetched = yield fetch('http://localhost:8000/api/skeleton',fetchConf)
     .then(response => {
-      console.log('we yield the fetched `const`, and return the `json()` response');
+      console.log('we yield the fetched `const`, and return the `json()` response', response);
       return response.json();
     })
   return fetched;

@@ -3,15 +3,15 @@ import * as SkeletonController from '../controllers/skeleton.controller';
 const router = new Router();
 
 // Get all Skeletons
-router.route('/skeletons').get(SkeletonController.getSkeletonsByBrowser);
+router.get('/skeletons',SkeletonController.getSkeletonsByBrowser);
 
 // Get one skeleton by cuid
-router.route('/skeleton/:cuid').get(SkeletonController.getSkeletonByBrowser);
+router.get('/skeleton/:cuid',SkeletonController.getSkeletonByBrowser);
 
 // Add a new Skeleton
-router.route('/skeleton').post(SkeletonController.addSkeletonByBrowser);
+router.post('/skeleton',SkeletonController.addSkeletonByBrowser);
 
 // Delete a skeleton by cuid
-router.route('/skeleton/:cuid').delete(SkeletonController.deleteSkeletonByBrowser);
+router.delete('/skeleton/:cuid',SkeletonController.deleteSkeletonByBrowser);
 
 export default router;
