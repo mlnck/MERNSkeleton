@@ -99,6 +99,11 @@ class Skeleton extends React.Component
         <button onClick={skeletonProps.createSagaSkeleton}>Save Me!</button>
         <br/><br/>
         Too many Tonys?<br/>
+        And one last thing to note. Notice how if you add Tonys you have to refresh the page to see them in the non-state (xx) condition.<br/>
+        That is because that block of code is pre-processed, anything that you do after the page loads will not update those elements once they are (or are not) on the stage.<br/>
+        However, now that you have refreshed and you see the new Tonys up-top, go ahead and add another couple to the state, then delete them.<br/>
+        Those in the state are gone, but not up-top. Well, until you refresh the page again. Go ahead and try it. No more Tonys will be on the stage at all.
+        <br/>
         <button onClick={skeletonProps.deleteSagaSkeleton}>Delete {`'`}em!</button>
 
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
