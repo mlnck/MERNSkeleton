@@ -14,7 +14,6 @@ import { alterBone, createSagaSkeleton, deleteSagaSkeleton, searchSkeleton } fro
 // import selector
 import { getAlteredState, getSkeletons, getFilteredBojangles, getSearchedSkeleton, getSearchTerm } from './state/selector';
 
-// will need to toggle export for mapping dispatch/state below if need be (from CLI)
 class Skeleton extends React.Component
 { // eslint-disable-line react/prefer-stateless-function
   constructor(props)
@@ -24,7 +23,10 @@ class Skeleton extends React.Component
   }
 
   componentWillMount()
-  { console.log('Skeleton is mounting'); }
+  {
+    const routingData = routingData; /* eslint-disable no-undef */ // routingData is coming from "pre-processed db call"
+    console.log('Skeleton is mounting');
+  }
   componentDidMount()
   { console.log('Skeleton mounted'); }
 
@@ -70,7 +72,7 @@ class Skeleton extends React.Component
         <br /><br />Currently, the altered bone data is:<b>{skeletonProps.alteredBoneState}</b><br /><br />
         <br />Go ahead and change it with the dropdown below
         <br />(results may look random, but check the selector to see the logic)<br />
-        <select id="redux-example" onChange={skeletonProps.blanketChange}>
+        <select id="redux-example" onBlur={skeletonProps.blanketChange} onChange={skeletonProps.blanketChange}>
           <option value="NO_ALTERATIONS">no_alterations</option>
           <option value="ADD_BONE">add bone</option>
           <option value="REMOVE_BONE">remove bone</option>
@@ -78,8 +80,8 @@ class Skeleton extends React.Component
         </select>
         <br /><br />
         And Memoizations can be used as a selector for another memoized selector.<br />
-        Try it out to: <span onClick={skeletonProps.searchSkeleton} data-searchon="Bone" style={{ color: 'blue', cursor: 'pointer', textDecoration: 'underline', fontVariant: 'italic' }}>Find Bones&rsquo;</span>
-        &nbsp;&mdash;&nbsp;<span onClick={skeletonProps.searchSkeleton} data-searchon="Fr" style={{ color: 'blue', cursor: 'pointer', textDecoration: 'underline', fontVariant: 'italic' }}>Find Non-Bones&rsquo;</span>
+        Try it out to: <button role="search" onClick={skeletonProps.searchSkeleton} onKeyDown={skeletonProps.searchSkeleton} data-searchon="Bone" style={{ color: 'blue', cursor: 'pointer', textDecoration: 'underline', fontVariant: 'italic' }}>Find Bones&rsquo;</button>
+        &nbsp;&mdash;&nbsp;<button role="search" onClick={skeletonProps.searchSkeleton} onKeyDown={skeletonProps.searchSkeleton} data-searchon="Fr" style={{ color: 'blue', cursor: 'pointer', textDecoration: 'underline', fontVariant: 'italic' }}>Find Non-Bones&rsquo;</button>
         <br /><br />
         Time for Sagas!<br />
         Remember our previously pre-rendered components above?<br />

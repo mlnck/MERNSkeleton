@@ -1,7 +1,5 @@
 // import Functional
 import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 
 // import Visual
 import StyledHome from './StyledHome';
@@ -24,8 +22,6 @@ export default class Home extends React.Component
 
   render()
   {
-    const homeProps = this.props;
-
     return (
       <StyledHome>
         <div className="optional-helper-text">
@@ -39,11 +35,3 @@ export default class Home extends React.Component
     );
   }
 }
-
-Home.defaultProps = {
-  routes: []
-};
-
-Home.propTypes = {
-  routes: PropTypes.array.isRequired
-};

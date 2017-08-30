@@ -28,5 +28,5 @@ Closet.defaultProps = {
 Closet.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
-  inState: PropTypes.boolean
+  inState: PropTypes.bool
 };

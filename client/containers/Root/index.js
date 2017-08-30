@@ -9,17 +9,10 @@
 
 // import Functional
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
-import { connect } from 'react-redux';
-import { renderRoutes } from 'react-router-config';
+import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // import Visual
-import styled from 'styled-components';
 import StyledRoot from './StyledRoot';
 
 // import Components
@@ -80,9 +73,9 @@ export default class RootPage extends React.Component
 }
 
 RootPage.defaultProps = {
-  routes: []
+  route: []
 };
 
 RootPage.propTypes = {
-  routes: PropTypes.array.isRequired
+  route: PropTypes.object.isRequired
 };
