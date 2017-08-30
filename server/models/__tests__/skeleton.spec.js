@@ -1,4 +1,4 @@
-//_This will only be created if 'Start with Sample' option is chosen from CLI setup_
+// _This will only be created if 'Start with Sample' option is chosen from CLI setup_
 
 import test from 'ava';
 import request from 'supertest';
@@ -9,22 +9,27 @@ import { connectDB, dropDB } from '../../util/test-helpers';
 // Initial posts added into test db
 const skeletons = [
   new Skeleton({ name: 'Prashant', title: 'Hello Mern', slug: 'hello-mern', cuid: 'f34gb2bh24b24b2', content: "All cats meow 'mern!'" }),
-  new Skeleton({ name: 'Mayank', title: 'Hi Mern', slug: 'hi-mern', cuid: 'f34gb2bh24b24b3', content: "All dogs bark 'mern!'" }),
+  new Skeleton({ name: 'Mayank', title: 'Hi Mern', slug: 'hi-mern', cuid: 'f34gb2bh24b24b3', content: "All dogs bark 'mern!'" })
 ];
 
-test.beforeEach('connect and add two post entries', t => {
-  connectDB(t, () => {
-    Post.create(posts, err => {
-      if (err) t.fail('Unable to create posts');
+test.beforeEach('connect and add two post entries', (t) =>
+{
+  connectDB(t, () =>
+  {
+    Post.create(posts, (err) =>
+    {
+      if(err) t.fail('Unable to create posts');
     });
   });
 });
 
-test.afterEach.always(t => {
+test.afterEach.always((t) =>
+{
   dropDB(t);
 });
 
-test.serial('Should correctly give number of Posts', async t => {
+test.serial('Should correctly give number of Posts', async (t) =>
+{
   t.plan(2);
 
   const res = await request(app)
@@ -35,7 +40,8 @@ test.serial('Should correctly give number of Posts', async t => {
   t.deepEqual(posts.length, res.body.posts.length);
 });
 
-test.serial('Should send correct data when queried against a cuid', async t => {
+test.serial('Should send correct data when queried against a cuid', async (t) =>
+{
   t.plan(2);
 
   const post = new Post({ name: 'Foo', title: 'bar', slug: 'bar', cuid: 'f34gb2bh24b24b2', content: 'Hello Mern says Foo' });
@@ -49,7 +55,8 @@ test.serial('Should send correct data when queried against a cuid', async t => {
   t.is(res.body.post.name, post.name);
 });
 
-test.serial('Should correctly add a post', async t => {
+test.serial('Should correctly add a post', async (t) =>
+{
   t.plan(2);
 
   const res = await request(app)
@@ -63,7 +70,8 @@ test.serial('Should correctly add a post', async t => {
   t.is(savedPost.name, 'Foo');
 });
 
-test.serial('Should correctly delete a post', async t => {
+test.serial('Should correctly delete a post', async (t) =>
+{
   t.plan(2);
 
   const post = new Post({ name: 'Foo', title: 'bar', slug: 'bar', cuid: 'f34gb2bh24b24b2', content: 'Hello Mern says Foo' });

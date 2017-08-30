@@ -1,2 +1,2 @@
-//name as xxx.controller.js
+// name as xxx.controller.js
 import Xxx from '../models/xxx';
