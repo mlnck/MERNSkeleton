@@ -5,7 +5,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styled from 'styled-components';
 import StyledCloset from './StyledCloset';
 
 export default function Closet(props)
@@ -22,9 +21,12 @@ export default function Closet(props)
 
 Closet.defaultProps = {
   prop: 'Default closet props here',
+  content: PropTypes.string,
+  inState: false
 };
 
 Closet.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string
+  content: PropTypes.string,
+  inState: PropTypes.boolean
 };
