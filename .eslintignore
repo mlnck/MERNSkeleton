@@ -1,4 +1,9 @@
-**/_Structure/*
+
+server/**/_Structure.js
+client/**/_Structure/**
+
+server/**/__tests__/**
+
 config/webpack/webpack.babel.js
 config/webpack/webpack.dev.js
 config/webpack/webpack.prod.js
