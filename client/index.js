@@ -14,6 +14,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
+import ReactGA from 'react-ga';
 
 import configureStore from './store';
 
@@ -23,6 +24,21 @@ import './global-styles';
 // Import routes
 import clientRoutes from '../client/routes';
 
+// Google Analytic Tracking
+ReactGA.initialize('UA-000000-01', {
+  debug: true,
+  titleCase: false,
+  gaOptions: {
+    userId: 123
+  }
+});
+
+function logPageView()
+{
+  ReactGA.set({ page: window.location.pathname });
+  ReactGA.pageview(window.location.pathname);
+}
+
 // Create redux store with history
 /* SHOW_FLOW_LOG */
 console.log('FROM INDEXJS window.__INITIAL_STATE__:', window.__INITIAL_STATE__); // eslint-disable-line
@@ -31,7 +47,7 @@ const store = configureStore(window.__INITIAL_STATE__); // eslint-disable-line
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter onUpdate={logPageView}>
       {/* kick it all off with the root route */}
       {renderRoutes(clientRoutes())}
     </BrowserRouter>
