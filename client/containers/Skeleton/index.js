@@ -80,8 +80,8 @@ class Skeleton extends React.Component
         </select>
         <br /><br />
         And Memoizations can be used as a selector for another memoized selector.<br />
-        Try it out to: <button role="button" onClick={skeletonProps.searchSkeleton} onKeyDown={skeletonProps.searchSkeleton} data-searchon="Bone" style={{ color: 'blue', cursor: 'pointer', textDecoration: 'underline', fontVariant: 'italic' }}>Find Bones&rsquo;</button>
-        &nbsp;&mdash;&nbsp;<button role="button" onClick={skeletonProps.searchSkeleton} onKeyDown={skeletonProps.searchSkeleton} data-searchon="Fr" style={{ color: 'blue', cursor: 'pointer', textDecoration: 'underline', fontVariant: 'italic' }}>Find Non-Bones&rsquo;</button>
+        Try it out to: <button onClick={skeletonProps.searchSkeleton} onKeyDown={skeletonProps.searchSkeleton} data-searchon="Bone" style={{ color: 'blue', cursor: 'pointer', textDecoration: 'underline', fontVariant: 'italic' }}>Find Bones&rsquo;</button>
+        &nbsp;&mdash;&nbsp;<button onClick={skeletonProps.searchSkeleton} onKeyDown={skeletonProps.searchSkeleton} data-searchon="Fr" style={{ color: 'blue', cursor: 'pointer', textDecoration: 'underline', fontVariant: 'italic' }}>Find Non-Bones&rsquo;</button>
         <br /><br />
         Time for Sagas!<br />
         Remember our previously pre-rendered components above?<br />
