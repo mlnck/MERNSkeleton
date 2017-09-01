@@ -56,7 +56,7 @@ mongoose.connect(serverConfig.mongoURL, { useMongoClient: true }, (error) =>
     console.error('Please make sure Mongodb is installed and running!', error); // eslint-disable-line
     throw error;
   }
-  console.log('Mongo running at:\n\t', serverConfig.mongoURL); // eslint-disable-line no-console
+  console.log('Mongo running at:\n\t', serverConfig.mongoURL); // eslint-disable-line
   // feed some dummy data in DB.
   if(process.env.MONGO_SEED === 'true')
   { seedDB(); }

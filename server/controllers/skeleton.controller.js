@@ -91,10 +91,12 @@ export function deleteSkeletonByBrowser(req, res)
 /* BRANCH / PRE-PROCESSED  */
 export function getSkeletonsByRoute(o)
 {
+  console.log('object passed in: ', o);
   const obj = Skeleton.find().sort('dateAdded').exec((err, skeletons) =>
   {
     if(err){ return { error: err }; }
-    skeletons.dataKey = 'skeletonsByRoute';
+    // used to show skeleton example
+    skeletons.dataKey = 'skeletonsByRoute'; // eslint-disable-line
     return { skeletons };
   });
   console.log('ret obj', obj);
