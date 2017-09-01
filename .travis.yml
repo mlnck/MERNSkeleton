@@ -9,7 +9,7 @@
    - CI=true
 
  notifications:
-    slack: jmelnick:pKSMAuivv7MPfyHou5p3YBXG
+    slack: GetOrganizationKeyFrom : https://jmelnick.slack.com/apps/A0F81FP4N-travis-ci
 
  before_deploy:
    - yarn run build
