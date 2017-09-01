@@ -1,10 +1,9 @@
-console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/state/reducer.js\n\t\tCreate conntainer/component reducer - NO logic in this file');
-
-import { combineReducers } from 'redux';
-import { fromJS, toJS, toObject } from 'immutable';
+import { fromJS } from 'immutable';
 
 import { ALTER_BONE, AlterBone, CREATE_SAGA_SKELETON_SUCCESS, DELETE_SAGA_SKELETON_SUCCESS, FETCH_SAGA_SKELETON_FAILED, CREATE_SKELETON, SEARCH_SKELETON, TOGGLE_BOJANGLES } from './constants';
 import { alterBone } from './actions';
+
+console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/state/reducer.js\n\t\tCreate conntainer/component reducer - NO logic in this file');
 
 const { NO_ALTERATIONS } = AlterBone;
 
@@ -43,9 +42,10 @@ function skeletons(state = [], action)
         ...state,
         { name: action.skelSaga.title, bojangles: false, inState: true }
       ];
-    case DELETE_SAGA_SKELETON_SUCCESS:
+    // allowing declaration here for example purpose only
+    case DELETE_SAGA_SKELETON_SUCCESS: // eslint-disable-line
       console.log('DELETING DELETE_SAGA_SKELETON_SUCCESS');
-      const deletedSagaSkels = state.filter((itm, indx) =>
+      const deletedSagaSkels = state.filter((itm) =>
       {
         console.log('del-itm', itm);
         return itm.name !== 'Tony';

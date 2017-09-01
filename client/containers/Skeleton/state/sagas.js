@@ -1,6 +1,6 @@
 // https://redux-saga.js.org/docs/api/
 import { delay } from 'redux-saga';
-import { put, call, apply, takeEvery, takeLatest, all } from 'redux-saga/effects';
+import { put, call, takeLatest, all } from 'redux-saga/effects';
 
 import { CREATE_SAGA_SKELETON_LOAD, CREATE_SAGA_SKELETON_SUCCESS, DELETE_SAGA_SKELETON_INIT, DELETE_SAGA_SKELETON_SUCCESS, FETCH_SAGA_SKELETON_FAILED } from './constants';
 
@@ -20,7 +20,7 @@ function* createSagaSkeleton(payload)
   console.log('We have called the route to create the skeleon using this object:', payload);
   console.log('Now we fetch it');
 
-  let skelData = {
+  const skelData = {
       title: payload.skeletonName,
       content: payload.skeletonCaption,
     },
@@ -75,7 +75,7 @@ function* callDeleteSagaSkeleton()
 {
   try
   {
-    const skelSaga = yield call(deleteSagaSkeleton);
+    yield call(deleteSagaSkeleton);
     yield put({ type: DELETE_SAGA_SKELETON_SUCCESS });
   }
   catch (e)
