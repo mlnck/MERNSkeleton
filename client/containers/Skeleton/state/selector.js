@@ -1,5 +1,5 @@
-console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/state/selector.js\n\t\tCreate selectors to be used from the ./index.js file');
 import { createSelector } from 'reselect';
+console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/state/selector.js\n\t\tCreate selectors to be used from the ./index.js file');
 
 export const getAlteredState = (state) =>
 {
@@ -7,7 +7,7 @@ export const getAlteredState = (state) =>
   console.log('For instance, if we were just to try to access the state we would see:', state);
   console.log('Instead, we use the selector to filter out the extaneous information that we do not need and return:', state._root.entries[2][1].alterBones);
 
-  let tmp = state._root.entries,
+  const tmp = state._root.entries,
     ret = tmp.filter((itm) => itm[0] === 'skeleton');
 
   return (ret) ? ret[0][1].alterBones : '';
@@ -15,14 +15,14 @@ export const getAlteredState = (state) =>
 
 export const getSkeletons = (state) =>
 {
-  let tmp = state._root.entries,
+  const tmp = state._root.entries,
     ret = tmp.filter((itm) => itm[0] === 'skeleton');
   return (ret) ? ret[0][1].skeletons : [];
 };
 
 export const getSearchTerm = (state) =>
 {
-  let tmp = state._root.entries,
+  const tmp = state._root.entries,
     ret = tmp.filter((itm) => itm[0] === 'skeleton');
   return (ret) ? ret[0][1].skeletonSearch : '';
 };
@@ -36,13 +36,13 @@ export const getFilteredBojangles = createSelector(
     console.log('utilize the power of `Reselect` for Memoization: http://redux.js.org/docs/recipes/ComputingDerivedData.html');
     switch (alteredState)
     {
-      case 'NO_ALTERATIONS':
-        return skeletons;
       case 'REMOVE_BONE':
       case 'BREAK_BONE':
         return skeletons.filter((s) => s.bojangles);
       case 'ADD_BONE':
         return skeletons.filter((s) => !s.bojangles);
+      default :
+        return skeletons;
     }
   }
 );
