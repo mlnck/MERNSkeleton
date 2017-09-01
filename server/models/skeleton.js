@@ -1,4 +1,4 @@
-//_This will only be created if 'Start with Sample' option is chosen from CLI setup_
+// _This will only be created if 'Start with Sample' option is chosen from CLI setup_
 
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;

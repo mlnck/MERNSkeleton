@@ -1,19 +1,15 @@
-import React from 'react';
-import { matchRoutes, renderRoutes } from 'react-router-config';
-
-//route containers
+// route containers
 import Root from './containers/Root';
 import Home from './containers/Home';
-/**START_WITH_SAMPLE**/
+/** START_WITH_SAMPLE**/
 import Skeleton from './containers/Skeleton';
-import Closet from './components/Closet';
-/**END_START_WITH_SAMPLE**/
+// import Closet from './components/Closet'; // if you were to load a nested component it would be here
+/** END_START_WITH_SAMPLE**/
 
 
-
-export default function getRoutes() {
-
-  const allRoutes = [//when adding these via CLI we will need to give a list of all parents that route could be associated with
+export default function getRoutes()
+{
+  const allRoutes = [// when adding these via CLI we will need to give a list of all parents that route could be associated with
     {
       component: Root,
       routes: [
@@ -21,12 +17,19 @@ export default function getRoutes() {
           exact: true,
           component: Home
         },
-        { path: '/skeletons/',//only add from here down when 'Start with Sample' option is chosen from CLI setup_
+        { path: '/skeletons/', // only add from here down when 'Start with Sample' option is chosen from CLI setup_
           exact: true,
           component: Skeleton,
-          loadDataKey:'allSkeletons',
-          loadDataFnc:'SkeletonController.getSkeletonsByRoute',
-          // routes: [
+          loadDataKey: 'allSkeletons',
+          loadDataFnc: 'SkeletonController.getSkeletonsByRoute',
+        },
+        {
+          path: '/skeletons/:id', // only add from here down when 'Start with Sample' option is chosen from CLI setup_
+          exact: false,
+          component: Skeleton,
+          loadDataKey: 'allSkeletons',
+          loadDataFnc: 'SkeletonController.getSkeletonsByRoute',
+          // routes: [ // if you were to load a nested component it would be here
           //   { path: '/skeletons/:id/',
           //     exact: false,
           //     component: Closet,
@@ -34,17 +37,9 @@ export default function getRoutes() {
           //     loadDataFnc:'closetFnc'
           //   }
           // ]
-        },
-        {
-          path: '/skeletons/:id',//only add from here down when 'Start with Sample' option is chosen from CLI setup_
-          exact: false,
-          component: Skeleton,
-          loadDataKey:'allSkeletons',
-          loadDataFnc:'SkeletonController.getSkeletonsByRoute',
         }
       ]
     }
   ];
   return allRoutes;
-
 }

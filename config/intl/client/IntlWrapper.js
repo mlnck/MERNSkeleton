@@ -1,3 +1,4 @@
+//Leaving this here for ease of use if internationalization is required
 import React from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';

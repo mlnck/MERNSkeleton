@@ -20,8 +20,10 @@ const initialState = fromJS({
 
 });
 
-function rootReducer(state = initialState, action) {
-  switch (action.type) {
+function rootReducer(state = initialState, action)
+{
+  switch (action.type)
+  {
     default:
       return state;
   }
