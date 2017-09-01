@@ -4,7 +4,9 @@
   "description": "Skeleton of MERN Stack",
   "main": "index.js",
   "scripts": {
-    "test": "test",
+    "pretest": "npm run test:clean && npm run lint",
+    "test:clean": "rimraf ./coverage",
+    "test": "cross-env NODE_ENV=test jest --coverage",
     "start": "cross-env BABEL_DISABLE_CACHE=1 NODE_ENV=development nodemon index.js",
     "start:prod": "cross-env NODE_ENV=production node index.js",
     "lint": "eslint client server",
@@ -27,6 +29,13 @@
     "url": "https://github.com/mlnck/MERNSkeleton/issues"
   },
   "homepage": "https://github.com/mlnck/MERNSkeleton#readme",
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/_Archive_forReferenceONLY",
+      ".*_Structure.*"
+    ]
+  },
   "dependencies": {
     "body-parser": "^1.17.2",
     "compression": "^1.7.0",
@@ -57,11 +66,13 @@
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
     "babel-loader": "^7.1.1",
     "babel-plugin-webpack-loaders": "^0.9.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "enzyme": "^2.9.1",
     "eslint": "^4.5.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-ava": "^4.2.2",
@@ -70,12 +81,15 @@
     "eslint-plugin-react": "^7.3.0",
     "eslint-plugin-redux-saga": "^0.4.0",
     "eventsource-polyfill": "^0.9.6",
+    "jest": "^20.0.4",
+    "mockgoose": "^7.3.3",
     "nodemon": "^1.11.0",
     "postcss-cssnext": "^3.0.2",
     "postcss-focus": "^2.0.0",
     "postcss-loader": "^2.0.6",
     "postcss-reporter": "^4.0.0",
     "pre-commit": "^1.2.2",
+    "react-addons-test-utils": "^15.6.0",
     "react-hot-loader": "^3.0.0-beta.2",
     "webpack": "^3.3.0",
     "webpack-dev-middleware": "^1.11.0",
