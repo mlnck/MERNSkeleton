@@ -8,9 +8,11 @@
  env:
    - CI=true
 
+ notifications:
+    slack: jmelnick:pKSMAuivv7MPfyHou5p3YBXG
+
  before_deploy:
    - yarn run build
-
  deploy:
    provider: script
    script: ''
