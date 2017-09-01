@@ -30,7 +30,7 @@ import serverConfig from '../config/server/conf';
 /** START_WITH_SAMPLE **/
 import skeletonRoutes from './routes/skeleton.routes';
 // these should come from server/controllers - accessing mongo and returning data requested by /clients/routes
-import * as SkeletonController from './controllers/skeleton.controller'; // eslint-disable no-unused-vars
+import * as SkeletonController from './controllers/skeleton.controller'; // eslint-disable-line
 /** END_START_WITH_SAMPLE **/
 
 
@@ -53,7 +53,7 @@ mongoose.connect(serverConfig.mongoURL, { useMongoClient: true }, (error) =>
 {
   if(error)
   {
-    console.error('Please make sure Mongodb is installed and running!', error); // eslint-disable-line no-console
+    console.error('Please make sure Mongodb is installed and running!', error); // eslint-disable-line
     throw error;
   }
   console.log('Mongo running at:\n\t', serverConfig.mongoURL); // eslint-disable-line no-console
@@ -91,8 +91,9 @@ const loadBranchData = (location) =>
     /** END_START_WITH_SAMPLE**/
     if(route.loadDataFnc)
     {
-      match.dataKey = route.loadDataKey; // eslint-disable no-param-reassign
-      return eval(route.loadDataFnc)(match); // eslint-disable no-eval
+      // following two lines are for react v4 object "pre-processed" routing
+      match.dataKey = route.loadDataKey; // eslint-disable-line
+      return eval(route.loadDataFnc)(match); // eslint-disable-line
     }
     return Promise.resolve(null); // eslint-disable no-param-reassign
   });
