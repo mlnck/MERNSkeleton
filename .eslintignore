@@ -1,7 +1,7 @@
-
-server/**/_Structure.js
 client/**/_Structure/**
+server/**/_Structure.js
 
+client/**/__tests__/**
 server/**/__tests__/**
 
 config/webpack/webpack.babel.js
