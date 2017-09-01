@@ -1,12 +1,9 @@
-import React from 'react';
-import { matchRoutes, renderRoutes } from 'react-router-config';
-
 // route containers
 import Root from './containers/Root';
 import Home from './containers/Home';
 /** START_WITH_SAMPLE**/
 import Skeleton from './containers/Skeleton';
-import Closet from './components/Closet';
+// import Closet from './components/Closet'; // if you were to load a nested component it would be here
 /** END_START_WITH_SAMPLE**/
 
 
@@ -25,14 +22,6 @@ export default function getRoutes()
           component: Skeleton,
           loadDataKey: 'allSkeletons',
           loadDataFnc: 'SkeletonController.getSkeletonsByRoute',
-          // routes: [
-          //   { path: '/skeletons/:id/',
-          //     exact: false,
-          //     component: Closet,
-          //     loadDataKey:'closetKey',
-          //     loadDataFnc:'closetFnc'
-          //   }
-          // ]
         },
         {
           path: '/skeletons/:id', // only add from here down when 'Start with Sample' option is chosen from CLI setup_
@@ -40,6 +29,14 @@ export default function getRoutes()
           component: Skeleton,
           loadDataKey: 'allSkeletons',
           loadDataFnc: 'SkeletonController.getSkeletonsByRoute',
+          // routes: [ // if you were to load a nested component it would be here
+          //   { path: '/skeletons/:id/',
+          //     exact: false,
+          //     component: Closet,
+          //     loadDataKey:'closetKey',
+          //     loadDataFnc:'closetFnc'
+          //   }
+          // ]
         }
       ]
     }

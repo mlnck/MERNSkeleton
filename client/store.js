@@ -8,7 +8,6 @@ import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 /** SHOW_FLOW_LOG**/
-import { AlterBone, CREATE_SAGA_SKELETON } from './containers/Skeleton/state/constants';
 import { createSkeleton, toggleBojangles, alterBone } from './containers/Skeleton/state/actions';
 
 import rootSkeletonSaga from './containers/Skeleton/state/sagas';
@@ -57,7 +56,7 @@ export default function configureStore(initialState, history = {})
   {
     module.hot.accept('./reducers', () =>
     {
-      require('./reducers').then((reducerModule) =>
+      require('./reducers').then((reducerModule) => // eslint-disable-line
       {
         const createReducers = reducerModule.default;
         const nextReducers = createReducers(store.asyncReducers);
