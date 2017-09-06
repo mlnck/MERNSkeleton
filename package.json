@@ -5,15 +5,18 @@
   "main": "index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack/webpack.prod.js",
-    "build:server": "cross-env BABEL_DISABLE_CACHE=1 NODE_ENV=production webpack --config ./config/webpack/webpack.server.js",
+    "build:server": "cross-env MONGO_USE_LOCAL=false BABEL_DISABLE_CACHE=1 NODE_ENV=production webpack --config ./config/webpack/webpack.server.js",
+    "clean:slate": "yarn run clean && yarn run slate",
+    "clean": "rimraf _build",
+    "lint": "eslint client server",
+    "lint:fix": "eslint --fix client server",
     "pretest": "npm run test:clean && npm run lint",
-    "test:clean": "rimraf ./coverage",
-    "test": "cross-env NODE_ENV=test jest --coverage",
-    "travis": "jest",
+    "slate": "rimraf node_modules && yarn",
     "start": "cross-env BABEL_DISABLE_CACHE=1 NODE_ENV=development nodemon index.js",
     "start:prod": "cross-env NODE_ENV=production node index.js",
-    "lint": "eslint client server",
-    "lint:fix": "eslint --fix client server"
+    "test:clean": "rimraf ./coverage",
+    "test": "cross-env NODE_ENV=test jest --coverage",
+    "travis": "jest"
   },
   "pre-commit": [
     "lint"
