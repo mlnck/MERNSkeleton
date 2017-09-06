@@ -4,6 +4,7 @@
   "description": "Skeleton of MERN Stack",
   "main": "index.js",
   "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "pretest": "npm run test:clean && npm run lint",
     "test:clean": "rimraf ./coverage",
     "test": "cross-env NODE_ENV=test jest --coverage",
