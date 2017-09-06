@@ -2,7 +2,7 @@ import Express from 'express';
 import compression from 'compression';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import path from 'path';
+// import path from 'path';
 // import IntlWrapper from '../config/intl/client/IntlWrapper'; // enable if internationalization is required
 
 // Webpack Requirements
@@ -69,7 +69,7 @@ mongoose.connect(serverConfig.mongoURL, { useMongoClient: true }, (error) =>
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(Express.static(path.resolve(__dirname, '../dist/client')));
+app.use(Express.static('../_build/client'));
 // Server side routes app.use
 /** START_WITH_SAMPLE**/
 app.use('/api', skeletonRoutes);

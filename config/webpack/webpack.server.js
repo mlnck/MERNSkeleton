@@ -7,7 +7,7 @@ module.exports = {
   entry: path.resolve(__dirname, '../../server/server.js'),
 
   output: {
-    path: __dirname + '/../../_build/',
+    path: __dirname + '/dist/',
     filename: 'server.bundle.js',
   },
 
@@ -16,6 +16,10 @@ module.exports = {
   node: {
     __filename: true,
     __dirname: true,
+    fs: "empty",
+    fsevents: "empty",
+    "aws-sdk": "empty",
+    path:"empty"
   },
 
   resolve: {
@@ -25,7 +29,12 @@ module.exports = {
       'node_modules',
     ],
   },
-
+  externals: {
+    'fs':'fs',
+    'fsevents':'fsevents',
+    "aws-sdk":"aws-sdk",
+    'path':'path'
+  },
   module: {
     loaders: [
       {
@@ -41,7 +50,7 @@ module.exports = {
           plugins: [
             [
               'babel-plugin-webpack-loaders', {
-                'config': './config/webpack/webpack.babel.js',
+                'config': path.resolve(__dirname, './webpack.babel.js'),
                 "verbose": false
               }
             ]
@@ -49,7 +58,6 @@ module.exports = {
         },
       }, {
         test: /\.json$/,
-        exclude: /node_modules/,
         loader: 'json-loader',
       },
     ],
