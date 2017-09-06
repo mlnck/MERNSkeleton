@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = {
 
-  entry: path.resolve(__dirname, '../../server/server.js'),
+  entry: ['babel-polyfill', path.resolve(__dirname, '../../server/server.js')],
 
   output: {
     path: path.resolve(__dirname, '../../_build/'),
@@ -43,7 +43,7 @@ module.exports = {
             [
               'babel-plugin-webpack-loaders', {
                 'config': path.resolve(__dirname, './webpack.babel.js'),
-                "verbose": false
+                "verbose": true
               }
             ]
           ]
