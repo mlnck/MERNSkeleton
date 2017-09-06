@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var ManifestPlugin = require('webpack-manifest-plugin');
 var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
+var autoprefixer = require('autoprefixer');
 var cssnext = require('postcss-cssnext');
 var postcssFocus = require('postcss-focus');
 var postcssReporter = require('postcss-reporter');
@@ -21,13 +22,13 @@ module.exports = {
   },
 
   output: {
-    path: __dirname + '/dist/client/',
+    path: __dirname + '/../../_build/client/',
     filename: '[name].[chunkhash].js',
     publicPath: '/',
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['*', '.js', '.jsx'],
     modules: [
       'client',
       'node_modules',
@@ -47,7 +48,7 @@ module.exports = {
       }, {
         test: /\.jsx*$/,
         exclude: /node_modules/,
-        loader: 'babel',
+        loader: 'babel-loader',
       }, {
         test: /\.(jpe?g|gif|png|svg)$/i,
         loader: 'url-loader?limit=10000',
@@ -82,18 +83,21 @@ module.exports = {
         warnings: false,
       }
     }),
-  ],
-
-  postcss: () => [
-    postcssFocus(),
-    cssnext({
-      browsers: ['last 2 versions', 'IE > 10'],
-    }),
-    cssnano({
-      autoprefixer: false
-    }),
-    postcssReporter({
-      clearMessages: true,
-    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: () => [
+          postcssFocus(),
+          cssnext({
+            browsers: ['last 2 versions', 'IE > 10'],
+          }),
+          cssnano({
+            autoprefixer: false
+          }),
+          postcssReporter({
+            clearMessages: true,
+          }),
+        ],
+      }
+    })
   ],
 };
