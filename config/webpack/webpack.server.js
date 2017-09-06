@@ -25,10 +25,7 @@ module.exports = {
     ],
   },
   externals: {
-    'fs':'fs',
     'fsevents':'fsevents',
-    "aws-sdk":"aws-sdk",
-    'path':'path'
   },
   module: {
     loaders: [
