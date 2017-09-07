@@ -1,5 +1,5 @@
 import Helmet from 'react-helmet';
-
+import path from 'path';
 export default function renderFullPage(html, initialState, data){
   const head = Helmet.rewind();
 
@@ -44,6 +44,7 @@ export default function renderFullPage(html, initialState, data){
           window.webpackManifest = ${JSON.stringify(chunkManifest)};
           //]]>` : ''}
         </script>
+
         <script src='${process.env.NODE_ENV === 'production' ? assetsManifest['/vendor.js'] : '/vendor.js'}'></script>
         <script src='${process.env.NODE_ENV === 'production' ? assetsManifest['/app.js'] : '/app.js'}'></script>
       </body>

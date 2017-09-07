@@ -3,11 +3,13 @@ var path = require('path');
 
 module.exports = {
 
-  entry: ['babel-polyfill', path.resolve(__dirname, '../../server/server.js')],
+  entry: ['babel-polyfill', path.resolve(__dirname, '../../server/server.js')],//change to build folder
 
   output: {
     path: path.resolve(__dirname, '../../_build/'),
     filename: 'server.bundle.js',
+    pathinfo:true,//debug
+    publicPath: '/',
   },
 
   target: 'node',

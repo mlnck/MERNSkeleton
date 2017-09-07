@@ -24,6 +24,7 @@ module.exports = {
   output: {
     path: __dirname + '/../../_build/client/',
     filename: '[name].[chunkhash].js',
+    pathinfo:true,//debug
     publicPath: '/',
   },
 
