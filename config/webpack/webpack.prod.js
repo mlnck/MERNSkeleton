@@ -7,6 +7,7 @@ var cssnext = require('postcss-cssnext');
 var postcssFocus = require('postcss-focus');
 var postcssReporter = require('postcss-reporter');
 var cssnano = require('cssnano');
+var path = require('path');
 
 module.exports = {
   devtool: 'hidden-source-map',
@@ -22,10 +23,10 @@ module.exports = {
   },
 
   output: {
-    path: __dirname + '/../../_build/client/',
+    path: path.resolve(__dirname, '../../_build/client/'),
     filename: '[name].[chunkhash].js',
     pathinfo:true,//debug
-    publicPath: '/',
+    publicPath: '/client/',
   },
 
   resolve: {

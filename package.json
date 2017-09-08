@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "yarn run clean && yarn run build:pack && yarn run start:build",
-    "build:pack": "yarn run build:client && yarn run build:server && cp ./index.js ./_build/index.js",
+    "build:pack": "yarn run build:client && yarn run build:server",
     "build:client": "cross-env NODE_ENV=production webpack --progress --colors --config ./config/webpack/webpack.prod.js",
     "build:server": "cross-env MONGO_USE_LOCAL=false BABEL_DISABLE_CACHE=1 NODE_ENV=production webpack --progress --colors --config ./config/webpack/webpack.server.js",
     "clean:slate": "yarn run clean && yarn run slate",
@@ -15,7 +15,7 @@
     "pretest": "yarn run test:clean && yarn run lint",
     "slate": "rimraf node_modules && yarn",
     "start": "cross-env BABEL_DISABLE_CACHE=1 NODE_ENV=development nodemon index.js",
-    "start:build": "cross-env NODE_ENV=production node ./_build/index.js",
+    "start:build": "cross-env NODE_ENV=production node ./_build/server.bundle.js",
     "test:clean": "rimraf ./coverage",
     "test": "cross-env NODE_ENV=test jest --coverage",
     "travis": "jest"
