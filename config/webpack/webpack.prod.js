@@ -10,8 +10,7 @@ var cssnano = require('cssnano');
 var path = require('path');
 
 module.exports = {
-  devtool: 'source-map',
-  // devtool: 'hidden-source-map',
+  devtool: 'hidden-source-map',
 
   entry: {
     app: [
@@ -82,6 +81,9 @@ module.exports = {
       manifestVariable: "webpackManifest",
     }),
     new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      },
       compressor: {
         warnings: false,
       }

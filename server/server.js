@@ -69,11 +69,7 @@ mongoose.connect(serverConfig.mongoURL, { useMongoClient: true }, (error) =>
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(Express.static('../assets'));
-// app.use(Express.static('/_build/assets/assets'));
-// app.use(Express.static(path.join(__dirname, 'assets')));
 app.use(Express.static(path.resolve(__dirname, '../_build/assets')));
-// Server side routes app.use
 /** START_WITH_SAMPLE**/
 app.use('/api', skeletonRoutes);
 /** END_START_WITH_SAMPLE**/
