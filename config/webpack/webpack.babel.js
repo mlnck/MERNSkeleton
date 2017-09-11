@@ -13,7 +13,7 @@ module.exports = {
     libraryTarget: 'commonjs2',
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['*', '.js', '.jsx'],
     modules: [
       'client',
       'node_modules',
