@@ -1,10 +1,11 @@
 // var fs = require('fs');
 var path = require('path');
+var ExternalsPlugin = require('webpack-externals-plugin');
 
 module.exports = {
 
-  entry: ['babel-polyfill', path.resolve(__dirname, '../../index.js')],//change to build folder
-  // entry: ['babel-polyfill', path.resolve(__dirname, '../../server/server.js')],//change to build folder
+  entry: ['babel-polyfill', path.resolve(__dirname, '../../server/server.js')],
+  // entry: ['babel-polyfill', path.resolve(__dirname, '../../index.js')],
 
   output: {
     path: path.resolve(__dirname, '../../_build/'),
@@ -56,4 +57,10 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new ExternalsPlugin({
+      type: 'commonjs',
+      include: path.join(__dirname, './node_modules/'),
+    }),
+  ],
 };

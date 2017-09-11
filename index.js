@@ -5,8 +5,8 @@
 require('dotenv').config();
 
 if (process.env.NODE_ENV === 'production') {
-  process.env.webpackAssets = JSON.stringify(require('./_build/client/manifest.json'));
-  process.env.webpackChunkAssets = JSON.stringify(require('./_build/client/chunk-manifest.json'));
+  process.env.webpackAssets = JSON.stringify(require('./assets/manifest.json'));
+  process.env.webpackChunkAssets = JSON.stringify(require('./assets/chunk-manifest.json'));
 
   console.log('search in serverbundle');
   console.log('you need to move this file with the current conditional block to _build');
@@ -19,8 +19,8 @@ if (process.env.NODE_ENV === 'production') {
   // console.log('======>',tst0,tst);
 
   // In production, serve the webpacked server file.
-  // require('./server.bundle.js');
-  require('./server/server');
+  require('./server.bundle.js');
+  // require('./server/server');
 } else {
   // Babel polyfill to convert ES6 code in runtime
   require('babel-register')({

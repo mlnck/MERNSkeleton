@@ -10,7 +10,8 @@ var cssnano = require('cssnano');
 var path = require('path');
 
 module.exports = {
-  devtool: 'hidden-source-map',
+  devtool: 'source-map',
+  // devtool: 'hidden-source-map',
 
   entry: {
     app: [
@@ -23,10 +24,10 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, '../../_build/client/'),
+    path: path.resolve(__dirname, '../../_build/assets'),
     filename: '[name].[chunkhash].js',
     pathinfo:true,//debug
-    publicPath: '/client/',
+    publicPath: '/',
   },
 
   resolve: {
