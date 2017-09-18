@@ -6,7 +6,10 @@ import {
   ALTER_BONE,
   SEARCH_SKELETON } from './constants';
 
-/** SHOW_FLOW_LOG**/console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/state/actions.js\n\t\tCreate actions - logic in this file');/** END_SHOW_FLOW_LOG**/// remember path in CLI
+/** show_sample_project **/
+import { qonsole } from 'qonsole'; //eslint-disable-line
+qonsole.debug(qonsole.NORM, 'SKELETON ACTIONS LOADED:', '\tMERNSkeleton/client/containers/Skeleton/state/actions.js', '\t\tCreate actions - logic in this file');
+/** end_show_sample_project **/// remember path in CLI
 
 /*
  * action creators

@@ -15,6 +15,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import ReactGA from 'react-ga';
+import { qonsole } from 'qonsole';
 
 import configureStore from './store';
 
@@ -40,9 +41,9 @@ function logPageView()
 }
 
 // Create redux store with history
-/* SHOW_FLOW_LOG */
-console.log('FROM INDEXJS window.__INITIAL_STATE__:', window.__INITIAL_STATE__); // eslint-disable-line
-/* END_SHOW_FLOW_LOG */
+/** show_sample_project **/
+qonsole.debug(qonsole.NORM,'window.__INITIAL_STATE__','\tclient/index.js',window.__INITIAL_STATE__); // eslint-disable-line
+/** end_show_sample_project **/
 const store = configureStore(window.__INITIAL_STATE__); // eslint-disable-line
 
 ReactDOM.render(
@@ -54,10 +55,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
-
-// Install ServiceWorker and AppCache in the end since
-// it's not most important operation and if main code fails,
-// we do not want it installed
-// if(process.env.NODE_ENV === 'production')
-// { require('offline-plugin/runtime').install(); // eslint-disable-line global-require }

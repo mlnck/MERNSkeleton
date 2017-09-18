@@ -1,5 +1,8 @@
 import { createSelector } from 'reselect';
-console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/state/selector.js\n\t\tCreate selectors to be used from the ./index.js file');
+/** show_sample_project **/
+import { qonsole } from 'qonsole';
+qonsole.debug(qonsole.NORM, 'REDUX', '\tMERNSkeleton/client/containers/Skeleton/state/selector.js', '\t\tCreate selectors to be used from the ./index.js file');
+/** end_show_sample_project **/
 
 export const getAlteredState = (state) =>
 {
@@ -32,8 +35,10 @@ export const getFilteredBojangles = createSelector(
   [getAlteredState, getSkeletons], // use the results of these for our return logic
   (alteredState, skeletons) =>
   { // values are passed in here from the component mapStateToProps
-    console.log('If we are going to be manipulating the original array/object of information then we want to');
-    console.log('utilize the power of `Reselect` for Memoization: http://redux.js.org/docs/recipes/ComputingDerivedData.html');
+    /** show_sample_project **/
+    qonsole.debug(qonsole.NORM, 'REDUX', '\tIf we are going to be manipulating the original array/object of information then we want to' +
+    'utilize the power of `Reselect` for Memoization: http://redux.js.org/docs/recipes/ComputingDerivedData.html');
+    /** end_show_sample_project **/
     switch (alteredState)
     {
       case 'REMOVE_BONE':

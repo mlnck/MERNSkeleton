@@ -6,12 +6,13 @@
 import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
-/** SHOW_FLOW_LOG**/
+/** show_sample_project **/
 // remember path in CLI
 import globalReducer from './containers/Root/reducer';
 import skeletonReducer from './containers/Skeleton/state/reducer';
-console.log('REDUX - \n\tMERNSkeleton/client/reducers.js\n\t\tCombine Reducer Files Here');
-/** END_SHOW_FLOW_LOG**/
+import { qonsole } from 'qonsole'; //eslint-disable-line
+qonsole.debug(qonsole.NORM, 'REDUX', '\tMERNSkeleton/client/reducers.js', '\t\tCombine Reducer Files Here');
+/** end_show_sample_project **/
 
 /*
  * routeReducer
@@ -46,7 +47,9 @@ function routeReducer(state = routeInitialState, action)
 /**
  * Creates the main reducer with the asynchronously loaded ones
  */
-/** SHOW_FLOW_LOG**/console.log('REDUX - \n\tMERNSkeleton/client/reducers.js\n\tCombining all reducers for use with store object');/** END_SHOW_FLOW_LOG**/
+/** show_sample_project **/
+qonsole.debug(qonsole.NORM, 'REDUX', '\tMERNSkeleton/client/reducers.js', '\t\tCombining all reducers for use with store object');
+/** end_show_sample_project **/
 export default function createReducer(asyncReducers)
 {
   return combineReducers({

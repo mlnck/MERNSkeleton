@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { qonsole } from 'qonsole';
 
 // import Visual
 import StyledSkeleton from './StyledSkeleton';
@@ -19,16 +20,16 @@ class Skeleton extends React.Component
   constructor(props)
   {
     super(props);
-    console.log('Skeleton Props:', props);
+    qonsole.debug(qonsole.NORM, 'Skeleton Props (from constructor):', props);
   }
 
   componentWillMount()
   {
     const routingData = routingData; /* eslint-disable no-undef */ // routingData is coming from "pre-processed db call"
-    console.log('Skeleton is mounting');
+    qonsole.debug(qonsole.NORM, 'Skeleton is mounting');
   }
   componentDidMount()
-  { console.log('Skeleton mounted'); }
+  { qonsole.debug(qonsole.NORM, 'Skeleton mounted'); }
 
   render()
   {
@@ -42,7 +43,7 @@ class Skeleton extends React.Component
     const searchedSkels = (!skeletonProps.searchedSkeleton) ? [] : skeletonProps.searchedSkeleton.map((closetProps, indx) =>
       <Closet key={indx} title={closetProps.name} content={(closetProps.bojangles) ? 'Bojangles' : 'Nojangles'} {...closetProps} />);
 
-    console.log('skeletonPropsskeletonPropsskeletonPropsskeletonPropsskeletonProps', skeletonProps);
+    qonsole.debug('skeletonProps', skeletonProps);
     return (
       <StyledSkeleton>
 
@@ -120,7 +121,7 @@ Skeleton.propTypes = {
 
 const mapStateToProps = (state, ownProps) =>
 {
-  console.log('mapStateToProps:->', state, ownProps);
+  qonsole.debug(qonsole.INFO, 'mapStateToProps:->', state, ownProps);
   return {
     alteredBoneState: getAlteredState(state),
     skeletons: getSkeletons(state),
@@ -132,11 +133,11 @@ const mapStateToProps = (state, ownProps) =>
 
 const mapDispatchToProps = (dispatch) =>
 {
-  console.log('mapDispatchToProps:->', dispatch);
+  qonsole.debug(qonsole.INFO, 'mapDispatchToProps:->', dispatch);
   return {
     blanketChange: (s) => { dispatch(alterBone(s.target.value)); },
     searchSkeleton: (s) => { dispatch(searchSkeleton(s.currentTarget.getAttribute('data-searchon'))); },
-    createSagaSkeleton: (o) => { console.log('o', o); dispatch(createSagaSkeleton({ skeletonName: 'Tony', skeletonCaption: 'bone apetit' })); },
+    createSagaSkeleton: (o) => { qonsole.debug('dispatching from this obj:', o); dispatch(createSagaSkeleton({ skeletonName: 'Tony', skeletonCaption: 'bone apetit' })); },
     deleteSagaSkeleton: () => { dispatch(deleteSagaSkeleton()); }
   };
 };

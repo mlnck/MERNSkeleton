@@ -1,4 +1,8 @@
-/** SHOW_FLOW_LOG**/console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/state/constants.js\n\t\tSet context of our constants');/** END_SHOW_FLOW_LOG**/// remember path in CLI
+/** show_sample_project **/
+import { qonsole } from 'qonsole';
+qonsole.debug(qonsole.NORM, 'SKELETON CONSTANTS LOADED:', '\tMERNSkeleton/client/containers/Skeleton/state/constants.js', '\t\tSet context of our constants');
+/** end_show_sample_project **/
+// remember path in CLI
 /* action types */
 export const CREATE_SAGA_SKELETON_LOAD = 'mernskeleton.Skeleton.CREATE_SAGA_SKELETON_LOAD';
 export const DELETE_SAGA_SKELETON_INIT = 'mernskeleton.Skeleton.DELETE_SAGA_SKELETON_INIT';

@@ -3,7 +3,10 @@ import { fromJS } from 'immutable';
 import { ALTER_BONE, AlterBone, CREATE_SAGA_SKELETON_SUCCESS, DELETE_SAGA_SKELETON_SUCCESS, FETCH_SAGA_SKELETON_FAILED, CREATE_SKELETON, SEARCH_SKELETON, TOGGLE_BOJANGLES } from './constants';
 import { alterBone } from './actions';
 
-console.log('REDUX - \n\tMERNSkeleton/client/containers/Skeleton/state/reducer.js\n\t\tCreate conntainer/component reducer - NO logic in this file');
+/** show_sample_project **/
+import { qonsole } from 'qonsole'; //eslint-disable-line
+qonsole.debug(qonsole.NORM, 'REDUX', '\tMERNSkeleton/client/containers/Skeleton/state/reducer.js', '\t\tCreate conntainer/component reducer', '\t\t\tRECCOMMENDED TO KEEP ALL LOGIC OUT OF THIS FILE');
+/** end_show_sample_project **/
 
 const { NO_ALTERATIONS } = AlterBone;
 
@@ -88,9 +91,9 @@ function skeletonReducer(state = initialState, action)
   };
 }
 
-
-console.info('NOTE: this combineReducer used here could be mapped to differnt keys using one of the below for the same effect' +
-`const skeletonReducer = combineReducers({
+/** show_sample_project **/
+qonsole.debug(qonsole.NORM, 'REDUX NOTE:', 'This combineReducer used here could be mapped to differnt keys using one of the below for the same effect',
+  `const skeletonReducer = combineReducers({
   alterBone: skeletonAlterBoneComposition,
   skeleton:skeletonUpsertComposition
 })
@@ -106,6 +109,7 @@ function skeletonReducer(state = initialState, action) {
           skeleton:skeletonUpsertComposition(state.skeletons, action)
         }
 }`
+/** end_show_sample_project **/
 
 );
 export default skeletonReducer;
