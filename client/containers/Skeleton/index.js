@@ -121,7 +121,7 @@ Skeleton.propTypes = {
 
 const mapStateToProps = (state, ownProps) =>
 {
-  qonsole.debug(qonsole.INFO, 'mapStateToProps:->', state, ownProps);
+  qonsole.isLevel(qonsole.NORM).debug(qonsole.INFO, 'mapStateToProps:->', state, ownProps);
   return {
     alteredBoneState: getAlteredState(state),
     skeletons: getSkeletons(state),
@@ -133,7 +133,7 @@ const mapStateToProps = (state, ownProps) =>
 
 const mapDispatchToProps = (dispatch) =>
 {
-  qonsole.debug(qonsole.INFO, 'mapDispatchToProps:->', dispatch);
+  qonsole.isLevel(qonsole.NORM).debug(qonsole.INFO, 'mapDispatchToProps:->', dispatch);
   return {
     blanketChange: (s) => { dispatch(alterBone(s.target.value)); },
     searchSkeleton: (s) => { dispatch(searchSkeleton(s.currentTarget.getAttribute('data-searchon'))); },

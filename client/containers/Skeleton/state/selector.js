@@ -6,9 +6,9 @@ qonsole.debug(qonsole.NORM, 'REDUX', '\tMERNSkeleton/client/containers/Skeleton/
 
 export const getAlteredState = (state) =>
 {
-  console.info('We use selectors to filter to the correct piece of information when receiving the data in the component');
-  console.log('For instance, if we were just to try to access the state we would see:', state);
-  console.log('Instead, we use the selector to filter out the extaneous information that we do not need and return:', state._root.entries[2][1].alterBones);
+  qonsole.debug(qonsole.NORM, 'We use selectors to filter to the correct piece of information when receiving the data in the component',
+    'For instance, if we were just to try to access the state we would see:', state,
+    'Instead, we use the selector to filter out the extaneous information that we do not need and return:', state._root.entries[2][1].alterBones);
 
   const tmp = state._root.entries,
     ret = tmp.filter((itm) => itm[0] === 'skeleton');

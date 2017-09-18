@@ -7,11 +7,12 @@ import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
-/** SHOW_FLOW_LOG**/
+/** show_sample_project **/
+import { qonsole } from 'qonsole'; //eslint-disable-line
 import { createSkeleton, toggleBojangles, alterBone } from './containers/Skeleton/state/actions';
 
 import rootSkeletonSaga from './containers/Skeleton/state/sagas';
-/** END_SHOW_FLOW_LOG**/
+/** end_show_sample_project **/
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -66,11 +67,11 @@ export default function configureStore(initialState, history = {})
     });
   }
 
-  /** SHOW_FLOW_LOG**/
-  console.log('REDUX - \n\tMERNSkeleton/client/store.js\n\tExporting store object with all reducers included');
-  console.log('REDUX - \n\tMERNSkeleton/client/store.js\n\tThis shows an example of dispatching an action straight from the store');
+  /** show_sample_project **/
+  qonsole.debug(qonsole.NORM, 'REDUX', '\tMERNSkeleton/client/store.js', '\t\tExporting store object with all reducers included',
+    '\t\t\tThis shows an example of dispatching an action straight from the store');
   const unsubscribe = store.subscribe(() =>
-    console.log('dispatched action from store changes state to:', store.getState())
+    qonsole.debug(qonsole.NORM, 'dispatched action from store changes state to:', store.getState())
   );
   // Dispatch some actions
   store.dispatch(createSkeleton('Boney'));
@@ -84,6 +85,6 @@ export default function configureStore(initialState, history = {})
   unsubscribe();
   // saga example
   // sagaMiddleware.run(helloSagaSkeleton);
-  /** END_SHOW_FLOW_LOG**/
+  /** end_show_sample_project **/
   return store;
 }

@@ -11,6 +11,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
+/** show_sample_project **/
+import { qonsole } from 'qonsole'; //eslint-disable-line
+/** end_show_sample_project **/
 
 // import Visual
 import StyledRoot from './StyledRoot';
@@ -24,29 +27,29 @@ export default class RootPage extends React.Component
   constructor(props)
   {
     super(props);
-    /** SHOW_FLOW_LOG**/
-    console.log('Root Props:', props);
-    /** END_SHOW_FLOW_LOG**/
+    /** show_sample_project **/
+    qonsole.debug(qonsole.NORM, 'Root Props:', props);
+    /** end_show_sample_project **/
   }
 
   componentWillMount()
-  { /** SHOW_FLOW_LOG**/console.log('Root is mounting');/** END_SHOW_FLOW_LOG**/ }
+  { /** show_sample_project **/qonsole.debug(qonsole.NORM, 'Root is mounting');/** end_show_sample_project **/ }
   componentDidMount()
-  { /** SHOW_FLOW_LOG**/console.log('Root mounted');/** END_SHOW_FLOW_LOG**/ }
+  { /** show_sample_project **/qonsole.debug(qonsole.NORM, 'Root mounted');/** end_show_sample_project **/ }
 
   render()
   {
-    /** SHOW_FLOW_LOG**/
-    console.info(`FRONT-END (/client/containers/Skeleton/index.js)
-      /client/containers/Root/index.js: wrap <Route> and use this everywhere instead, then when
-      sub routes are added to any route it'll work`);
-    /** END_SHOW_FLOW_LOG**/
+    /** show_sample_project **/
+    qonsole.debug(qonsole.NORM, 'FRONT-END', '\t(/client/containers/Skeleton/index.js)',
+      '/client/containers/Root/index.js: wrap <Route> and use this everywhere instead',
+      ', then when sub routes are added to any route it\'ll work');
+    /** end_show_sample_project **/
     const RouteWithSubRoutes = (route) => (
       <Route
         exact={route.exact}
         path={route.path}
         render={(props) => (
-        /** SHOW_FLOW_LOG**/// (pass the sub-routes down to keep nesting)/**END_SHOW_FLOW_LOG**/
+        /** show_sample_project **/// (pass the sub-routes down to keep nesting)/** end_show_sample_project **/
           <route.component {...props} route={route.routes} />
         )}
       />
@@ -55,7 +58,7 @@ export default class RootPage extends React.Component
     return (
       <StyledRoot>
         <Header />
-        <div className="optional-helper-text">
+        <div className="optional-helper-text /** show_sample_project **/">
           <h3>*Root*</h3>
           2) FRONT-END (/client/index.js) - initial front-end entry point. Integrates into the server rendered page and inits React, ReactDOM, React Router, Redux and other Globals<br />
           3) FRONT-END (/client/containers/Root/index.js) - Loaded into "/client/index.js" by "/client/routes.js"<br />
