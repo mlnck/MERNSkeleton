@@ -1,4 +1,4 @@
-/**SHOW_FLOW_LOG**/ //on create of serverside model, at least add import to this file
+/** show_sample_project **/ //on create of serverside model, at least add import to this file
 import Skeleton from '../../../server/models/skeleton';
 
 export default function () {
@@ -20,4 +20,4 @@ export default function () {
     });
   });
 }
-/**END_SHOW_FLOW_LOG**/
+/** end_show_sample_project **/

@@ -10,15 +10,15 @@ export default class Home extends React.Component
   constructor(props)
   {
     super(props);
-    /** SHOW_FLOW_LOG**/
+    /** show_sample_project **/
     console.log('Home Props:', props);
-    /** END_SHOW_FLOW_LOG**/
+    /** end_show_sample_project **/
   }
 
   componentWillMount()
-  { /** SHOW_FLOW_LOG**/console.log('Home is mounting');/** END_SHOW_FLOW_LOG**/ }
+  { /** show_sample_project **/console.log('Home is mounting');/** end_show_sample_project **/ }
   componentDidMount()
-  { /** SHOW_FLOW_LOG**/console.log('Home mounted');/** END_SHOW_FLOW_LOG**/ }
+  { /** show_sample_project **/console.log('Home mounted');/** end_show_sample_project **/ }
 
   render()
   {

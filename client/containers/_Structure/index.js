@@ -17,15 +17,15 @@ export default class Xxx extends React.Component
   constructor(props)
   {
     super(props);
-    /**SHOW_FLOW_LOG**/
+    /** show_sample_project **/
     console.log('Xxx Props:',props);
-    /**END_SHOW_FLOW_LOG**/
+    /** end_show_sample_project **/
   }
 
   componentWillMount()
-  { /**SHOW_FLOW_LOG**/console.log('Xxx is mounting');/**END_SHOW_FLOW_LOG**/ }
+  { /** show_sample_project **/console.log('Xxx is mounting');/** end_show_sample_project **/ }
   componentDidMount()
-  { /**SHOW_FLOW_LOG**/console.log('Xxx mounted');/**END_SHOW_FLOW_LOG**/ }
+  { /** show_sample_project **/console.log('Xxx mounted');/** end_show_sample_project **/ }
 
   render()
   {

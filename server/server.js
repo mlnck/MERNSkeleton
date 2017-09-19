@@ -27,11 +27,11 @@ import seedDB from '../config/utils/server/seed.db';
 import serverConfig from '../config/server/conf';
 
 // Server Side Routes:
-/** START_WITH_SAMPLE **/
+/** show_sample_project **/
 import skeletonRoutes from './routes/skeleton.routes';
 // these should come from server/controllers - accessing mongo and returning data requested by /clients/routes
 import * as SkeletonController from './controllers/skeleton.controller'; // eslint-disable-line
-/** END_START_WITH_SAMPLE **/
+/** end_show_sample_project **/
 
 
 // Initialize the Express App
@@ -60,9 +60,9 @@ mongoose.connect(serverConfig.mongoURL, { useMongoClient: true }, (error) =>
   // feed some dummy data in DB.
   if(process.env.MONGO_SEED === 'true')
   { seedDB(); }
-  /** START_WITH_SAMPLE**/
+  /** show_sample_project **/
   seedDB();
-  /** END_START_WITH_SAMPLE**/
+  /** end_show_sample_project **/
 });
 
 // Apply body Parser and server public assets and routes
@@ -70,9 +70,9 @@ app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../_build/assets')));
-/** START_WITH_SAMPLE**/
+/** show_sample_project **/
 app.use('/api', skeletonRoutes);
-/** END_START_WITH_SAMPLE**/
+/** end_show_sample_project **/
 
 const allRoutes = clientRoutes();
 const renderFullPage = basehtml;
@@ -82,12 +82,12 @@ const loadBranchData = (location) =>
   const branch = matchRoutes(allRoutes, location);
   const promises = branch.map(({ route, match }) =>
   {
-    /** START_WITH_SAMPLE**/
+    /** show_sample_project **/
     console.log('/server/server.js -- for backend routing we are matching on:');
     console.log('>', route);
     console.log('->', match);
     console.log('-->', route.loadDataFnc);
-    /** END_START_WITH_SAMPLE**/
+    /** end_show_sample_project **/
     if(route.loadDataFnc)
     {
       // following two lines are for react v4 object "pre-processed" routing
@@ -96,7 +96,7 @@ const loadBranchData = (location) =>
     }
     return Promise.resolve(null); // eslint-disable no-param-reassign
   });
-  /** START_WITH_SAMPLE**/console.log('All Promises Are:', promises);/** END_START_WITH_SAMPLE**/
+  /** show_sample_project **/console.log('All Promises Are:', promises);/** end_show_sample_project **/
   return Promise.all(promises);
 };
 

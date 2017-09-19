@@ -1,10 +1,10 @@
 // route containers
 import Root from './containers/Root';
 import Home from './containers/Home';
-/** START_WITH_SAMPLE**/
+/** show_sample_project **/
 import Skeleton from './containers/Skeleton';
 // import Closet from './components/Closet'; // if you were to load a nested component it would be here
-/** END_START_WITH_SAMPLE**/
+/** end_show_sample_project **/
 
 
 export default function getRoutes()
