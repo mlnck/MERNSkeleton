@@ -15,6 +15,7 @@ module.exports = {
   entry: {
     app: [
       './client/index.js',
+      './client/_scss/main.scss'
     ],
     vendor: [
       'react',
@@ -39,6 +40,10 @@ module.exports = {
 
   module: {
     loaders: [
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('css-loader!sass-loader')
+      },
       {
         test: /\.css$/,
         exclude: /node_modules/,
@@ -72,7 +77,7 @@ module.exports = {
       minChunks: Infinity,
       filename: 'vendor.js',
     }),
-    new ExtractTextPlugin('app.[chunkhash].css', { allChunks: true }),
+    new ExtractTextPlugin('[name].[chunkhash].css', { allChunks: true }),
     new ManifestPlugin({
       basePath: '/',
     }),
