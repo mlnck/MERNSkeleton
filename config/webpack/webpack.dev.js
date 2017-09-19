@@ -10,6 +10,7 @@ module.exports = {
       'webpack/hot/only-dev-server',
       'react-hot-loader/patch',
       './client/index.js',
+      './client/_scss/main.scss',
     ],
     vendor: [
       'react',
@@ -36,6 +37,11 @@ module.exports = {
       query: {
         presets: ['es2015', 'react']
       }
+    },
+    {
+      test: /\.scss$/,
+      loaders: ['style-loader', 'css-loader', 'sass-loader'],
+      exclude: /node_modules/
     }]
   },
   plugins: [
