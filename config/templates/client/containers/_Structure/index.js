@@ -13,6 +13,8 @@ import StyledXxx from './StyledXxx';
 
 //will need to toggle export for mapping dispatch/state below if need be (from CLI)
 export default class Xxx extends React.Component
+class Xxx extends React.Component
+export default function Xxx
 { // eslint-disable-line react/prefer-stateless-function
   constructor(props)
   {
