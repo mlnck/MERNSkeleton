@@ -55,7 +55,7 @@ export default function createReducer(asyncReducers)
   return combineReducers({
     route: routeReducer,
     global: globalReducer,
-    skeleton: skeletonReducer,
+    /** show_sample_project **/skeleton: skeletonReducer, /** end_show_sample_project **/
     ...asyncReducers,
   });
 }
