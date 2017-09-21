@@ -1,4 +1,0 @@
-config/webpack/webpack.base.babel.js
-config/webpack/webpack.dev.babel.js
-config/webpack/webpack.dll.babel.js
-config/webpack/webpack.prod.babel.js
