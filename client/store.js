@@ -46,7 +46,10 @@ export default function configureStore(initialState, history = {})
   );
 
   // Sagas
+    // sagaMiddleware.run(exampleSaga);
+  /** show_sample_project **/
   sagaMiddleware.run(rootSkeletonSaga);
+  /** end_show_sample_project **/
 
   // Extensions
   store.asyncReducers = {}; // Async reducer registry

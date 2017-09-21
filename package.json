@@ -1,7 +1,7 @@
 {
-  "name": "mernskeleton",
+  "name": "mlnckmern",
   "version": "1.0.0",
-  "description": "Skeleton of MERN Stack",
+  "description": "Mlnck Mern Boilerplate",
   "main": "index.js",
   "scripts": {
     "build": "yarn run clean && yarn run build:pack && yarn run start:build",
@@ -25,18 +25,17 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mlnck/MERNSkeleton.git"
+    "url": "git+https://github.com/mlnck/mlnck-mern.git"
   },
   "keywords": [
-    "MERN",
-    "Skeleton"
+    "MERN"
   ],
   "author": "mlnck",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mlnck/MERNSkeleton/issues"
+    "url": "https://github.com/mlnck/mlnck-mern/issues"
   },
-  "homepage": "https://github.com/mlnck/MERNSkeleton#readme",
+  "homepage": "https://github.com/mlnck/mlnck-mern#readme",
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/",
