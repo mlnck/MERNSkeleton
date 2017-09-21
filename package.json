@@ -55,7 +55,7 @@
     "mongoose": "^4.11.3",
     "node-fetch": "^1.7.1",
     "prop-types": "^15.5.10",
-    "qonsole": "^1.0.8",
+    "qonsole": "^1.0.9",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-ga": "^2.2.0",

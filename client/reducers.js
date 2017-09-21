@@ -6,9 +6,10 @@
 import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
-/** show_sample_project **/
-// remember path in CLI
+
 import globalReducer from './containers/Root/reducer';
+/** show_sample_project **/
+// remember path in CL
 import skeletonReducer from './containers/Skeleton/state/reducer';
 import { qonsole } from 'qonsole'; //eslint-disable-line
 qonsole.debug(qonsole.NORM, 'REDUX', '\tMERNSkeleton/client/reducers.js', '\t\tCombine Reducer Files Here');
