@@ -6,15 +6,16 @@ import PropTypes from 'prop-types';
 //import Visual
 import StyledXxx from './StyledXxx';
 
-//import actions
-//import {  } from './actions';
+// import actions
+//import {  } from './state/actions';
+// import selector
+//import {  } from './state/selector';
 
 //import Components
 
 //will need to toggle export for mapping dispatch/state below if need be (from CLI)
-export default class Xxx extends React.Component
 class Xxx extends React.Component
-export default function Xxx
+export default function Xxx(props)
 { // eslint-disable-line react/prefer-stateless-function
   constructor(props)
   {
