@@ -35,12 +35,12 @@ function skeletons(state = [], action)
         return skeleton;
       });
     case FETCH_SAGA_SKELETON_FAILED:
-      console.error('FETCH_SAGA_SKELETON_FAILED', action);
-      console.error('FETCH_SAGA_SKELETON_FAILED', action.skelSaga);
+      qonsole.debug(qonsole.ERROR, 'FETCH_SAGA_SKELETON_FAILED', action);
+      qonsole.debug(qonsole.ERROR, 'FETCH_SAGA_SKELETON_FAILED', action.skelSaga);
       return state;
     case CREATE_SAGA_SKELETON_SUCCESS:
-      console.log('CREATE_SAGA_SKELETON_SUCCESS', action);
-      console.log('CREATE_SAGA_SKELETON_SUCCESS', action.skelSaga);
+      qonsole.debug('CREATE_SAGA_SKELETON_SUCCESS', action);
+      qonsole.debug('CREATE_SAGA_SKELETON_SUCCESS', action.skelSaga);
       return [
         ...state,
         { name: action.skelSaga.title, bojangles: false, inState: true }
@@ -50,10 +50,10 @@ function skeletons(state = [], action)
       console.log('DELETING DELETE_SAGA_SKELETON_SUCCESS');
       const deletedSagaSkels = state.filter((itm) =>
       {
-        console.log('del-itm', itm);
+        qonsole.debug('del-itm', itm);
         return itm.name !== 'Tony';
       });
-      console.log('deletedSagaSkels:', deletedSagaSkels);
+      qonsole.debug('deletedSagaSkels:', deletedSagaSkels);
       return deletedSagaSkels;
     default:
       return state;
