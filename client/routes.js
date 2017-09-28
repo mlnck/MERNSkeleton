@@ -38,7 +38,7 @@ export default function getRoutes()
           //   }
           // ]
         }
-      ]
+      ]// root routes
     }
   ];
   return allRoutes;
