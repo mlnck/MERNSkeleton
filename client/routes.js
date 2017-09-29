@@ -28,7 +28,7 @@ export default function getRoutes()
           exact: false,
           component: Skeleton,
           loadDataKey: 'allSkeletons',
-          loadDataFnc: 'SkeletonController.getSkeletonsByRoute',
+          loadDataFnc: 'SkeletonController.getSkeletonsByRoute'
           // routes: [ // if you were to load a nested component it would be here
           //   { path: '/skeletons/:id/',
           //     exact: false,

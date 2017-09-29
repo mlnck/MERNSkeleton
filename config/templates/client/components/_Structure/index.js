@@ -1,5 +1,5 @@
 /**
- * Component Description from cli
+ * Component Xxx
  */
 
 import React from 'react';
@@ -54,6 +54,4 @@ const mapStateToProps = createStructuredSelector({
 
 });
 
-//will need to toggle export for mapping dispatch/state above if need be (from CLI)
-// Wrap the component to inject dispatch and state into it
 export default connect(mapStateToProps, mapDispatchToProps)(Xxx);
