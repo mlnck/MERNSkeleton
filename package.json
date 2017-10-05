@@ -40,7 +40,6 @@
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "/_Archive_forReferenceONLY",
       ".*_Structure.*"
     ]
   },
