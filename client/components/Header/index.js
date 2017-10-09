@@ -11,13 +11,13 @@ function Header(props)
 {
   return (
     <StyledHeader>
-      {props.navTitle}
+      <h1>{props.navTitle}</h1>
     </StyledHeader>
   );
 }
 
 Header.defaultProps = {
-  navTitle: 'MERN Skeleton Project',
+  navTitle: 'Sample Project',
 };
 
 // We require the use of src and alt, only enforced by react in dev mode
