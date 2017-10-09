@@ -25,7 +25,6 @@ export default function renderFullPage(html, initialState, data){
           .optional-helper-text{
             font-family:monospace;
             padding:5px;
-            text-align:justify;
           }
         </style>
         <script>let routingData=${JSON.stringify(data)};</script>
