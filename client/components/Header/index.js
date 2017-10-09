@@ -17,7 +17,7 @@ function Header(props)
 }
 
 Header.defaultProps = {
-  navTitle: 'Skeleton Default',
+  navTitle: 'MERN Skeleton Project',
 };
 
 // We require the use of src and alt, only enforced by react in dev mode

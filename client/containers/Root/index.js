@@ -58,9 +58,12 @@ export default class RootPage extends React.Component
     return (
       <StyledRoot>
         <Header />
-        <div className="optional-helper-text /** show_sample_project **/">
+        <div className="optional-helper-text root-optional-helper-text /** show_sample_project **/">
           <h3>*Root*</h3>
           2) FRONT-END (/client/index.js) - initial front-end entry point. Integrates into the server rendered page and inits React, ReactDOM, React Router, Redux and other Globals<br />
+        </div>
+        <div className="optional-helper-text root-optional-helper-text /** show_sample_project **/">
+          <h3>*Root*</h3>
           3) FRONT-END (/client/containers/Root/index.js) - Loaded into "/client/index.js" by "/client/routes.js"<br />
            -=> This component is the skeleton around the actual pages, and should only contain code that should be seen on all pages. (e.g. navigation bar)
         </div>

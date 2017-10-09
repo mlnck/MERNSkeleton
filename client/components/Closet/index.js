@@ -9,7 +9,7 @@ import StyledCloset from './StyledCloset';
 
 export default function Closet(props)
 {
-  const inState = (props.inState) ? '$' : 'XX';
+  const inState = (props.inState) ? 'prop in state' : 'prop is static';
   return (
     <StyledCloset>
       {props.title}!<br />

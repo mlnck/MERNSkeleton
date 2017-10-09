@@ -25,7 +25,7 @@ export default class Home extends React.Component
     return (
       <StyledHome>
         <div className="optional-helper-text">
-          <h4>*Home Container*</h4>
+          <h3>*Home Container*</h3>
           4) FRONT-END (/client/containers/Home/index.js) - Loaded into "/client/containers/Root/index.js" by "/client/routes.js"<br />
            -=> This component is now added to the "Root Component" due to the nesting defined in: "/client/routes.js"
           <br /><br />

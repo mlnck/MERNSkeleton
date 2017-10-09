@@ -1,2 +1,63 @@
 @import '_reset';
 @import '_normalize';
+
+/** show_sample_project **/
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab:600|Lobster');
+
+/*-------------------------VARIABLES--------------------------------*/
+//COLORS
+$blueDark:  #2c4d62;
+$blueIce:   #cfe7ff;
+$blueMed:   #055e80;
+$orange:    #ff8e00;
+
+//FONTS
+$fontLobster: 'Lobster', cursive;
+$fontJosefin: 'Josefin Slab', serif;
+
+//MEASUREMENTS
+$base-font-size:16;
+/*-----------------------END VARIABLES------------------------------*/
+
+
+/*---------------------------MIXINS---------------------------------*/
+@mixin box-shadow($top, $left, $blur, $size, $color, $inset: false)
+{
+    @if $inset
+    {
+        -webkit-box-shadow:inset $top $left $blur $size $color;
+        -moz-box-shadow:inset $top $left $blur $size $color;
+        box-shadow:inset $top $left $blur $size $color;
+    }@else{
+        -webkit-box-shadow: $top $left $blur $size $color;
+        -moz-box-shadow: $top $left $blur $size $color;
+        box-shadow: $top $left $blur $size $color;
+    }
+}
+
+@mixin rounded($radius:5)
+{
+  $r:rems($radius);
+  -webkit-border-radius: $r;
+  -moz-border-radius: $r;
+  border-radius: $r;
+}
+/*-------------------------END MIXINS-------------------------------*/
+
+/*-------------------------FUNCTIONS--------------------------------*/
+@function rems($pxsize) {
+    @return ($pxsize/$base-font-size)+rem;
+}
+/*-----------------------END FUNCTIONS------------------------------*/
+
+
+/*-------------------------EXTENSIONS--------------------------------*/
+//DEVELOPMENT
+.debug{ background-color:rgba(255,0,0,.3) !important; }
+
+//FONTS
+.lobster{ font-family: $fontLobster; font-weight: 400; }
+.josefin{ font-family: $fontJosefin; font-weight: 600; line-height:rems(20); }
+/*-----------------------END EXTENSIONS------------------------------*/
+
+/** end_show_sample_project **/

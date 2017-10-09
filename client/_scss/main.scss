@@ -1,2 +1,125 @@
 //Import all sub-files into here. This will be the only file loaded from the compiled html
 @import 'base/main-settings';
+
+/** show_sample_project **/
+body
+{
+  @extend .josefin;
+
+  background-color: $blueIce;
+  font-weight:400;
+  height:100%;
+}
+html
+{
+  font-size:$base-font-size+px;
+  height:100%;
+}
+
+a
+{
+  @extend .josefin;
+
+  color:$orange;
+  font-size:rems(18);
+  &:hover
+  {
+    color:$blueDark;
+    text-decoration:none;
+  }
+}
+
+button
+{
+  background-color:$blueIce;
+  cursor:pointer;
+  @include rounded();
+
+  &:hover{ color:$blueMed; }
+}
+
+footer
+{
+  background-color:$blueMed;
+  bottom:0;
+  color:white;
+  height:rems($base-font-size);
+  position:fixed;
+  width:100%;
+}
+
+header
+{
+  background-color:$blueMed;
+  height:rems($base-font-size);
+  margin-bottom:rems(30);
+  position:relative;
+  h1
+  {
+    @extend .lobster;
+
+    background-color:$blueIce;
+    border-left:2px solid $blueMed;
+    border-right:2px solid $blueMed;
+    color:$blueDark;
+    display:inline-block;
+    margin:0;
+    padding: rems(20) rems(10);
+    position:absolute;
+    top:rems(-20);
+  }
+}
+
+#root
+{
+  background: rgb(207,231,255); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(207,231,255,1) 5%, rgba(255,255,255,1) 40%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(207,231,255,1) 5%,rgba(255,255,255,1) 40%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(207,231,255,1) 5%,rgba(255,255,255,1) 40%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfe7ff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+  height:100%;
+}
+
+.optional-helper-text
+{
+  h3
+  {
+    color:$blueDark;
+    font-size: rems(18);
+    margin-bottom:rems(10);
+    padding-bottom: rems(5);
+    text-align:center;
+    text-decoration:underline;
+    @extend .josefin;
+  }
+
+  &:not(.basehtml-optional-helper-text)
+  {
+    @include box-shadow(rems(3),rems(5),rems(12),rems(5),$blueIce);
+    @include rounded();
+
+    background-color:white;
+    border:rems(1) solid $blueDark;
+    margin:5% auto;
+    padding:rems(15);
+    width:80%;
+  }
+  &.basehtml-optional-helper-text
+  {
+    border-right: rems(1) solid black;
+    font-size:14px;
+    height: 50px;
+    margin: rems(10) 8% rems(10) 0;
+    overflow: scroll;
+    padding: rems(10) 2% rems(10) 30%;
+    text-align: right;
+    width: 60%;
+  }
+}
+
+.skeleton-closet
+{
+  @include box-shadow(rems(0),rems(0),rems(1),rems(1),$orange,true);
+}
+/** end_show_sample_project **/

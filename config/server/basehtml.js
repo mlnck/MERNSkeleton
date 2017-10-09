@@ -23,18 +23,20 @@ export default function renderFullPage(html, initialState, data){
         <style>
           div[className="optional-helper-text"],
           .optional-helper-text{
-            background-color:rgba(150,0,0,.3);
             font-family:monospace;
             padding:5px;
-            white-space:pre;
+            text-align:justify;
           }
         </style>
         <script>let routingData=${JSON.stringify(data)};</script>
       </head>
       <body>
-        <div className="optional-helper-text">
-          Below are listed the main steps for rendering this MERN app. To see the full effect please click the two example buttons below, and realize that the database has been seeded with pseudo-data.<br/>
-          1) After all backend [mongo,node] calls have been parsed "/server/server.js" renders this file ("MERNSkeleton/config/server/basehtml.js"), setting the initial HTML and incorporating webpack settings
+        <div class="optional-helper-text basehtml-optional-helper-text">
+          <b><i>Scrollable ↧</i></b>
+          <br/>
+          Below are listed the main steps for rendering this MERN app. To see the full effect please click the two example buttons below, and realize that the database has been seeded with pseudo-data.
+          <br/><br/>
+          1) After all backend [mongo,node] calls have been parsed "/server/server.js" renders this file ("/config/server/basehtml.js"), setting the initial HTML and incorporating webpack settings
         </div>
         <div id="root">${html}</div>
         <script>
