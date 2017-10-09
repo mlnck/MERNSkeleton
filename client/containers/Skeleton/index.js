@@ -69,8 +69,8 @@ class Skeleton extends React.Component
           &nbsp;&nbsp;&nbsp;<a href="http://localhost:8000/api/skeletons" target="_blank">http://localhost:8000/api/skeletons</a>
           <br /><br />
           Now we will dispatch some actions from the store itself (look in the
-          <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi" target="_blank">react</a>
-            and <a href="http://extension.remotedev.io/" target="_blank">redux</a> chrome extensions or open up the console and browse for the comment "dispatched action from store changes state to:")
+          &nbsp;<a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi" target="_blank">react</a>
+             and <a href="http://extension.remotedev.io/" target="_blank">redux</a> chrome extensions or open up the console and browse for the comment "dispatched action from store changes state to:")
             which will update the state with some interactive information we see below.
           <br /><br />
           All Skeletons are:<br />
