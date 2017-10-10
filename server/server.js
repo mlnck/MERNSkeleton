@@ -70,6 +70,7 @@ app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../_build/assets')));
+app.use(Express.static(path.resolve(__dirname, '../client/_assets')));
 /** show_sample_project **/
 app.use('/api', skeletonRoutes);
 /** end_show_sample_project **/

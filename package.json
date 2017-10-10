@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "yarn run clean && yarn run build:pack && yarn run start:build",
-    "build:pack": "yarn run build:client && yarn run build:server && cp ./index.js ./_build/index.js",
+    "build:pack": "yarn run build:client && yarn run build:server && cp ./index.js ./_build/index.js && cp -R ./client/_assets/ ./_build/assets/",
     "build:client": "cross-env NODE_ENV=production webpack --progress --colors --config ./config/webpack/webpack.prod.js",
     "build:server": "cross-env MONGO_USE_LOCAL=false BABEL_DISABLE_CACHE=1 NODE_ENV=production webpack --progress --colors --config ./config/webpack/webpack.server.js",
     "clean:slate": "yarn run clean && yarn run slate",
