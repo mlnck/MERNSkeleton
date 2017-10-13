@@ -5944,9 +5944,9 @@ q@^1.1.2:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.0.tgz#dd01bac9d06d30e6f219aecb8253ee9ebdc308f1"
 
-qonsole@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/qonsole/-/qonsole-1.0.8.tgz#cb663def804b5b3e7b3c864de6506c15a1fcfee0"
+qonsole@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/qonsole/-/qonsole-1.0.9.tgz#1d1dce0b1e5020ae024ffc088c3fc8b5cc452a14"
 
 qs@6.4.0, qs@~6.4.0:
   version "6.4.0"
