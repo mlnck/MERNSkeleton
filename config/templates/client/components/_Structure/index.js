@@ -31,7 +31,7 @@ export default function Xxx(props)
 
   return (
     <div>
-      // {props.prop}
+      Xxx Component
     </div>
   );
 }

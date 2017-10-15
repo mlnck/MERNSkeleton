@@ -36,7 +36,7 @@ export default function Xxx(props)
 
     return (
       <StyledXxx>
-        Xxx page
+        Xxx Container
       </StyledXxx>
     );
   }
