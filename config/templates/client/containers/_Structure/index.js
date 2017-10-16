@@ -35,9 +35,9 @@ export default function Xxx(props)
     const xxxProps = this.props;
 
     return (
-      <StyledXxx>
+      <div>
         Xxx Container
-      </StyledXxx>
+      </div>
     );
   }
 }
@@ -50,15 +50,17 @@ Xxx.propTypes = {
   route: PropTypes.object.isRequired
 };
 
-export function mapDispatchToProps(dispatch)
+const mapDispatchToProps = (dispatch) =>
 {
   return {
   };
 }
 
-const mapStateToProps = createStructuredSelector({
-
-});
+const mapStateToProps = (state, ownProps) =>
+{
+  return {
+  };
+};
 
 //will need to toggle export for mapping dispatch/state above if need be (from CLI)
 // Wrap the component to inject dispatch and state into it

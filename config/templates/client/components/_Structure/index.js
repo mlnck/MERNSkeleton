@@ -44,14 +44,16 @@ Xxx.propTypes = {
   // prop: PropTypes.string,
 };
 
-export function mapDispatchToProps(dispatch)
+const mapDispatchToProps = (dispatch) =>
 {
   return {
   };
 }
 
-const mapStateToProps = createStructuredSelector({
-
-});
+const mapStateToProps = (state, ownProps) =>
+{
+  return {
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Xxx);
