@@ -124,10 +124,26 @@ app.use((req, res) =>
       const initialView = '<div className="optional-helper-text">This is being replaced by the client side</div>';
       const finalState = store.getState();
 
-      res
-        .set('Content-Type', 'text/html')
-        .status(200)
-        .end(renderFullPage(initialView, finalState, branchData));
+      /** show_sample_project **/
+      if(true) // eslint-disable-line
+      {
+        res
+          .set('Content-Type', 'text/html')
+          .status(200)
+          .end(renderFullPage(initialView, finalState, branchData));
+        console.log(`The above will set the base data as an array,
+          the below will set it as an object`);
+      }
+      else
+      {
+      /** end_show_sample_project **/
+        res
+          .set('Content-Type', 'text/html')
+          .status(200)
+          .end(renderFullPage(initialView, finalState, branchData[0]));
+      /** show_sample_project **/
+      }
+      /** end_show_sample_project **/
     });
 });
 

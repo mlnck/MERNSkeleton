@@ -13,7 +13,7 @@ import StyledXxx from './StyledXxx';
 
 //import Components
 
-//will need to toggle export for mapping dispatch/state below if need be (from CLI)
+
 class Xxx extends React.Component
 export default function Xxx(props)
 { // eslint-disable-line react/prefer-stateless-function
@@ -62,6 +62,4 @@ const mapStateToProps = (state, ownProps) =>
   };
 };
 
-//will need to toggle export for mapping dispatch/state above if need be (from CLI)
-// Wrap the component to inject dispatch and state into it
 export default connect(mapStateToProps, mapDispatchToProps)(Xxx);
