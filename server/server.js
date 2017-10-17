@@ -97,7 +97,9 @@ const loadBranchData = (location) =>
     }
     return Promise.resolve(null); // eslint-disable no-param-reassign
   });
-  /** show_sample_project **/console.log('All Promises Are:', promises);/** end_show_sample_project **/
+  /** show_sample_project **/
+  console.log('All Promises Are:', promises);
+  /** end_show_sample_project **/
   return Promise.all(promises);
 };
 
