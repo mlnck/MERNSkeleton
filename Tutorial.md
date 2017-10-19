@@ -634,7 +634,45 @@ function hangerReducer(state = initialState, action)
 export default hangerReducer;
 ```
 
-The above will update the state, allowing the DOM to show the most recent planes.
+Finally, we now need to retreive the information from the state (like beating a dead horse, it isn't very efficient to do this on a small project). But we are going to use [memoized selectors](https://www.npmjs.com/package/reselect) to access the information from the state.
+-
+
+In _PlaneRide/client/containers/Hanger/index.js_
+- Update `mapStatToProps` to read:
+```
+const mapStateToProps = (state, ownProps) =>
+{
+  console.log('map state',state);
+  return {
+    newPlane: getClonedPlane(state),
+    newPlaneErr: getClonedPlaneError(state)
+  };
+};
+```
+As well as in the upper portion, we need to import the selector(s):
+```
+import { getClonedPlane, getClonedPlaneError } from './state/selector';
+```
+
+And the last file we need to update will be:
+_PlaneRide/client/containers/Hanger/state/selector.js_
+```
+import { createSelector } from 'reselect';
+
+export const getClonedPlane = (state) =>
+{
+  const ret = state._root.entries[2][1].onClonePlane.newPlane;
+  return (ret) ? ret : null;
+};
+
+export const getClonedPlaneError = (state) =>
+{
+  const ret = state._root.entries[2][1].onClonePlane.err;
+  return (ret) ? ret : null;
+};
+```
+
+All of the above, when put together, will update the state, allowing the DOM to show the most recent planes.
 
 Go ahead and try it out.
 - Load the page
