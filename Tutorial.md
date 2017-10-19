@@ -13,9 +13,9 @@ Using this assumes that you have at least a fundamental grasp of the main langua
 
 
 Before we actually write any functional code we will need to install the _***mlnck-mern-cli***_ node package. We do that by opening a command line  and typing:
-`$ npm install -g mlnck-mern-cli`
-_OR_
-`$ yarn global add mlnck-mern-cli`
+`$ npm install -g mlnck-mern-cli`  
+_OR_  
+`$ yarn global add mlnck-mern-cli`  
 (remember, _global_ is not a flag in yarn. It must be the first parameter)
 
 After the package is downloaded and installed let's take a quick look at the commands we will be using in this tutorial by running:
@@ -28,9 +28,9 @@ There's nothing really important to take from the above command other than that 
 ## 2) Creating a New Project
 
 
-` $ mlnck-mern create PlaneRide`
-` $ cd PlaneRide/`
-` $ mlnck-mern configure`
+` $ mlnck-mern create PlaneRide`  
+` $ cd PlaneRide/`  
+` $ mlnck-mern configure`  
  - _author_-> ***<Your Name/Handle/Company>***
  - _Install sample project_ -> ***yes***
  - _Install optional components_ -> ***yes***
@@ -55,9 +55,9 @@ Update .env.example
    MONGO_SEED='false'
 ```
 Back in your original tab we sould run:
-- `$ yarn start`
-_OR_
-- `$ npm start`
+- `$ yarn start`  
+_OR_  
+- `$ npm start`  
 
 Navigate to: [http://localhost:8000](http://localhost:8000)
 
@@ -75,9 +75,9 @@ When you are finished browsing, remove the sample files with:
 - `$ mlnck-mern remove`
 
 Then:
-- `$ yarn start`
-_OR_
-- `$ npm start`
+- `$ yarn start`  
+_OR_  
+- `$ npm start`  
 Navigate to: http://localhost:8000/
   - You are now at the base, blank, skeleton file
 
@@ -231,13 +231,13 @@ Even though we have now created the component we still receive an error when we 
 ---
 ## 5) Create the Plane Schema
 
-We need to add the structure of the plane component as it will be stored within Mongo. We can do this by running:
+We need to add the structure of the plane component as it will be stored within Mongo. We can do this by running:  
 `$ mlnck-mern create-schema plane`
 
-Check it out. No more error!
+Check it out. No more error!  
 But we still have some work to do.
 
-Let's start by populating our new model.
+Let's start by populating our new model.  
 Overwirte the constant in _PlaneRide/server/models/plane.model.js_ to be:
 ```
 const planeSchema = new Schema({
@@ -261,7 +261,7 @@ If you run the query again, you will now see the data from the seed file has suc
 { "_id" : ObjectId("59e3bf7726dd5319781b1355"), "img" : "plane2.png", "name" : "Aluminum Falcon", "content" : "He became a sky diver out of the blue.", "confirmation" : "That's a rodger Roger!", "dateAdded" : ISODate("2017-10-15T20:05:11.198Z"), "__v" : 0 }
 ```
 
-So, what have we done to this point?
+So, what have we done to this point?  
 Basically, we have created all of the content that will be rendered in our final page. Let's make that now.
 
 ---
@@ -684,5 +684,5 @@ Go ahead and try it out.
 - Notice the new name on stage as well as the ***Success*** message
 - Refresh the page to prove that the plane has saved in Mongo
 
-Congrats!
+Congrats!  
 You now have a pretty useless app, but hopefully a bit of an understanding about how the CLI works.
