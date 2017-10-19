@@ -635,7 +635,6 @@ export default hangerReducer;
 ```
 
 Finally, we now need to retreive the information from the state (like beating a dead horse, it isn't very efficient to do this on a small project). But we are going to use [memoized selectors](https://www.npmjs.com/package/reselect) to access the information from the state.
--
 
 In _PlaneRide/client/containers/Hanger/index.js_
 - Update `mapStatToProps` to read:
