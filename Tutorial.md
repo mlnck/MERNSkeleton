@@ -217,7 +217,7 @@ const StyledPlane = styled.div`
 And within _PlaneRide/client/components/Plane/index.js_ we will need to update:
 ```
 return (
-    <StyledPlane style={{'backgroundImage':`url('/imgs/${props.img}')`}}>
+    <StyledPlane style={{'backgroundImage':`url('/imgs/${props.img}')`}} />
     <br/><br/>
       <h2>{props.name}</h2>
       <p>{props.content}</p>
