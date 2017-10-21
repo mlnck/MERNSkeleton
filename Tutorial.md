@@ -73,6 +73,7 @@ Navigate to: [http://localhost:8000](http://localhost:8000)
 
 When you are finished browsing, remove the sample files with:
 - `$ mlnck-mern remove`
+_The above is an important step, it resets the project allowing you to begin with a fresh start_
 
 Then:
 - `$ yarn start`  
@@ -87,18 +88,7 @@ To get started let's update our project's header text.
 
 - within _PlaneRide/client/components/Header/index.js_ let's change line ***20*** to read `navTitle: 'Plane Ride',`
 We also want to give our app some base styles.
-- within _PlaneRide/client/\_scss/main.scss_ let's add the following:
-```
-body,html{ height:100%; }
-body
-{
-  @extend .land-and-sky;
-
-  &:takeoff{ @extend .pure-sky; }
-}
-footer{ bottom:0; position: fixed; right:0; }
-```
-- and within _PlaneRide/client/\_scss/base/\_main-settings.scss_ we'll add the following:
+- within _PlaneRide/client/\_scss/base/\_main-settings.scss_ we'll add the following:
 ```
 .land-and-sky
 {
@@ -117,6 +107,17 @@ footer{ bottom:0; position: fixed; right:0; }
   background: linear-gradient(to bottom, #166de0 0%,#72bff9 60%,#6393c1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#166de0', endColorstr='#6393c1',GradientType=0 ); /* IE6-9 */
 }
+```
+- and within _PlaneRide/client/\_scss/main.scss_ let's add the following:
+```
+body,html{ height:100%; }
+body
+{
+  @extend .land-and-sky;
+
+  &:takeoff{ @extend .pure-sky; }
+}
+footer{ bottom:0; position: fixed; right:0; }
 ```
 
 Now, if we refresh the page, we should see a new view with a background somewhat resembling a landscape.
@@ -161,7 +162,7 @@ export default function () {
 
 ```
 
-Now that the database has the initial information. And if your server is still running you will notice tht an error is thrown. That is because the plane's schema file has not been created yet. Now, we could add the schema by itself through the CLI using `$ mlnck-mern create-schema plane`, but first things first.
+Now that the database has the initial information. And if your server is still running you will notice tht an error is thrown. That is because the plane's schema file has not been created yet. Now, we could add the schema by itself through the CLI using (_***DO NOT***_ run this) `$ mlnck-mern create-schema plane`, but all schema files will automatically be added in the following steps (starting to see the functionality of the CLI?).
 
 One of the benefits of using the CLI is that by answering just a few questions a customized component will be created, and all associated files and paths will be incorporated into the app.
 
@@ -217,11 +218,11 @@ const StyledPlane = styled.div`
 And within _PlaneRide/client/components/Plane/index.js_ we will need to update:
 ```
 return (
-    <StyledPlane style={{'backgroundImage':`url('/imgs/${props.img}')`}} />
+    <StyledPlane style={{'backgroundImage':`url('/imgs/${props.img}')`}}>
     <br/><br/>
       <h2>{props.name}</h2>
       <p>{props.content}</p>
-      <button onClick={props.cloneMe} data-id={props._id}>Clone</button>
+      <button onClick={props.clickAction} data-id={props._id}>{props.btnTitle}</button>
     </StyledPlane>
   );
 ```
@@ -254,7 +255,7 @@ Within `PlaneRide/.env` we need to update the *MONGO_SEED* variable.
 ```
 MONGO_SEED='true'
 ```
-If you run the query again, you will now see the data from the seed file has successfully been saved.
+If you restart the server and run the query again, you will now see the data from the seed file has successfully been saved.
 ```
 > db.planes.find()
 { "_id" : ObjectId("59e3bf7726dd5319781b1354"), "img" : "plane1.png", "name" : "Air Ufthedog", "content" : "My fear of planes has taken off.", "confirmation" : "Whats our vector Victor?", "dateAdded" : ISODate("2017-10-15T20:05:11.195Z"), "__v" : 0 }
@@ -317,6 +318,7 @@ In a nutshell, what we have just done, is created the client side route that wil
 (If you would like to see how the paths are structured you can do so by looking in this file: _PlaneRide/client/routes.js_)
 
 Let's follow the prompt and add the remaining files that are needed now.
+_***IMPORTANT***_: Some people have had issues with eslint running at this point. If that happens it seems to be a sporadic issue with the version. To fix, please update your _package.json_ to use the specific version `'eslint':'3.19.0'` and run `npm install` or `yarn`.
 
 ---
 ## 8) Create the Server Side Files
@@ -372,6 +374,9 @@ import Plane from '../../components/Plane';
 ## 10) Stateless Population from the Server
 
 To begin, let's query Mongo and pull our plane info that we originally seeded. To do so, we need to overwrite the function that we defined in the path _PlaneRide/server/controllers/hanger.controller.js_:
+
+Start by deleting the original `getAllPlanes` method.
+Then:
 ```
 import Plane from '../models/plane.model';
 
@@ -394,14 +399,20 @@ export function getAllPlanes(o){
 > _NOTE:_ The important about the above, is that you make sure you return the queried/parsed data on the key of `o['dataKey]` because that is what maps to the ***object key*** you defined when setting the route in step 7 above
 
 Which will return our planes. And which we can access in the ***Hanger*** Component like so.
-Inside of _PlaneRide/client/containers/Hanger/index.js_ we need to do two things.
-- Import the ***Plane*** Component url
+Inside of _PlaneRide/client/containers/Hanger/index.js_ we need to:
+
+- Make sure we are importing the correct information
 ```
+// import actions
+import { onClonePlane, onSavePlane } from './state/actions';
+// import selector
+import { getClonedPlane, getClonedPlaneError } from './state/selector';
+
 //import Components
 import Plane from '../../components/Plane';
 ```
-- Update our render function to map through our static data and add to the stage
 
+- Update our render function to map through our static data and add to the stage
 ```
 render()
   {
@@ -591,7 +602,7 @@ In a nutshell:
 
 After the saga completes, the reducer will step in and do it's normal operations, only now based on a new `action.type`
 
-_PlaneRide/client/containers/Root/reducer.js_
+_PlaneRide/client/containers/Hanger/reducer.js_
 ```
 import { fromJS } from 'immutable';
 
