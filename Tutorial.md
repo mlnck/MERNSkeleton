@@ -125,7 +125,7 @@ Now, if we refresh the page, we should see a new view with a background somewhat
 So, how can we take a plane ride without any planes?
 We can't. Let's take a look at where to store the static assets that your app may use.
 
-Within the _PlaneRide/_build/assets/_ folder, add a new directory called "_imgs_".
+Within the _PlaneRide/client/\_assets/_ folder, add a new directory called "_imgs_".
 
 You can download [these](https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Airplanes-PNG-Clipart/Plane_Transparent_PNG_Clipart.png?m=1434276589) [airplanes](https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Airplanes-PNG-Clipart/Red_Plane_Transparent_PNG_Clipart.png?m=1434276589) (which I will be using in the tutorial) and place them into the newly created _PlaneRide/_build/assets/imgs_ folder; renaming them `plane1.png` and `plane2.png` respectively.
 
